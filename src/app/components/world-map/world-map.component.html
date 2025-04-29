@@ -1,0 +1,18 @@
+<div class="world-map-container">
+  <!-- The map will be inserted here -->
+  <div id="world-map" [innerHTML]="svgContent | safeHtml"></div>
+
+  <!-- Tooltip for country info -->
+  <div class="country-tooltip" *ngIf="showTooltip && selectedCountry"
+       [style.left.px]="tooltipX"
+       [style.top.px]="tooltipY"
+       [@fadeInOut]="true">
+    <h3>{{ selectedCountry.name }}</h3>
+    <div class="info-content">
+      <p><strong>Capital:</strong> {{ selectedCountry.capital }}</p>
+      <p><strong>Population:</strong> {{ selectedCountry.population }}</p>
+      <p><strong>Area:</strong> {{ selectedCountry.area }}</p>
+      <p><strong>Continent:</strong> {{ selectedCountry.continent }}</p>
+    </div>
+  </div>
+</div>
