@@ -33,7 +33,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "/src/assets/js/main.js"
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
