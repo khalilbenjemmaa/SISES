@@ -1,14 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-body{
-  font-family: 'Poppins', sans-serif;
 
+body {
+  font-family: 'Poppins', sans-serif;
 }
+
 .world-map-container {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+
+  .spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 }
 
 #world-map {
@@ -17,19 +53,34 @@ body{
   svg {
     width: 100%;
     height: auto;
+    background-color: #e6f3ff; // Changed map background color to light blue
 
     path {
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+      &.interactive-country {
+        cursor: pointer;
+
+        &:hover {
+          fill: #FFFFFF;
+          transform: translateY(-4px) scale(1.15); // Increased scale for more popup effect
+          z-index: 99999;
+          stroke: #CCCCCC;
+          stroke-width: 2;
+          filter: drop-shadow(3px 6px 8px rgba(0, 0, 0, 0.4)); // More pronounced shadow
+        }
+      }
+    }
+
+    .pin {
+      fill: #e74c3c;
+      stroke: #ffffff;
+      stroke-width: 1;
       cursor: pointer;
-      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15));
+      transition: transform 0.2s ease;
 
       &:hover {
-        fill: #FF0000;
-        filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
-        transform: translateY(-2px) scale(1.01);
-        z-index: 10;
-        stroke: #333;
-        stroke-width: 0.8;
+        transform: scale(1.3);
       }
     }
   }

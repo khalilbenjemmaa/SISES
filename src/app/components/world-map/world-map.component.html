@@ -1,4 +1,10 @@
 <div class="world-map-container">
+  <!-- Loader -->
+  <div class="loader" *ngIf="!svgContent">
+    <div class="spinner"></div>
+    <p>Loading map...</p>
+  </div>
+
   <!-- The map will be inserted here -->
   <div id="world-map" [innerHTML]="svgContent | safeHtml"></div>
 

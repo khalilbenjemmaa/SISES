@@ -79,12 +79,28 @@ export class WorldMapComponent implements OnInit {
         // Get country code from path ID or class
         const countryId = path.getAttribute('id') || '';
 
-        // Add event listeners
-        path.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
-        path.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
-        path.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
+        // Check if this country is in our countries object
+        const isKnownCountry = this.isCountryInList(countryId);
+
+        if (isKnownCountry) {
+          // Add hover effects only for countries in our list
+          path.classList.add('interactive-country');
+
+          // Add event listeners
+          path.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
+          path.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
+          path.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
+        }
       });
     }
+  }
+
+  // Helper method to check if country ID matches any in our list
+  isCountryInList(countryId: string): boolean {
+    countryId = countryId.toLowerCase();
+    return Object.keys(this.countries).some(code =>
+      countryId.includes(code)
+    );
   }
 
   initializeCountryData(): void {
@@ -188,38 +204,25 @@ export class WorldMapComponent implements OnInit {
         area: '1.22 million km²',
         continent: 'Africa'
       },
-      'algeria':{
-        name: 'South Africa',
-        capital: 'Pretoria, Cape Town, Bloemfontein',
-        population: '59 million',
-        area: '1.22 million km²',
+      'tunisia':{
+        name: 'Tunisia',
+        capital: 'Tunis',
+        population: '12 million',
+        area: '163,610 km²',
         continent: 'Africa'
       },
-      // Add more countries as needed
+      'italy':{
+        name: 'Italy',
+        capital: 'Rome',
+        population: '60 million',
+        area: '301,340 km²',
+        continent: 'Europe'
+      }
     };
   }
 
   onCountryMouseEnter(event: MouseEvent, countryId: string): void {
     const path = event.target as SVGPathElement;
-    const svgElement = document.querySelector('#world-map svg') as SVGElement;
-
-    // Add country to the end of the SVG to make it appear on top
-    const parentNode = path.parentNode;
-    if (parentNode) {
-      parentNode.removeChild(path);
-      parentNode.appendChild(path);
-    }
-
-    // Keep the hovered country white and make all others red
-    if (svgElement) {
-      const allPaths = svgElement.querySelectorAll('path');
-      allPaths.forEach(p => {
-        if (p !== path) {
-          p.setAttribute('fill', '#FF0000');
-          p.style.opacity = '0.8';
-        }
-      });
-    }
 
     // Enhance the hovered country
     path.setAttribute('fill', '#FFFFFF');
@@ -227,6 +230,15 @@ export class WorldMapComponent implements OnInit {
     path.style.filter = 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3))';
     path.style.zIndex = '100';
     path.style.opacity = '1';
+    //other countries in the mop become red
+    const paths = document.querySelectorAll('path');
+    paths.forEach(p => {
+      if (p !== path) {
+        p.setAttribute('fill', '#FF0000');
+        p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
+      }
+    });
+
 
     // Find the country data
     for (const [id, country] of Object.entries(this.countries)) {
@@ -241,22 +253,20 @@ export class WorldMapComponent implements OnInit {
 
   onCountryMouseLeave(event: MouseEvent, countryId: string): void {
     const path = event.target as SVGPathElement;
-    const svgElement = document.querySelector('#world-map svg') as SVGElement;
-
-    // Reset all countries to white
-    if (svgElement) {
-      const allPaths = svgElement.querySelectorAll('path');
-      allPaths.forEach(p => {
-        p.setAttribute('fill', '#FFFFFF');
-        p.style.opacity = '1';
-      });
-    }
 
     // Reset the specific path styling
+    path.setAttribute('fill', '#FFFFFF');
     path.removeAttribute('transform');
     path.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
     path.style.zIndex = '1';
-
+    //return the other countries to their white color stroke CCCCC
+    const paths = document.querySelectorAll('path');
+    paths.forEach(p => {
+      if (p !== path) {
+        p.setAttribute('fill', '#FFFFFF');
+        p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
+      }
+    });
     this.selectedCountry = null;
     this.hoveredCountryId = null;
     this.showTooltip = false;
