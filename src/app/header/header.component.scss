@@ -1,0 +1,18 @@
+
+.sises-logo {
+  font-family: 'Russo One', sans-serif;
+  font-size: 30px;
+  color: white; /* matches the red tone */
+  letter-spacing: 2px;
+}
+
+a:hover {
+  color: red !important;
+}
+
+
+
+a:hover,
+a.active {
+  color: red !important;
+}

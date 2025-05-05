@@ -3,3 +3,14 @@
   justify-content: center;
   align-items: center;
 }
+.sises-logo {
+  font-family: 'Russo One', sans-serif;
+  font-size: 48px;
+  color: #d72027; /* matches the red tone */
+  letter-spacing: 2px;
+}
+.stretch-last-letter span:last-child {
+  display: inline-block;
+  transform: scaleX(1.8); /* Adjust stretch */
+  transform-origin: left;
+}

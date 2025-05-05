@@ -18,7 +18,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #394047; /* Color for headings, subheadings and title throughout the website */
@@ -47,7 +47,7 @@
 .dark-background {
   --background-color: #060606;
   --default-color: #ffffff;
-  --heading-color: #ffffff;
+  --heading-color: #141111;
   --surface-color: #252525;
   --contrast-color: #ffffff;
 }
@@ -141,10 +141,14 @@ h6 {
 
 /* Pulsating Play Button
 ------------------------------*/
+:root {
+  --accent-color: #e60000; /* Strong red */
+}
+
 .pulsating-play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(var(--accent-color) 50%, color-mix(in srgb, var(--accent-color), transparent 75%) 52%);
+  background: red;
   border-radius: 50%;
   display: block;
   position: relative;
@@ -157,9 +161,7 @@ h6 {
   width: 120px;
   height: 120px;
   animation-delay: 0s;
-  animation: pulsate-play-btn 2s;
-  animation-direction: forwards;
-  animation-iteration-count: infinite;
+  animation: pulsate-play-btn 2s forwards infinite;
   animation-timing-function: steps;
   opacity: 1;
   border-radius: 50%;
@@ -202,21 +204,23 @@ h6 {
 }
 
 .pulsating-play-btn:hover:after {
-  border-left: 15px solid var(--accent-color);
+  border-left: 15px solid var(--accent-color); /* Red on hover */
   transform: scale(20);
 }
 
+/* Required animation keyframes */
 @keyframes pulsate-play-btn {
   0% {
-    transform: scale(0.6, 0.6);
+    transform: scale(1);
     opacity: 1;
   }
-
   100% {
-    transform: scale(1, 1);
+    transform: scale(1.6);
     opacity: 0;
   }
 }
+
+
 
 /*--------------------------------------------------------------
 # Global Header
@@ -1154,7 +1158,7 @@ section,
 
 .call-to-action:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  background: color-mix(in srgb, var(--background-color), transparent 80%);
   position: absolute;
   inset: 0;
   z-index: 2;
