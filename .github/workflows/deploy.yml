@@ -18,7 +18,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: 16 
+        node-version: '16'  # Set your desired Node.js version
 
     # Install dependencies
     - name: Install dependencies
@@ -26,7 +26,7 @@ jobs:
 
     # Build the Angular project
     - name: Build Angular project
-      run: npm run build -- --prod
+      run: npm run build -- --configuration production
 
     # Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
