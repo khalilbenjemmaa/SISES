@@ -1,33 +1,36 @@
-name: Deploy Angular App to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # or "master" depending on your repo
+      - main  # Trigger deployment on push to the main branch
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v3
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16  # Use 18 or higher to avoid engine mismatch warnings
+    # Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 16 
 
-      - name: Install dependencies
-        run: npm install
+    # Install dependencies
+    - name: Install dependencies
+      run: npm install
 
-      - name: Build Angular app
-        run: npm run build -- --configuration=production
+    # Build the Angular project
+    - name: Build Angular project
+      run: npm run build -- --prod
 
-      - name: Configure Git
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-
-      - name: Deploy to GitHub Pages
-        run: npx angular-cli-ghpages --dir=dist/SISES --no-silent
+    # Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        npx angular-cli-ghpages --dir=dist/SISES --no-silent --repo=https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/khalilbenjemmaa/SISES.git
