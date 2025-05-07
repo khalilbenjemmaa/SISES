@@ -1,0 +1,33 @@
+name: Deploy Angular App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action when code is pushed to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Specify the Node.js version you want to use
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: |
+        npx ng build --configuration production --base-href /SISES/
+
+    - name: Deploy to GitHub Pages
+      run: |
+        npm install -g angular-cli-ghpages
+        npx angular-cli-ghpages --dir=dist/sises-app
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for authentication
