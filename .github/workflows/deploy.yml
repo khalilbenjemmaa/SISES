@@ -28,6 +28,7 @@ jobs:
     - name: Deploy to GitHub Pages
       run: |
         npm install -g angular-cli-ghpages
-        npx angular-cli-ghpages --dir=dist/sises-app
+        npx angular-cli-ghpages --dir=dist/SISES --no-silent
+
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GitHub token for authentication
