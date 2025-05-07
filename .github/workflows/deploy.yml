@@ -16,15 +16,14 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  
+        node-version: '16'  # Specify the Node.js version you want to use
 
     - name: Install dependencies
-      run: |
-        npm install
+      run: npm install
 
     - name: Build the project
       run: |
-        ng build --configuration production --base-href /SISES/
+        npx ng build --configuration production --base-href /SISES/
 
     - name: Deploy to GitHub Pages
       run: |
