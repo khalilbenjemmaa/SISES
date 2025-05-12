@@ -142,9 +142,9 @@ h6 {
 /* Pulsating Play Button
 ------------------------------*/
 :root {
-  --accent-color: #e60000; /* Strong red */
+  --accent-color:rgb(217, 31, 51);  /* Strong red */
 }
-
+ 
 .pulsating-play-btn {
   width: 94px;
   height: 94px;

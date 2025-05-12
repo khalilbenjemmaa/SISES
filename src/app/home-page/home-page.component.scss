@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .sises-logo-title {
   font-family: Calibri, sans-serif !important;
@@ -14,14 +15,16 @@
   position: absolute !important;
   inset: 0;
   display: block !important;
-  width: 45% !important; 
+  width: 45% !important;
   height: auto !important;
   object-fit: contain !important;
   z-index: 2 !important;
   margin: auto !important;
-  top: -40% !important;
+  top: -25% !important;
 }
-
+ .colored-section {
+  background-color: #f8f9fa !important;
+ }
 .carousel-text {
   position: absolute;
   bottom: 20% !important;
@@ -45,13 +48,13 @@
   font-weight: 400;
   font-style: normal;
   font-size: 64px;
-  color: #d72027; /* matches the red tone */
+  color:rgb(217, 31, 51); /* matches the red tone */
 
 }
 
 .sises-span {
   font-family: 'Russo One', sans-serif;
-  color: #d72027; /* matches the red tone */
+  color: rgb(217, 31, 51); /* matches the red tone */
   letter-spacing: 2px;
   font-weight: 800;
 }
@@ -63,13 +66,13 @@
 .certification .cert-image {
   position: relative;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .certification .cert-image img {
   width: 100%;
-  height: 250px;
+  height: 240px;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
@@ -282,4 +285,25 @@
 .stretch-title {
   font-family: 'Stretch Pro', sans-serif;
   color: white;
+}
+
+.whatsapp-logo {
+  position: relative;
+  z-index: 2;
+  width: 36%;
+  height: auto;
+  margin-top: 0px;
+  left: 30%;
+}
+button.btn {
+  padding: 10px 20px; /* Adjust the padding as needed */
+  background-color: #D91F33; /* Use the color you specified earlier */
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.btn:hover {
+  background-color: #C01A2A; /* Darker shade for hover effect */
 }
