@@ -3,13 +3,38 @@
   justify-content: center;
   align-items: center;
 }
-.sises-logo {
-  font-family: 'Russo One', sans-serif;
+.sises-logo-title {
+  font-family: Calibri, sans-serif !important;
   font-size: 128px;
   color: #d72027; /* matches the red tone */
   letter-spacing: 2px;
   font-weight: 800;
 }
+.sises-logo {
+  position: absolute !important;
+  inset: 0;
+  display: block !important;
+  width: 45% !important; 
+  height: auto !important;
+  object-fit: contain !important;
+  z-index: 2 !important;
+  margin: auto !important;
+  top: -40% !important;
+}
+
+.carousel-text {
+  position: absolute;
+  bottom: 20% !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  width: 80%;
+  height: auto;
+  z-index: 3;
+  inset: initial ;
+
+}
+
+
 .stretch-last-letter span:last-child {
   display: inline-block;
   transform: scaleX(1.8); /* Adjust stretch */
@@ -252,4 +277,9 @@
     margin-right: 0;
     margin-bottom: 10px;
   }
+}
+
+.stretch-title {
+  font-family: 'Stretch Pro', sans-serif;
+  color: white;
 }
