@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, Renderer2 } from '@angular/core';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 @Component({
   selector: 'app-home-page',
@@ -17,6 +16,6 @@ export class HomePageComponent  {
     this.modalImage = imageSrc;
     // Bootstrap modal show method
     const modalElement = document.getElementById('certificationModal');
-    
+
   }
 }
