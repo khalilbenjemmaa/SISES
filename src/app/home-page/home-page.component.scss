@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 .sises-logo-title {
-  font-family: Calibri, sans-serif !important;
+  font-family: 'Satoshi', sans-serif;
   font-size: 128px;
   color: #d72027; /* matches the red tone */
   letter-spacing: 2px;
@@ -169,6 +169,9 @@
   font-size: 2.5rem;
   color: #d9534f;
   margin-bottom: 40px;
+  font-family: 'Satoshi', sans-serif;
+  margin-bottom: 40px;
+
 }
 
 /* Contact Layout */
@@ -278,7 +281,7 @@
   text-align: center;
   font-size: 2.5rem;
   color: #d9534f;
-  margin-bottom: 40px;
+
 }
 
 .service-item {
@@ -364,3 +367,5 @@ button.btn {
 button.btn:hover {
   background-color: #C01A2A; /* Darker shade for hover effect */
 }
+
+

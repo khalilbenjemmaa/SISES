@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { trigger, transition, style, animate } from '@angular/animations';
 
@@ -27,6 +27,8 @@ interface Country {
   ]
 })
 export class WorldMapComponent implements OnInit {
+  @Output() countrySelected = new EventEmitter<Country>();
+
   svgContent: string = '';
   countries: { [code: string]: Country } = {};
   selectedCountry: Country | null = null;
@@ -38,17 +40,13 @@ export class WorldMapComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    // Load the SVG map
     this.http.get('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg',
       { responseType: 'text' })
       .subscribe(data => {
         this.svgContent = data;
-        setTimeout(() => {
-          this.initializeMap();
-        }, 100);
+        setTimeout(() => this.initializeMap(), 100);
       });
 
-    // Initialize country data
     this.initializeCountryData();
   }
 
@@ -56,7 +54,6 @@ export class WorldMapComponent implements OnInit {
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
 
     if (svgElement) {
-      // Set the viewBox attribute to ensure responsiveness
       if (!svgElement.getAttribute('viewBox')) {
         const width = svgElement.getAttribute('width') || '1200';
         const height = svgElement.getAttribute('height') || '600';
@@ -65,28 +62,27 @@ export class WorldMapComponent implements OnInit {
         svgElement.removeAttribute('height');
       }
 
-      // Find all path elements representing countries
+      const idsToRemove = ['east antarctica', 'antarctic peninsula', 'south pole'];
+      idsToRemove.forEach(id => {
+        const region = svgElement.querySelector(`[id="${id}"], [id="${id.charAt(0).toUpperCase() + id.slice(1)}"], [id="${id.toUpperCase()}"]`);
+        region?.remove();
+      });
+
       const paths = svgElement.querySelectorAll('path');
 
       paths.forEach(path => {
-        // Set default styling
         path.setAttribute('fill', '#FFFFFF');
         path.setAttribute('stroke', '#CCCCCC');
         path.setAttribute('stroke-width', '0.5');
         path.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
         path.style.transition = 'all 300ms ease';
 
-        // Get country code from path ID or class
         const countryId = path.getAttribute('id') || '';
-
-        // Check if this country is in our countries object
         const isKnownCountry = this.isCountryInList(countryId);
 
         if (isKnownCountry) {
-          // Add hover effects only for countries in our list
           path.classList.add('interactive-country');
 
-          // Add event listeners
           path.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
           path.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
           path.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
@@ -95,7 +91,6 @@ export class WorldMapComponent implements OnInit {
     }
   }
 
-  // Helper method to check if country ID matches any in our list
   isCountryInList(countryId: string): boolean {
     countryId = countryId.toLowerCase();
     return Object.keys(this.countries).some(code =>
@@ -104,7 +99,6 @@ export class WorldMapComponent implements OnInit {
   }
 
   initializeCountryData(): void {
-    // Sample country data - in a real app, this would come from an API
     this.countries = {
       'usa': {
         name: 'United States',
@@ -204,14 +198,14 @@ export class WorldMapComponent implements OnInit {
         area: '1.22 million km²',
         continent: 'Africa'
       },
-      'tunisia':{
+      'tunisia': {
         name: 'Tunisia',
         capital: 'Tunis',
         population: '12 million',
         area: '163,610 km²',
         continent: 'Africa'
       },
-      'italy':{
+      'italy': {
         name: 'Italy',
         capital: 'Rome',
         population: '60 million',
@@ -224,13 +218,12 @@ export class WorldMapComponent implements OnInit {
   onCountryMouseEnter(event: MouseEvent, countryId: string): void {
     const path = event.target as SVGPathElement;
 
-    // Enhance the hovered country
     path.setAttribute('fill', '#FFFFFF');
-    path.setAttribute('transform', 'translate(0, -2) scale(1.01)');
+    path.setAttribute('transform', 'translate(0, -2) scale(1.1)');
     path.style.filter = 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3))';
     path.style.zIndex = '100';
     path.style.opacity = '1';
-    //other countries in the mop become red
+
     const paths = document.querySelectorAll('path');
     paths.forEach(p => {
       if (p !== path) {
@@ -239,13 +232,14 @@ export class WorldMapComponent implements OnInit {
       }
     });
 
-
-    // Find the country data
     for (const [id, country] of Object.entries(this.countries)) {
       if (countryId.toLowerCase().includes(id)) {
         this.selectedCountry = country;
         this.hoveredCountryId = countryId;
         this.showTooltip = true;
+
+        // Emit the selected country to the parent
+        this.countrySelected.emit(country);
         break;
       }
     }
@@ -254,12 +248,11 @@ export class WorldMapComponent implements OnInit {
   onCountryMouseLeave(event: MouseEvent, countryId: string): void {
     const path = event.target as SVGPathElement;
 
-    // Reset the specific path styling
     path.setAttribute('fill', '#FFFFFF');
     path.removeAttribute('transform');
     path.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
     path.style.zIndex = '1';
-    //return the other countries to their white color stroke CCCCC
+
     const paths = document.querySelectorAll('path');
     paths.forEach(p => {
       if (p !== path) {
@@ -267,6 +260,7 @@ export class WorldMapComponent implements OnInit {
         p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
       }
     });
+
     this.selectedCountry = null;
     this.hoveredCountryId = null;
     this.showTooltip = false;
