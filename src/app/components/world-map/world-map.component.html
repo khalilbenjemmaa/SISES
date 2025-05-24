@@ -9,16 +9,16 @@
   <div id="world-map" [innerHTML]="svgContent | safeHtml"></div>
 
   <!-- Tooltip for country info -->
-  <!-- <div class="country-tooltip" *ngIf="showTooltip && selectedCountry"
+  <div class="country-tooltip" *ngIf="showTooltip && selectedCountry"
        [style.left.px]="tooltipX"
        [style.top.px]="tooltipY"
        [@fadeInOut]="true">
-    <h3>{{ selectedCountry.name }}</h3>
-    <div class="info-content">
-      <p><strong>Capital:</strong> {{ selectedCountry.capital }}</p>
-      <p><strong>Population:</strong> {{ selectedCountry.population }}</p>
-      <p><strong>Area:</strong> {{ selectedCountry.area }}</p>
-      <p><strong>Continent:</strong> {{ selectedCountry.continent }}</p>
+    <div class="tooltip-header">
+      <button class="close-button" (click)="closeTooltip()" *ngIf="isCountryLocked">×</button>
     </div>
-  </div> -->
+    <div class="tooltip-content">
+      <h3 class="country-name">{{ selectedCountry.name }}</h3>
+      <p class="country-description">{{ selectedCountry.description }}</p>
+    </div>
+  </div>
 </div>
