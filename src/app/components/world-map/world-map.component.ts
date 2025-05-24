@@ -74,7 +74,7 @@ export class WorldMapComponent implements OnInit {
       const paths = svgElement.querySelectorAll('path');
 
       paths.forEach(path => {
-        path.setAttribute('fill', '#FFFFFF');
+        path.setAttribute('fill', '#FF4444');
         path.setAttribute('stroke', '#CCCCCC');
         path.setAttribute('stroke-width', '0.5');
         path.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
@@ -86,13 +86,12 @@ export class WorldMapComponent implements OnInit {
         if (isKnownCountry) {
           path.classList.add('interactive-country');
 
-          // Add pin for interactive countries
+          // Add pin emoji for interactive countries
           this.addPinToCountry(path, countryId);
 
           path.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
           path.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
           path.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
-          path.addEventListener('click', (event) => this.onCountryClick(event, countryId));
         }
       });
     }
@@ -112,36 +111,24 @@ export class WorldMapComponent implements OnInit {
     pinGroup.classList.add('country-pin');
     pinGroup.setAttribute('data-country', countryId);
 
-    // Create pin circle
-    const pinCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    pinCircle.setAttribute('cx', centerX.toString());
-    pinCircle.setAttribute('cy', centerY.toString());
-    pinCircle.setAttribute('r', '4');
-    pinCircle.setAttribute('fill', '#e74c3c');
-    pinCircle.setAttribute('stroke', '#ffffff');
-    pinCircle.setAttribute('stroke-width', '2');
-    pinCircle.classList.add('pin');
+    // Create pin emoji
+    const pinText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    pinText.setAttribute('x', centerX.toString());
+    pinText.setAttribute('y', centerY.toString());
+    pinText.setAttribute('font-size', '16');
+    pinText.setAttribute('fill', '#e74c3c');
+    pinText.setAttribute('text-anchor', 'middle');
+    pinText.setAttribute('dominant-baseline', 'middle');
+    pinText.textContent = '📍';
+    pinText.classList.add('pin');
 
-    // Create pin pulse effect
-    const pinPulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    pinPulse.setAttribute('cx', centerX.toString());
-    pinPulse.setAttribute('cy', centerY.toString());
-    pinPulse.setAttribute('r', '4');
-    pinPulse.setAttribute('fill', 'none');
-    pinPulse.setAttribute('stroke', '#e74c3c');
-    pinPulse.setAttribute('stroke-width', '2');
-    pinPulse.setAttribute('opacity', '0.7');
-    pinPulse.classList.add('pin-pulse');
-
-    pinGroup.appendChild(pinPulse);
-    pinGroup.appendChild(pinCircle);
+    pinGroup.appendChild(pinText);
     svgElement.appendChild(pinGroup);
 
     // Add event listeners to the pin
     pinGroup.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
     pinGroup.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
     pinGroup.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
-    pinGroup.addEventListener('click', (event) => this.onCountryClick(event, countryId));
   }
 
   isCountryInList(countryId: string): boolean {
@@ -285,30 +272,48 @@ export class WorldMapComponent implements OnInit {
   }
 
   onCountryMouseEnter(event: MouseEvent, countryId: string): void {
-    // Don't change anything if a country is already locked
-    if (this.isCountryLocked) return;
-
     const path = this.getCountryPath(countryId);
     if (!path) return;
 
-    const svgElement = document.querySelector('#world-map svg') as SVGElement;
+    // Treat mouse enter as a click to lock the country selection
+    this.isCountryLocked = true;
+    this.lockedCountryPath = path;
 
-    // Make all countries red except the hovered one
+    const svgElement = document.querySelector('#world-map svg') as SVGElement;
+    const container = document.querySelector('.world-map-container') as HTMLElement;
+
+    // Add the country-selected class to the container
+    if (container) {
+      container.classList.add('country-selected');
+    }
+
+    // Make all countries blend with background except the selected one
     const allPaths = svgElement.querySelectorAll('path');
     allPaths.forEach(p => {
+      p.classList.remove('selected');
       if (p !== path) {
         p.setAttribute('fill', '#FF4444');
         p.style.opacity = '0.8';
-        p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.1))';
+        p.style.filter = 'none';
+        p.style.transform = 'none';
+        p.style.zIndex = '0';
       }
     });
 
-    // Keep the hovered country white and highlighted
+    // Highlight the selected country and its pin
+    path.classList.add('selected');
     path.setAttribute('fill', '#FFFFFF');
     path.style.opacity = '1';
-    path.setAttribute('transform', 'translate(0, -2) scale(1.1)');
-    path.style.filter = 'drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3))';
-    path.style.zIndex = '100';
+    path.setAttribute('transform', 'translate(0, -5px) scale(1.5)');
+    path.style.filter = 'drop-shadow(8px 16px 20px rgba(255, 255, 255, 0.8))';
+    path.style.zIndex = '5000';
+
+    // Elevate the pin for the selected country
+    const pinGroup = svgElement.querySelector(`.country-pin[data-country="${countryId}"]`) as SVGGElement;
+    if (pinGroup) {
+      pinGroup.style.zIndex = '5100';
+      pinGroup.style.transform = 'scale(1.3)';
+    }
 
     // Find and set the selected country
     for (const [id, country] of Object.entries(this.countries)) {
@@ -333,74 +338,31 @@ export class WorldMapComponent implements OnInit {
 
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
 
-    // Reset all countries to white
+    // Reset all countries to blend with background
     const allPaths = svgElement.querySelectorAll('path');
     allPaths.forEach(p => {
-      p.setAttribute('fill', '#FFFFFF');
-      p.style.opacity = '1';
+      p.setAttribute('fill', '#FF4444');
+      p.style.opacity = '0.8';
       p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
+      p.style.transform = 'none';
+      p.style.zIndex = '0';
     });
+
+    // Reset the pin
+    const pinGroup = svgElement.querySelector(`.country-pin[data-country="${countryId}"]`) as SVGGElement;
+    if (pinGroup) {
+      pinGroup.style.zIndex = '1000';
+      pinGroup.style.transform = 'none';
+    }
 
     // Reset the hovered country
     path.removeAttribute('transform');
-    path.style.zIndex = '1';
+    path.style.zIndex = '0';
 
     // Hide tooltip
     this.selectedCountry = null;
     this.hoveredCountryId = null;
     this.showTooltip = false;
-  }
-
-  onCountryClick(event: MouseEvent, countryId: string): void {
-    const path = this.getCountryPath(countryId);
-    if (!path) return;
-
-    // Lock the country selection
-    this.isCountryLocked = true;
-    this.lockedCountryPath = path;
-
-    const svgElement = document.querySelector('#world-map svg') as SVGElement;
-    const container = document.querySelector('.world-map-container') as HTMLElement;
-
-    // Change container background to red
-    if (container) {
-      container.style.backgroundColor = '#FF4444';
-    }
-
-    // Change SVG background to red
-    if (svgElement) {
-      svgElement.style.backgroundColor = '#FF4444';
-    }
-
-    // Make all countries red except the selected one
-    const allPaths = svgElement.querySelectorAll('path');
-    allPaths.forEach(p => {
-      if (p !== path) {
-        p.setAttribute('fill', '#FF4444');
-        p.style.opacity = '1';
-        p.style.filter = 'none';
-      }
-    });
-
-    // Keep the selected country white and highlighted
-    path.setAttribute('fill', '#FFFFFF');
-    path.style.opacity = '1';
-    path.setAttribute('transform', 'translate(0, -2) scale(1.2)');
-    path.style.filter = 'drop-shadow(4px 8px 12px rgba(0, 0, 0, 0.4))';
-    path.style.zIndex = '1000';
-
-    // Find and set the selected country
-    for (const [id, country] of Object.entries(this.countries)) {
-      if (countryId.toLowerCase().includes(id)) {
-        this.selectedCountry = country;
-        this.hoveredCountryId = countryId;
-        this.showTooltip = true;
-
-        // Emit the selected country to the parent
-        this.countrySelected.emit(country);
-        break;
-      }
-    }
   }
 
   getCountryPath(countryId: string): SVGPathElement | null {
@@ -431,28 +393,33 @@ export class WorldMapComponent implements OnInit {
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
     const container = document.querySelector('.world-map-container') as HTMLElement;
 
-    // Reset container background to white
+    // Remove the country-selected class from the container
     if (container) {
-      container.style.backgroundColor = '#ffffff';
+      container.classList.remove('country-selected');
     }
 
-    // Reset SVG background to original
-    if (svgElement) {
-      svgElement.style.backgroundColor = '#e6f3ff';
-    }
-
-    // Reset all countries to white
+    // Reset all countries to blend with background
     const allPaths = svgElement.querySelectorAll('path');
     allPaths.forEach(p => {
-      p.setAttribute('fill', '#FFFFFF');
-      p.style.opacity = '1';
+      p.classList.remove('selected');
+      p.setAttribute('fill', '#FF4444');
+      p.style.opacity = '0.8';
       p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
+      p.style.transform = 'none';
+      p.style.zIndex = '0';
+    });
+
+    // Reset all pins
+    const pinGroups = svgElement.querySelectorAll('.country-pin');
+    pinGroups.forEach((pin:any) => {
+      pin.style.zIndex = '1000';
+      pin.style.transform = 'none';
     });
 
     // Reset the locked country
     if (this.lockedCountryPath) {
       this.lockedCountryPath.removeAttribute('transform');
-      this.lockedCountryPath.style.zIndex = '1';
+      this.lockedCountryPath.style.zIndex = '0';
       this.lockedCountryPath = null;
     }
 
@@ -463,14 +430,20 @@ export class WorldMapComponent implements OnInit {
     this.showTooltip = false;
   }
 
+  exploreMore(): void {
+    if (this.selectedCountry) {
+      console.log('Exploring more about:', this.selectedCountry.name);
+    }
+  }
+
   onCountryMouseMove(event: MouseEvent): void {
     // Position tooltip with some offset to avoid cursor overlap
     this.tooltipX = event.clientX + 15;
     this.tooltipY = event.clientY - 10;
 
     // Ensure tooltip doesn't go off-screen
-    const tooltipWidth = 450; // Increased width for larger tooltip
-    const tooltipHeight = 250; // Increased height for larger tooltip
+    const tooltipWidth = 450;
+    const tooltipHeight = 250;
 
     if (this.tooltipX + tooltipWidth > window.innerWidth) {
       this.tooltipX = event.clientX - tooltipWidth - 15;
