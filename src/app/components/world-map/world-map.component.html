@@ -9,7 +9,7 @@
   <div id="world-map" [innerHTML]="svgContent | safeHtml"></div>
 
   <!-- Tooltip for country info -->
-  <div class="country-tooltip" *ngIf="showTooltip && selectedCountry"
+  <!-- <div class="country-tooltip" *ngIf="showTooltip && selectedCountry"
        [style.left.px]="tooltipX"
        [style.top.px]="tooltipY"
        [@fadeInOut]="true">
@@ -20,5 +20,5 @@
       <p><strong>Area:</strong> {{ selectedCountry.area }}</p>
       <p><strong>Continent:</strong> {{ selectedCountry.continent }}</p>
     </div>
-  </div>
+  </div> -->
 </div>

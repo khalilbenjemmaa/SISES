@@ -1,0 +1,24 @@
+
+.sises-logo {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
+  font-size: 30px;
+  color: white; /* matches the red tone */
+  letter-spacing: 2px;
+}
+
+a:hover {
+  color: red !important;
+}
+
+.sises-logo img {
+  width: 100%; /* Makes the image take up the full width of the container */
+  height: auto; /* Ensures the image maintains its aspect ratio */
+  display: block; /* Removes any unwanted space below the image */
+}
+
+a:hover,
+a.active {
+  color: red !important;
+  font-weight: bold;
+
+}
