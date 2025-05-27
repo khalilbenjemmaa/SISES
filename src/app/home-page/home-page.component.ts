@@ -16,6 +16,5 @@ export class HomePageComponent  {
     this.modalImage = imageSrc;
     // Bootstrap modal show method
     const modalElement = document.getElementById('certificationModal');
-
   }
 }
