@@ -1,7 +1,8 @@
 {
   "countries": [
     {
-      "name": "Italy",
+      "name": "italie",
+      "description": "LES ETUDES EN ITALIEN (B2) OU EN ANGLAIS (B2) : \n LICENCE, MASTER, MÉDICINE, INGÉNIERIE ...",
       "bg-image": "italy-bg.jpg",
       "header-image": "italy.png",
       "languageRequirements": "Italian (B2) or English (B2)",
@@ -27,7 +28,8 @@
       "blockedAccount": "20000 DT"
     },
     {
-      "name": "Germany",
+      "name": "ALLEMAGNE",
+      "description": "LES ETUDES EN ALLEMAGNE (B2) OU EN ANGLAIS (B2) : \n LICENCE, MASTER, MÉDICINE, INGÉNIERIE ...",
       "bg-image": "germany-bg.jpg",
       "header-image": "germany.png",
       "languageRequirements": "N/A",

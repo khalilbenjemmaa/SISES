@@ -12,6 +12,7 @@ import { StatsComponent } from './stats/stats.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { CountryPageComponent } from './country-page/country-page.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MainPageComponent } from './main-page/main-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

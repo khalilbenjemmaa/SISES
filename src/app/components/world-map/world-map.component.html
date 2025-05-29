@@ -1,4 +1,30 @@
 <div class="world-map-container" [class.country-selected]="isCountryLocked">
+  <!-- Search input -->
+  <div class="search-container">
+    <div class="search-wrapper">
+      <input type="text"
+             class="country-search"
+             [(ngModel)]="searchQuery"
+             (input)="onCountrySelect($event)"
+             placeholder="Search for a country..."
+             (focus)="isDropdownOpen = searchQuery.length > 0 && filteredCountries.length > 0">
+      <button *ngIf="searchQuery" class="clear-button" (click)="clearSearch()" title="Clear search">×</button>
+      <div class="search-dropdown" *ngIf="isDropdownOpen">
+        <div *ngFor="let country of filteredCountries"
+             class="dropdown-item"
+             (click)="selectCountry(country.key)">
+          {{ country.value.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo displayed at center top when a country is selected -->
+  <img *ngIf="isCountryLocked"
+       src="assets/img/logo-sises.svg"
+       alt="Sises Logo"
+       class="sises-logo" />
+
   <!-- Loader -->
   <div class="loader" *ngIf="!svgContent">
     <div class="spinner"></div>
@@ -24,12 +50,12 @@
     </div>
 
     <div class="tooltip-content">
-      <h3 class="country-name">{{ selectedCountry.name }}</h3>
+      <h1 class="country-name">{{ selectedCountry.name }} <br><p class="country-information">INFORMATION</p></h1>
       <p class="country-description">{{ selectedCountry.description }}</p>
 
       <div class="tooltip-actions" *ngIf="isCountryLocked">
-        <button class="action-button" (click)="exploreMore()">
-          Explore More
+        <button class="action-button primary" (click)="exploreMore()">
+          VOIR PLUS
         </button>
       </div>
     </div>

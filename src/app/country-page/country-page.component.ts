@@ -1,29 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {CountryDataService} from "../country-data-service.service";
-
+import { Location } from '@angular/common'; // Importer Location pour la navigation
+import { CountryDataService } from "../country-data-service.service";
 
 @Component({
-  selector: 'app-country-page',
+  selector: 'app-page-pays',
   templateUrl: './country-page.component.html',
   styleUrls: ['./country-page.component.scss']
 })
 export class CountryPageComponent implements OnInit {
-  countryName: string | null = null;
-  countryData: any;
+  nomPays: string | null = null;
+  donneesPays: any;
 
-  constructor(private route: ActivatedRoute, private countryDataService: CountryDataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private countryDataService: CountryDataService,
+    private location: Location // Injecter Location
+  ) {}
 
+  // Initialisation du composant
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.countryName = params.get('name');
-      this.loadCountryData();
+      this.nomPays = params.get('name');
+      this.chargerDonneesPays();
     });
   }
 
-  loadCountryData(): void {
+  // Charger les données du pays
+  chargerDonneesPays(): void {
     this.countryDataService.getCountryData().subscribe(data => {
-      this.countryData = data.countries.find((country: any) => country.name.toLowerCase() === this.countryName?.toLowerCase());
+      this.donneesPays = data.countries.find((pays: any) => pays.name.toLowerCase() === this.nomPays?.toLowerCase());
     });
+  }
+
+  // Naviguer en arrière
+  retourArriere(): void {
+    this.location.back();
   }
 }
