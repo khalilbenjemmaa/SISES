@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { trigger, transition, style, animate } from '@angular/animations';
+import {Router} from "@angular/router";
 
 interface Country {
   name: string;
@@ -40,7 +41,7 @@ export class WorldMapComponent implements OnInit {
   isCountryLocked: boolean = false;
   lockedCountryPath: SVGPathElement | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.http.get('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg',
@@ -430,11 +431,13 @@ export class WorldMapComponent implements OnInit {
     this.showTooltip = false;
   }
 
-  exploreMore(): void {
-    if (this.selectedCountry) {
-      console.log('Exploring more about:', this.selectedCountry.name);
+
+    exploreMore(): void {
+      if (this.selectedCountry) {
+      this.router.navigate(['/country', this.selectedCountry.name]);
     }
-  }
+    }
+
 
   onCountryMouseMove(event: MouseEvent): void {
     // Position tooltip with some offset to avoid cursor overlap

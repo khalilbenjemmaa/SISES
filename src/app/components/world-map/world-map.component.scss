@@ -107,20 +107,13 @@
 
 .country-tooltip {
   position: fixed;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-  border: 2px solid rgba(226, 232, 240, 0.9);
+  background: transparent !important; /* Transparent background */
   border-radius: 20px;
   padding: 0;
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.2),
-    0 15px 30px rgba(0, 0, 0, 0.15),
-    0 5px 15px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
   z-index: 10000;
   max-width: 700px;
   min-width: 700px;
   min-height: 200px;
-  backdrop-filter: blur(25px);
   pointer-events: auto;
   transform-origin: bottom left;
   animation: tooltipSlideIn 0.3s ease-out;
@@ -144,8 +137,8 @@
   }
 
   .close-button {
-    background: rgba(239, 68, 68, 0.15);
-    border: 2px solid rgba(239, 68, 68, 0.4);
+    background: #FFFFFF;
+    border: 2px solid #FFFFFF;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -159,15 +152,6 @@
     transition: all 0.2s ease;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
 
-    &:hover {
-      background: rgba(239, 68, 68, 0.25);
-      border-color: rgba(239, 68, 68, 0.6);
-      transform: scale(1.1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
   }
 
   .tooltip-content {
@@ -176,15 +160,11 @@
 
   .country-name {
     margin: 0 0 16px 0;
-    color: #1e293b;
+    color: black;
     font-weight: 700;
     font-size: 26px;
     line-height: 1.2;
     letter-spacing: -0.025em;
-    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
   }
 
@@ -192,67 +172,10 @@
     margin: 0;
     font-size: 17px;
     font-weight: 400;
-    color: #64748b;
+    color: #FFFFFF;
     line-height: 1.7;
     letter-spacing: 0.01em;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 25px;
-    width: 16px;
-    height: 16px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-    border-right: 2px solid rgba(226, 232, 240, 0.9);
-    border-bottom: 2px solid rgba(226, 232, 240, 0.9);
-    transform: rotate(45deg);
-    z-index: -1;
-  }
-}
-
-* {
-  font-family: 'BNMachine', 'Poppins', sans-serif !important;
-}
-
-h1, h2, h3, h4, h5, h6, p, span, div, button {
-  font-family: 'BNMachine', 'Poppins', sans-serif !important;
-}
-
-@media (max-width: 768px) {
-  .country-tooltip {
-    max-width: 350px;
-    min-width: 300px;
-
-    .country-name {
-      font-size: 22px;
-    }
-
-    .country-description {
-      font-size: 15px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .country-tooltip {
-    max-width: 280px;
-    min-width: 250px;
-
-    .tooltip-content {
-      padding: 0 16px 16px;
-    }
-
-    .country-name {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .country-description {
-      font-size: 14px;
-    }
   }
 }
 
@@ -284,38 +207,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
     }
     to {
       opacity: 1;
-    }
-  }
-}
-
-.country-stats {
-  margin: 16px 0;
-
-  .stat-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-    font-family: 'BNMachine', 'Poppins', sans-serif !important;
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    .stat-label {
-      font-weight: 600;
-      color: #475569;
-      font-size: 14px;
-      font-family: 'BNMachine', 'Poppins', sans-serif !important;
-    }
-
-    .stat-value {
-      font-weight: 500;
-      color: #1e293b;
-      font-size: 14px;
-      text-align: right;
-      font-family: 'BNMachine', 'Poppins', sans-serif !important;
     }
   }
 }

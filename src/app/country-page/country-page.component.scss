@@ -1,0 +1,59 @@
+.country-page-container {
+  padding: 40px;
+  text-align: center;
+  font-family: 'BNMachine', 'Poppins', sans-serif !important;
+  color: #fff; /* Ensure text is readable against background image */
+  position: relative; /* Ensure the overlay positions relative to this container */
+  min-height: 100vh; /* Full viewport height for background */
+
+  /* Add the overlay using ::before */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay (adjust opacity as needed) */
+    z-index: 1; /* Place the overlay above the background image but below the content */
+  }
+
+  /* Ensure all content is above the overlay */
+  > * {
+    position: relative;
+    z-index: 2; /* Content sits above the overlay */
+  }
+
+  .header-image {
+    max-width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff; /* Adjusted for contrast */
+    margin-bottom: 20px;
+  }
+
+  p, ul {
+    font-size: 18px;
+    color: #fff; /* Adjusted for contrast */
+    line-height: 1.7;
+  }
+
+  h3 {
+    font-size: 24px;
+    color: #fff; /* Adjusted for contrast */
+    margin-top: 20px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      margin: 10px 0;
+    }
+  }
+}

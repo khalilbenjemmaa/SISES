@@ -1,0 +1,33 @@
+
+
+
+
+<div class="country-page-container" *ngIf="countryData" [style.backgroundImage]="countryData['bg-image'] ? 'url(assets/img/country-page/' + countryData['bg-image'] + ')' : 'none'" style="background-size: cover; background-position: center;">
+  <img [src]="'assets/img/country-page/' + countryData['header-image']" alt="{{ countryName }} Header" class="header-image">
+  <h2 class="sises-logo-title section-title">{{ countryName }}</h2>
+  <div *ngIf="countryData">
+    <p *ngIf="countryData.languageRequirements">Language Requirements: {{ countryData.languageRequirements }}</p>
+    <p *ngIf="countryData.studyPrograms">Study Programs: {{ countryData.studyPrograms.join(', ') }}</p>
+    <h3>Dossier Composition</h3>
+    <ul>
+      <li *ngFor="let item of countryData.dossierComposition">{{ item }}</li>
+    </ul>
+    <p>Dossier Fees: {{ countryData.dossierFees }}</p>
+    <p *ngIf="countryData.scholarships">Scholarships: {{ countryData.scholarships }}</p>
+    <p *ngIf="countryData.studyFees">Study Fees: Licence {{ countryData.studyFees.Licence }}, Master {{ countryData.studyFees.Master }}, Médecine {{ countryData.studyFees.Medecine }}</p>
+    <p *ngIf="countryData.languageCourseFees">Language Course Fees: {{ countryData.languageCourseFees }}</p>
+    <p>Free Studies: {{ countryData.freeStudies }}</p>
+    <p>Blocked Account: {{ countryData.blockedAccount }}</p>
+    <div *ngIf="countryData.specialties">
+      <h3 *ngIf="countryData.specialties.inEnglish">Specialties in English</h3>
+      <ul *ngIf="countryData.specialties.inEnglish">
+        <li *ngFor="let specialty of countryData.specialties.inEnglish">{{ specialty }}</li>
+      </ul>
+      <h3 *ngIf="countryData.specialties.inGerman">Specialties in German</h3>
+      <ul *ngIf="countryData.specialties.inGerman">
+        <li *ngFor="let specialty of countryData.specialties.inGerman">{{ specialty }}</li>
+      </ul>
+    </div>
+  </div>
+  <p *ngIf="!countryData">No data available for {{ countryName }}.</p>
+</div>
