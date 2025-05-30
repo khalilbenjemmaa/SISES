@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Location } from '@angular/common'; // Importer Location pour la navigation
 import { CountryDataService } from "../country-data-service.service";
 
@@ -15,7 +15,8 @@ export class CountryPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private countryDataService: CountryDataService,
-    private location: Location // Injecter Location
+    private location: Location, // Injecter Location
+    private router: Router
   ) {}
 
   // Initialisation du composant
@@ -35,6 +36,6 @@ export class CountryPageComponent implements OnInit {
 
   // Naviguer en arrière
   retourArriere(): void {
-    this.location.back();
+    this.router.navigate(['/']);
   }
 }

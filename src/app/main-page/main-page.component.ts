@@ -14,4 +14,10 @@ export class MainPageComponent {
     script.type = 'text/javascript';
     this.renderer.appendChild(document.body, script);
   }
+  ngOnInit(): void {
+    const script = this.renderer.createElement('script');
+    script.src = 'assets/js/main.js';
+    script.type = 'text/javascript';
+    this.renderer.appendChild(document.body, script);
+  }
 }
