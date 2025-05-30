@@ -4,17 +4,25 @@
 
   <p class="bouton-retour" (click)="retourArriere()">Retour</p>
 
-  <img [src]="'assets/img/country-page/' + donneesPays['header-image']" [alt]="nomPays + ' Entête'" class="image-entete">
+<div class="conteneur-entete">
+  <img
+    [src]="'assets/img/country-page/' + donneesPays['header-image']"
+    [alt]="nomPays + ' Entête'"
+    class="image-entete" />
 
-  <p>{{donneesPays?.description ?? '' }}</p>
+  <p class="description-entete">
+    {{ donneesPays?.description ?? '' }}
+  </p>
+</div>
+
 
   <div *ngIf="donneesPays">
     <p *ngIf="donneesPays.languageRequirements">{{donneesPays.languageRequirements}}</p>
     <p *ngIf="donneesPays.studyPrograms">{{donneesPays.studyPrograms.join(', ')}}</p>
 
-    <h3>Composition du dossier :</h3>
+    <h3 class="CDD-style">Composition du dossier :</h3>
     <ul>
-      <li *ngFor="let item of donneesPays.dossierComposition">{{item}}</li>
+      <li *ngFor="let item of donneesPays.dossierComposition">-{{item}}</li>
     </ul>
 
     <h1 class="fees">Frais de dossier {{donneesPays.dossierFees}}</h1>

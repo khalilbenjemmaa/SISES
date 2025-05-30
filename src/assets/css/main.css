@@ -13,9 +13,11 @@
 /* Fonts */
 :root {
   --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
+  --heading-font: "Satoshi",  sans-serif;
   --nav-font: "Poppins",  sans-serif;
 }
+
+
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
@@ -144,7 +146,7 @@ h6 {
 :root {
   --accent-color:rgb(217, 31, 51);  /* Strong red */
 }
- 
+
 .pulsating-play-btn {
   width: 94px;
   height: 94px;

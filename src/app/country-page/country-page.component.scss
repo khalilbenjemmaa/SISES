@@ -1,7 +1,6 @@
 /* Conteneur principal de la page du pays */
 .conteneur-page-pays {
   padding: 0px;
-  font-family: 'BNMachine', 'Poppins', sans-serif !important;
   color: #fff; /* Assurer la lisibilité du texte sur l'image de fond */
   position: relative; /* Positionner l'overlay par rapport à ce conteneur */
   min-height: 100%; /* Hauteur complète de la fenêtre pour le fond */
@@ -47,7 +46,6 @@
   padding: 8px 16px;
   font-size: 16px;
   font-weight: 800;
-  font-family: 'BNMachine', 'Poppins', sans-serif !important;
   cursor: pointer;
 
   &:hover {
@@ -56,12 +54,12 @@
 }
 
 /* Image d'en-tête */
-.image-entete {
-  max-width: 500px;
-  margin-bottom: 20px;
-  margin-left: auto; /* Aligner à droite */
-  display: block;
-}
+// .image-entete {
+//     max-width: 600PX;
+//     margin-left: 26%;
+//     display: block;
+//     margin-top: 50px;
+// }
 
 /* Titre de section */
 .titre-section {
@@ -98,8 +96,48 @@ ul {
   }
 }
 .fees{
+    font-family: 'Satoshi', sans-serif !important;
+
   font-weight: 800; /* Poids de police 800 */
   color: #e14e5e;
   font-size: 40px;
   margin-top: 20px;
+}
+
+
+.conteneur-entete {
+  display: inline-block; /* matches image width */
+  text-align: left; /* optional: aligns text to the left */
+}
+
+
+.description-entete {
+  margin: 0.5rem 0 0 0; /* some space under the image */
+}
+
+.conteneur-entete {
+    width: fit-content;
+    max-width: 91%;
+    margin-left: 25%;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.image-entete {
+  width: 600px; /* set a fixed width or your preferred size */
+  max-width: 100%; /* responsive fallback */
+  display: block;
+}
+
+.description-entete {
+  width: 600px; /* same fixed width as the image */
+  max-width: 100%;
+  margin-top: 8px;
+  word-wrap: break-word;
+  margin-left: 2%;
+}
+.CDD-style {
+  font-family: 'Satoshi', sans-serif !important;
+  margin-bottom: 10%;
+
 }
