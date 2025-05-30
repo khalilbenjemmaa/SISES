@@ -18,6 +18,40 @@
   }
 }
 
+.sises-logo {
+  position: absolute;
+  top: -240px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 800px;
+  height: auto;
+}
+
+.search-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 15;
+}
+
+.country-search {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  color: #333333;
+  width: 200px;
+  font-family: 'BNMachine', 'Poppins', sans-serif !important;
+}
+
+.country-search:focus {
+  outline: none;
+  border-color: #e14e5e;
+  box-shadow: 0 0 5px rgba(225, 78, 94, 0.5);
+}
+
 .loader {
   position: absolute;
   top: 50%;
@@ -29,18 +63,20 @@
   z-index: 1000;
 
   .spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
+    border: 4px solid #f1f5f9;
+    border-top: 4px solid #3b82f6;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     animation: spin 2s linear infinite;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
   }
 
   p {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 14px;
-    color: #333;
+    color: #475569;
+    font-weight: 500;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
   }
 
@@ -59,7 +95,7 @@
   svg {
     width: 100%;
     height: auto;
-    background-color: #FF4444 !important;
+    background-color: #e14e5e !important;
     overflow: visible;
     transition: background-color 0.5s ease;
 
@@ -69,7 +105,7 @@
 
       &.interactive-country {
         cursor: pointer;
-        fill: #FF4444;
+        fill: #e14e5e;
         opacity: 0.9;
 
         &:hover {
@@ -84,7 +120,7 @@
     }
 
     .pin {
-      fill: #e74c3c;
+      fill: #e14e5e;
       cursor: pointer;
       transition: transform 0.2s ease-in-out;
 
@@ -107,20 +143,13 @@
 
 .country-tooltip {
   position: fixed;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-  border: 2px solid rgba(226, 232, 240, 0.9);
+  background: transparent !important;
   border-radius: 20px;
   padding: 0;
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.2),
-    0 15px 30px rgba(0, 0, 0, 0.15),
-    0 5px 15px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
   z-index: 10000;
   max-width: 700px;
   min-width: 700px;
   min-height: 200px;
-  backdrop-filter: blur(25px);
   pointer-events: auto;
   transform-origin: bottom left;
   animation: tooltipSlideIn 0.3s ease-out;
@@ -144,8 +173,8 @@
   }
 
   .close-button {
-    background: rgba(239, 68, 68, 0.15);
-    border: 2px solid rgba(239, 68, 68, 0.4);
+    background: #FFFFFF;
+    border: 2px solid #FFFFFF;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -158,16 +187,6 @@
     cursor: pointer;
     transition: all 0.2s ease;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
-
-    &:hover {
-      background: rgba(239, 68, 68, 0.25);
-      border-color: rgba(239, 68, 68, 0.6);
-      transform: scale(1.1);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
   }
 
   .tooltip-content {
@@ -176,91 +195,36 @@
 
   .country-name {
     margin: 0 0 16px 0;
-    color: #1e293b;
-    font-weight: 700;
-    font-size: 26px;
+    color: #FFFFFF;
+    font-weight: 900;
     line-height: 1.2;
     letter-spacing: -0.025em;
-    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
   }
 
   .country-description {
     margin: 0;
-    font-size: 17px;
-    font-weight: 400;
-    color: #64748b;
+    font-weight: 800;
+    color: #FFFFFF;
     line-height: 1.7;
     letter-spacing: 0.01em;
-    font-family: 'BNMachine', 'Poppins', sans-serif !important;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 25px;
-    width: 16px;
-    height: 16px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-    border-right: 2px solid rgba(226, 232, 240, 0.9);
-    border-bottom: 2px solid rgba(226, 232, 240, 0.9);
-    transform: rotate(45deg);
-    z-index: -1;
-  }
-}
-
-* {
-  font-family: 'BNMachine', 'Poppins', sans-serif !important;
-}
-
-h1, h2, h3, h4, h5, h6, p, span, div, button {
-  font-family: 'BNMachine', 'Poppins', sans-serif !important;
-}
-
-@media (max-width: 768px) {
-  .country-tooltip {
-    max-width: 350px;
-    min-width: 300px;
-
-    .country-name {
-      font-size: 22px;
-    }
-
-    .country-description {
-      font-size: 15px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .country-tooltip {
-    max-width: 280px;
-    min-width: 250px;
-
-    .tooltip-content {
-      padding: 0 16px 16px;
-    }
-
-    .country-name {
-      font-size: 20px;
-      margin-bottom: 12px;
-    }
-
-    .country-description {
-      font-size: 14px;
-    }
+  .country-information {
+    margin: 0;
+    font-weight: 800;
+    font-size: 12px;
+    color: #0a000f;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
   }
 }
 
 .world-map-container.country-selected {
-  background-color: #FF4444 !important;
+  background-color: #e14e5e !important;
 
   #world-map svg {
-    background-color: #FF4444 !important;
+    background-color: #e14e5e !important;
   }
 }
 
@@ -273,7 +237,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
   background: linear-gradient(135deg,
     rgba(255, 68, 68, 0.6) 0%,
     rgba(255, 68, 68, 0.7) 50%,
-    rgba(255, 68, 68, 0.6) 100%);
+    rgba(255, 68, 68, 0.6));
   pointer-events: none;
   z-index: 100;
   animation: overlayFadeIn 0.5s ease-out;
@@ -288,38 +252,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
   }
 }
 
-.country-stats {
-  margin: 16px 0;
-
-  .stat-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-    font-family: 'BNMachine', 'Poppins', sans-serif !important;
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    .stat-label {
-      font-weight: 600;
-      color: #475569;
-      font-size: 14px;
-      font-family: 'BNMachine', 'Poppins', sans-serif !important;
-    }
-
-    .stat-value {
-      font-weight: 500;
-      color: #1e293b;
-      font-size: 14px;
-      text-align: right;
-      font-family: 'BNMachine', 'Poppins', sans-serif !important;
-    }
-  }
-}
-
 .tooltip-actions {
   display: flex;
   gap: 12px;
@@ -327,23 +259,17 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
   justify-content: flex-end;
 
   .action-button {
-    padding: 10px 18px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    text-decoration: none;
+    background: none;
     border: none;
+    font-size: 12px;
+    font-weight: 500;
     font-family: 'BNMachine', 'Poppins', sans-serif !important;
 
     &.primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      color: white;
-
+      color: #0a000f;
       &:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        text-decoration: underline;
       }
     }
 
@@ -353,7 +279,7 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
       border: 1px solid rgba(148, 163, 184, 0.3);
 
       &:hover {
-        background: rgba(148, 163, 184, 0.2);
+        background: rgba(148, 255, 184, 0.2);
         color: #475569;
         transform: translateY(-1px);
       }
@@ -381,20 +307,6 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
   }
 }
 
-.loader {
-  p {
-    font-weight: 500;
-    color: #475569;
-    margin-top: 12px;
-  }
-
-  .spinner {
-    border-color: #f1f5f9;
-    border-top-color: #3b82f6;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-  }
-}
-
 .country-tooltip {
   &:focus-within {
     outline: 2px solid #3b82f6;
@@ -407,4 +319,54 @@ h1, h2, h3, h4, h5, h6, p, span, div, button {
     outline: 2px solid #3b82f6;
     outline-offset: 2px;
   }
+}
+
+/* Searchable input styles */
+.search-wrapper {
+  position: relative;
+  width: 200px;
+}
+
+.country-search {
+  padding-right: 30px; /* Space for clear button */
+}
+
+.clear-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #333333;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
 }

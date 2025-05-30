@@ -1,4 +1,30 @@
 <div class="world-map-container" [class.country-selected]="isCountryLocked">
+  <!-- Search input -->
+  <div class="search-container">
+    <div class="search-wrapper">
+      <input type="text"
+             class="country-search"
+             [(ngModel)]="searchQuery"
+             (input)="onCountrySelect($event)"
+             placeholder="Search for a country..."
+             (focus)="isDropdownOpen = searchQuery.length > 0 && filteredCountries.length > 0">
+      <button *ngIf="searchQuery" class="clear-button" (click)="clearSearch()" title="Clear search">×</button>
+      <div class="search-dropdown" *ngIf="isDropdownOpen">
+        <div *ngFor="let country of filteredCountries"
+             class="dropdown-item"
+             (click)="selectCountry(country.key)">
+          {{ country.value.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logo displayed at center top when a country is selected -->
+  <img *ngIf="isCountryLocked"
+       src="assets/img/logo-sises.svg"
+       alt="Sises Logo"
+       class="sises-logo" />
+
   <!-- Loader -->
   <div class="loader" *ngIf="!svgContent">
     <div class="spinner"></div>
@@ -8,13 +34,12 @@
   <!-- The map will be inserted here -->
   <div id="world-map" [innerHTML]="svgContent | safeHtml"></div>
 
-  <!-- Enhanced Tooltip for country info -->
+  <!-- Simplified Tooltip -->
   <div class="country-tooltip"
        *ngIf="showTooltip && selectedCountry"
        [style.left.px]="tooltipX"
        [style.top.px]="tooltipY"
        [@fadeInOut]="true">
-
     <div class="tooltip-header">
       <button class="close-button"
               (click)="closeTooltip()"
@@ -25,40 +50,14 @@
     </div>
 
     <div class="tooltip-content">
-      <h3 class="country-name">{{ selectedCountry.name }}</h3>
-
-      <div class="country-stats" *ngIf="isCountryLocked">
-        <div class="stat-item">
-          <span class="stat-label">Capital:</span>
-          <span class="stat-value">{{ selectedCountry.capital }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Population:</span>
-          <span class="stat-value">{{ selectedCountry.population }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Area:</span>
-          <span class="stat-value">{{ selectedCountry.area }}</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">Continent:</span>
-          <span class="stat-value">{{ selectedCountry.continent }}</span>
-        </div>
-      </div>
-
+      <h1 class="country-name">{{ selectedCountry.name }} <br><p class="country-information">INFORMATION</p></h1>
       <p class="country-description">{{ selectedCountry.description }}</p>
 
       <div class="tooltip-actions" *ngIf="isCountryLocked">
         <button class="action-button primary" (click)="exploreMore()">
-          Explore More
-        </button>
-        <button class="action-button secondary" (click)="closeTooltip()">
-          Close
+          VOIR PLUS
         </button>
       </div>
     </div>
   </div>
-
-  <!-- Overlay effect when country is selected -->
-
 </div>

@@ -10,6 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { StatsComponent } from './stats/stats.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { CountryPageComponent } from './country-page/country-page.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     FooterComponent,
     HeaderComponent,
     StatsComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    CountryPageComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

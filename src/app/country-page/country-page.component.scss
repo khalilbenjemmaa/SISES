@@ -1,0 +1,105 @@
+/* Conteneur principal de la page du pays */
+.conteneur-page-pays {
+  padding: 0px;
+  font-family: 'BNMachine', 'Poppins', sans-serif !important;
+  color: #fff; /* Assurer la lisibilité du texte sur l'image de fond */
+  position: relative; /* Positionner l'overlay par rapport à ce conteneur */
+  min-height: 100%; /* Hauteur complète de la fenêtre pour le fond */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center; /* Centrer verticalement et horizontalement */
+  flex-direction: column;
+
+  /* Ajouter l'overlay avec ::before */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Overlay noir semi-transparent */
+    z-index: 1; /* Overlay au-dessus de l'image de fond, sous le contenu */
+  }
+
+  /* S'assurer que tout le contenu est au-dessus de l'overlay */
+  > * {
+    position: relative;
+    z-index: 2; /* Contenu au-dessus de l'overlay */
+  }
+}
+
+/* Conteneur pour le contenu (limité en largeur) */
+.conteneur-contenu {
+  max-width: 600px; /* Limiter la largeur pour la lisibilité */
+  width: 100%;
+  text-align: left; /* Aligner tout le texte à droite */
+}
+
+/* Bouton de retour */
+.bouton-retour {
+  text-align: left;
+  color: #FFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: 'BNMachine', 'Poppins', sans-serif !important;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Image d'en-tête */
+.image-entete {
+  max-width: 500px;
+  margin-bottom: 20px;
+  margin-left: auto; /* Aligner à droite */
+  display: block;
+}
+
+/* Titre de section */
+.titre-section {
+  font-size: 32px;
+  font-weight: 800; /* Poids de police 800 */
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* Paragraphes et listes */
+p, ul {
+  font-size: 18px;
+  font-weight: 800; /* Poids de police 800 */
+  color: #fff;
+  line-height: 1.7;
+}
+
+/* Sous-titres */
+h3 {
+  font-size: 24px;
+  font-weight: 800; /* Poids de police 800 */
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* Listes */
+ul {
+  list-style: none;
+  padding: 0;
+
+  li {
+    font-weight: 800; /* Poids de police 800 */
+    margin: 10px 0;
+  }
+}
+.fees{
+  font-weight: 800; /* Poids de police 800 */
+  color: #e14e5e;
+  font-size: 40px;
+  margin-top: 20px;
+}
