@@ -1,0 +1,64 @@
+{
+  "countries": [
+    {
+      "name": "italie",
+      "description": "LES ETUDES EN ITALIEN (B2) OU EN ANGLAIS (B2) : \n LICENCE, MASTER, MÉDICINE, INGÉNIERIE ...",
+      "bg-image": "italy-bg.jpg",
+      "header-image": "italy.png",
+      "languageRequirements": "Italian (B2) or English (B2)",
+      "studyPrograms": ["Licence", "Master", "Médecine", "Ingénierie"],
+      "dossierComposition": [
+        "2 copies CIN",
+        "5 Photos d'identité",
+        "3 Copies du passeport (1ère page en couleur)",
+        "3 copies conformes du BAC/LICENCE",
+        "3 copies conformes du relevé de notes du BAC / UNIVERSITAIRE",
+        "Attestation de travail des parents",
+        "Attestation de salaire des parents",
+        "Relevés bancaires des parents (6 derniers mois)"
+      ],
+      "dossierFees": "5000 DT",
+      "scholarships": "7000 € - 8000 € / Année",
+      "studyFees": {
+        "Licence": "1500 €",
+        "Master": "1350 €",
+        "Medecine": "1500 €"
+      },
+      "freeStudies": "Oui (dans les établissements publics)",
+      "blockedAccount": "20000 DT"
+    },
+    {
+      "name": "ALLEMAGNE",
+      "description": "LES ETUDES EN ALLEMAGNE (B2) OU EN ANGLAIS (B2) : \n LICENCE, MASTER, MÉDICINE, INGÉNIERIE ...",
+      "bg-image": "germany-bg.jpg",
+      "header-image": "germany.png",
+      "languageRequirements": "N/A",
+      "dossierComposition": [
+        "2 Copies CIN",
+        "2 Copies du passeport (1ère page en couleur)",
+        "2 Photos d'identité",
+        "2 Copies conformes des relevés de notes Bac/Licence"
+      ],
+      "dossierFees": "3000 DT",
+      "languageCourseFees": "B1 C1 à partir de 3900 € (6 mois)",
+      "freeStudies": "Oui (universités publiques)",
+      "blockedAccount": "12000 DT",
+      "specialties": {
+        "inEnglish": [
+          "Management",
+          "Business",
+          "Data Science",
+          "Cyber Security"
+        ],
+        "inGerman": [
+          "Biologie",
+          "Mécanique",
+          "Mécatronique",
+          "Biotechnologie",
+          "Informatique",
+          "Droit"
+        ]
+      }
+    }
+  ]
+}
