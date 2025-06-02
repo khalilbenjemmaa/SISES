@@ -139,5 +139,16 @@ ul {
 .CDD-style {
   font-family: 'Satoshi', sans-serif !important;
   margin-bottom: 10%;
-
+}
+.allcontentPage{
+  height: 40%;
+  width: 40%;
+}
+.all-content-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }

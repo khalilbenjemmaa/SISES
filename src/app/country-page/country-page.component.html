@@ -4,7 +4,7 @@
 
   <p class="bouton-retour" (click)="retourArriere()">Retour</p>
 
-<div class="conteneur-entete">
+<!--<div class="conteneur-entete">
   <img
     [src]="'assets/img/country-page/' + donneesPays['header-image']"
     [alt]="nomPays + ' Entête'"
@@ -13,10 +13,10 @@
   <p class="description-entete">
     {{ donneesPays?.description ?? '' }}
   </p>
-</div>
+</div>-->
 
 
-  <div *ngIf="donneesPays">
+ <!-- <div *ngIf="donneesPays">
     <p *ngIf="donneesPays.languageRequirements">{{donneesPays.languageRequirements}}</p>
     <p *ngIf="donneesPays.studyPrograms">{{donneesPays.studyPrograms.join(', ')}}</p>
 
@@ -45,5 +45,8 @@
     </div>
   </div>
 
-  <p *ngIf="!donneesPays">Aucune donnée disponible pour {{ nomPays }}.</p>
+  <p *ngIf="!donneesPays">Aucune donnée disponible pour {{ nomPays }}.</p>-->
+  <div class="all-content-container">
+    <img src="assets/img/country-page/allContent.jpg" alt="Contenu de la page" class="allcontentPage" />
+  </div>
 </div>
