@@ -169,7 +169,9 @@ export class WorldMapComponent implements OnInit {
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
     const container = document.querySelector('.world-map-container') as HTMLElement;
     const body = document.querySelector('body') as HTMLElement;
+    const scrollTop=document.querySelector('#scroll-top') as HTMLElement;
     body.style.overflowY = 'hidden';
+    scrollTop.style.opacity = '0';
     if (container) {
       container.classList.add('country-selected');
     }
@@ -220,7 +222,9 @@ export class WorldMapComponent implements OnInit {
 
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
     const body = document.querySelector('body') as HTMLElement;
+    const scrollTop=document.querySelector('#scroll-top') as HTMLElement;
     body.style.overflowY = 'auto';
+    scrollTop.style.opacity = '1';
     const allPaths = svgElement.querySelectorAll('path');
     allPaths.forEach(p => {
       p.setAttribute('fill', '#e14e5e');
@@ -270,7 +274,9 @@ export class WorldMapComponent implements OnInit {
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
     const container = document.querySelector('.world-map-container') as HTMLElement;
     const body = document.querySelector('body') as HTMLElement;
+    const scrollTop=document.querySelector('#scroll-top') as HTMLElement;
     body.style.overflowY = 'auto';
+    scrollTop.style.opacity = '1';
 
     if (container) {
       container.classList.remove('country-selected');
