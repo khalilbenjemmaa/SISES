@@ -1,56 +1,13 @@
 <div>
   <app-header/>
-<div class="conteneur-page-pays"
-     *ngIf="donneesPays"
-     [style.backgroundImage]="donneesPays['bg-image'] ? 'url(assets/img/country-page/' + donneesPays['bg-image'] + ')' : 'none'">
+  <div class="conteneur-page-pays"
+       *ngIf="donneesPays"
+       [style.backgroundImage]="donneesPays['bg-image'] ? 'url(assets/img/country-page/' + donneesPays['bg-image'] + ')' : 'none'">
 
-  <p class="bouton-retour" (click)="retourArriere()">Retour</p>
-
-<!--<div class="conteneur-entete">
-  <img
-    [src]="'assets/img/country-page/' + donneesPays['header-image']"
-    [alt]="nomPays + ' Entête'"
-    class="image-entete" />
-
-  <p class="description-entete">
-    {{ donneesPays?.description ?? '' }}
-  </p>
-</div>-->
-
-
- <!-- <div *ngIf="donneesPays">
-    <p *ngIf="donneesPays.languageRequirements">{{donneesPays.languageRequirements}}</p>
-    <p *ngIf="donneesPays.studyPrograms">{{donneesPays.studyPrograms.join(', ')}}</p>
-
-    <h3 class="CDD-style">Composition du dossier :</h3>
-    <ul>
-      <li *ngFor="let item of donneesPays.dossierComposition">-{{item}}</li>
-    </ul>
-
-    <h1 class="fees">Frais de dossier {{donneesPays.dossierFees}}</h1>
-
-    <p *ngIf="donneesPays.scholarships">Les bourses d'études<br>{{donneesPays.scholarships}}</p>
-    <p *ngIf="donneesPays.studyFees">Frais de dossier en {{nomPays}}<br>Licence {{donneesPays.studyFees.Licence}}<br>Master {{donneesPays.studyFees.Master}}<br>Médecine {{donneesPays.studyFees.Medecine}}</p>
-    <p *ngIf="donneesPays.languageCourseFees">{{donneesPays.languageCourseFees}}</p>
-    <p>Les études sont gratuites<br>{{donneesPays.freeStudies}}</p>
-    <h1 class="fees">Compte bloqué {{donneesPays.blockedAccount}}</h1>
-
-    <div *ngIf="donneesPays.specialties">
-      <h3 *ngIf="donneesPays.specialties.inEnglish">Les spécialités en anglais (B2 IELTS)</h3>
-      <ul *ngIf="donneesPays.specialties.inEnglish">
-        <li *ngFor="let specialty of donneesPays.specialties.inEnglish">{{specialty}}</li>
-      </ul>
-      <h3 *ngIf="donneesPays.specialties.inGerman">Les spécialités en allemand</h3>
-      <ul *ngIf="donneesPays.specialties.inGerman">
-        <li *ngFor="let specialty of donneesPays.specialties.inGerman">{{specialty}}</li>
-      </ul>
+    <p class="bouton-retour" (click)="retourArriere()">Retour</p>
+    <div class="all-content-container">
+      <img [src]="'assets/img/country-page/' + donneesPays['src_image']" alt="Contenu de la page" class="allcontentPage" />
     </div>
   </div>
-
-  <p *ngIf="!donneesPays">Aucune donnée disponible pour {{ nomPays }}.</p>-->
-  <div class="all-content-container">
-    <img src="assets/img/country-page/allContent.jpg" alt="Contenu de la page" class="allcontentPage" />
-  </div>
-</div>
   <app-footer/>
 </div>

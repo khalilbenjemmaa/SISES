@@ -146,7 +146,7 @@ export class WorldMapComponent implements OnInit {
         population: '83 million',
         area: '357,022 km²',
         continent: 'Europe',
-        description: 'A central European powerhouse known for engineering excellence, rich history, beautiful castles, and Oktoberfest.'
+        description: 'Études à l’étranger en Allemagne : Explorez des programmes en ingénierie, technologie, et sciences avec des universités de renommée mondiale comme le Technische Universität München, offrant une expérience unique dans un pays riche en histoire et culture.'
       },
       'italy': {
         name: 'ITALIE',
@@ -154,7 +154,167 @@ export class WorldMapComponent implements OnInit {
         population: '60 million',
         area: '301,340 km²',
         continent: 'Europe',
-        description: 'LES ETUDES EN ITALIEN (B2) OU EN ANGLAIS (B2) : \n LICENCE, MASTER, MÉDICINE, INGÉNIERIE ...'
+        description: 'Études à l’étranger en Italie : Découvrez des programmes en italien (B2) ou en anglais (B2) tels que licence, master, médecine, ou ingénierie, dans des villes historiques comme Rome, Florence, et Milan, mêlant éducation et patrimoine culturel.'
+      },
+      'belgium': {
+        name: 'BELGIQUE',
+        capital: 'Brussels',
+        population: '11.5 million',
+        area: '30,548 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Belgique : Profitez de programmes multilingues en français, néerlandais ou anglais dans des institutions comme l’Université de Louvain, avec un accès facile aux centres européens à Bruxelles.'
+      },
+      'bosnia': {
+        name: 'BOSNIE',
+        capital: 'Sarajevo',
+        population: '3.3 million',
+        area: '51,129 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Bosnie : Découvrez des opportunités d’études abordables en anglais ou bosniaque, avec une riche histoire multiculturelle et des universités comme l’Université de Sarajevo.'
+      },
+      'canada': {
+        name: 'CANADA',
+        capital: 'Ottawa',
+        population: '38 million',
+        area: '9,984,670 km²',
+        continent: 'North America',
+        description: 'Études à l’étranger au Canada : Rejoignez des universités mondialement reconnues comme l’Université de Toronto pour des programmes en anglais ou français, dans un environnement multiculturel et naturel.'
+      },
+      'south korea': {
+        name: 'COREE DU SUD',
+        capital: 'Seoul',
+        population: '51 million',
+        area: '100,410 km²',
+        continent: 'Asia',
+        description: 'Études à l’étranger en Corée du Sud : Explorez des programmes en technologie, K-pop, et cinéma à des universités comme Yonsei, dans une culture dynamique et moderne.'
+      },
+      'dubai': {
+        name: 'DUBAI',
+        capital: 'Dubai',
+        population: '3.5 million',
+        area: '4,114 km²',
+        continent: 'Asia',
+        description: 'Études à l’étranger à Dubaï : Intégrez des programmes internationaux en affaires, ingénierie, et design dans des institutions comme l’Université de Dubaï, au cœur d’une métropole futuriste.'
+      },
+      'spain': {
+        name: 'ESPAGNE',
+        capital: 'Madrid',
+        population: '47 million',
+        area: '505,990 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Espagne : Apprenez l’espagnol et suivez des programmes en arts, affaires ou médecine dans des villes comme Barcelone ou Madrid, riches en culture et histoire.'
+      },
+      'france': {
+        name: 'FRANCE',
+        capital: 'Paris',
+        population: '67 million',
+        area: '643,801 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en France : Profitez de l’excellence académique avec des universités comme la Sorbonne pour des études en français ou anglais, dans un cadre culturel prestigieux.'
+      },
+      'lithuania': {
+        name: 'LITHUANIE',
+        capital: 'Vilnius',
+        population: '2.8 million',
+        area: '65,300 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Lituanie : Découvrez des programmes abordables en anglais dans des universités comme l’Université de Vilnius, au cœur de l’Europe baltique.'
+      },
+      'malaysia': {
+        name: 'MALAISIE',
+        capital: 'Kuala Lumpur',
+        population: '32 million',
+        area: '330,803 km²',
+        continent: 'Asia',
+        description: 'Études à l’étranger en Malaisie : Intégrez des programmes en anglais ou malais dans des institutions comme l’Université de Malaya, dans un pays multiculturel et économique en croissance.'
+      },
+      'malta': {
+        name: 'MALTE',
+        capital: 'Valletta',
+        population: '0.5 million',
+        area: '316 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger à Malte : Suivez des cours en anglais dans un cadre méditerranéen, avec des programmes en langue, tourisme, et technologie à l’Université de Malte.'
+      },
+      'moldova': {
+        name: 'MOLDAVIE',
+        capital: 'Chisinau',
+        population: '2.6 million',
+        area: '33,846 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Moldavie : Explorez des études abordables en médecine et agriculture à l’Université d’État de Moldavie, dans un pays en développement.'
+      },
+      'netherlands': {
+        name: 'PAYS BAS',
+        capital: 'Amsterdam',
+        population: '17 million',
+        area: '41,543 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger aux Pays-Bas : Rejoignez des programmes en anglais à des universités comme l’Université d’Amsterdam, reconnues pour l’innovation et la durabilité.'
+      },
+      'portugal': {
+        name: 'PORTUGAL',
+        capital: 'Lisbon',
+        population: '10.3 million',
+        area: '92,090 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger au Portugal : Découvrez des programmes en portugais ou anglais à l’Université de Lisbonne, dans un pays connu pour son climat et sa culture.'
+      },
+      'czech republic': {
+        name: 'REPUBLIQUE TCHEQUE',
+        capital: 'Prague',
+        population: '10.7 million',
+        area: '78,865 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en République Tchèque : Intégrez des programmes en histoire, arts, et sciences à l’Université Charles, dans la magnifique ville de Prague.'
+      },
+      'romania': {
+        name: 'ROUMANIE',
+        capital: 'Bucharest',
+        population: '19 million',
+        area: '238,397 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Roumanie : Explorez des programmes abordables en médecine et ingénierie à l’Université de Bucarest, dans un pays riche en patrimoine.'
+      },
+      'kingdom': {
+        name: 'ROYAUME',
+        capital: 'London',
+        population: '67 million',
+        area: '243,610 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger au Royaume-Uni : Rejoignez des universités prestigieuses comme Oxford pour des programmes en anglais, dans un cadre historique et diversifié.'
+      },
+      'serbia': {
+        name: 'SERBIE',
+        capital: 'Belgrade',
+        population: '6.9 million',
+        area: '88,361 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Serbie : Découvrez des programmes en sciences et arts à l’Université de Belgrade, dans un pays aux influences culturelles riches.'
+      },
+      'switzerland': {
+        name: 'SUISSE',
+        capital: 'Bern',
+        population: '8.7 million',
+        area: '41,285 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en Suisse : Intégrez des programmes en finance, technologie, et sciences à l’EPFL, dans un pays connu pour sa neutralité et ses Alpes.'
+      },
+      'turkey': {
+        name: 'TURQUIE',
+        capital: 'Ankara',
+        population: '85 million',
+        area: '783,562 km²',
+        continent: 'Asia',
+        description: 'Études à l’étranger en Turquie : Explorez des programmes en médecine, ingénierie, et tourisme à l’Université d’Istanbul, au carrefour de l’Europe et de l’Asie.'
+      },
+      'usa': {
+        name: 'USA',
+        capital: 'Washington, D.C.',
+        population: '331 million',
+        area: '9,833,520 km²',
+        continent: 'North America',
+        description: 'Études à l’étranger aux États-Unis : Rejoignez des universités comme Harvard pour des programmes variés en anglais, dans un environnement diversifié et innovant.'
       }
     };
   }
