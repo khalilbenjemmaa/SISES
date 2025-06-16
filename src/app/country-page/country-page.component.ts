@@ -30,7 +30,8 @@ export class CountryPageComponent implements OnInit {
   // Charger les données du pays
   chargerDonneesPays(): void {
     this.countryDataService.getCountryData().subscribe(data => {
-      this.donneesPays = data.countries.find((pays: any) => pays.name.toLowerCase() === this.nomPays?.toLowerCase());
+      const changedCountryName = this.nomPays?.trim().replace(/\s+/g, '').toLowerCase();
+      this.donneesPays = data.countries.find((pays: any) => pays.name.toLowerCase() === changedCountryName);
     });
   }
 

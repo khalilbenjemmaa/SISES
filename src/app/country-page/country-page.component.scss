@@ -46,7 +46,7 @@
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
-  z-index: 9999999!important;
+  z-index: 9999999 !important;
 
   &:hover {
     text-decoration: underline;
@@ -54,12 +54,11 @@
 }
 
 /* Image d'en-tête */
-// .image-entete {
-//     max-width: 600PX;
-//     margin-left: 26%;
-//     display: block;
-//     margin-top: 50px;
-// }
+.image-entete {
+  width: 600px; /* set a fixed width or your preferred size */
+  max-width: 100%; /* responsive fallback */
+  display: block;
+}
 
 /* Titre de section */
 .titre-section {
@@ -96,37 +95,28 @@ ul {
   }
 }
 .fees{
-    font-family: 'Satoshi', sans-serif !important;
-
+  font-family: 'Satoshi', sans-serif !important;
   font-weight: 800; /* Poids de police 800 */
   color: #e14e5e;
   font-size: 40px;
   margin-top: 20px;
 }
 
-
 .conteneur-entete {
   display: inline-block; /* matches image width */
   text-align: left; /* optional: aligns text to the left */
 }
-
 
 .description-entete {
   margin: 0.5rem 0 0 0; /* some space under the image */
 }
 
 .conteneur-entete {
-    width: fit-content;
-    max-width: 91%;
-    margin-left: 25%;
-    margin-bottom: 10%;
-    margin-top: 10%;
-}
-
-.image-entete {
-  width: 600px; /* set a fixed width or your preferred size */
-  max-width: 100%; /* responsive fallback */
-  display: block;
+  width: fit-content;
+  max-width: 91%;
+  margin-left: 25%;
+  margin-bottom: 10%;
+  margin-top: 10%;
 }
 
 .description-entete {
@@ -144,6 +134,7 @@ ul {
   height: 40%;
   width: 40%;
 }
+
 .all-content-container{
   display: flex;
   flex-direction: column;
@@ -153,4 +144,68 @@ ul {
   height: 100%;
   padding-bottom: 10%;
   padding-top: 3%;
+}
+
+/* Media query for mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .conteneur-page-pays {
+    padding: 10px; /* Reduce padding on mobile */
+    min-height: auto; /* Allow height to adjust */
+  }
+
+  .bouton-retour {
+    font-size: 14px; /* Smaller font size for mobile */
+    padding: 6px 12px;
+  }
+
+  .conteneur-contenu {
+    max-width: 100%; /* Full width on mobile */
+    padding: 0 10px; /* Add some padding for readability */
+  }
+
+  .titre-section {
+    font-size: 24px; /* Reduce font size */
+    margin-bottom: 15px;
+  }
+
+  p, ul {
+    font-size: 16px; /* Reduce font size */
+  }
+
+  h3 {
+    font-size: 20px; /* Reduce font size */
+    margin-top: 15px;
+  }
+
+  .fees {
+    font-size: 30px; /* Reduce font size */
+    margin-top: 15px;
+  }
+
+  .conteneur-entete {
+    max-width: 100%; /* Full width on mobile */
+    margin-left: 0; /* Remove left margin */
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .image-entete {
+    width: 100%; /* Full width on mobile */
+  }
+
+  .description-entete {
+    width: 100%; /* Full width on mobile */
+    margin-left: 0; /* Remove left margin */
+    margin-top: 6px;
+  }
+
+  .allcontentPage {
+    width: 100% !important; /* Full width on mobile */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .all-content-container {
+    padding-bottom: 5%;
+    padding-top: 2%;
+  }
 }
