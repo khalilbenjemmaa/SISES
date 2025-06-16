@@ -1,63 +1,104 @@
 {
   "countries": [
     {
-      "name": "italie",
-      "description": "LES ETUDES EN ITALIEN (B2) OU EN ANGLAIS (B2) : \n LICENCE, MASTER, MÉDICINE, INGÉNIERIE ...",
-      "bg-image": "italy-bg.jpg",
-      "header-image": "italy.png",
-      "languageRequirements": "Italian (B2) or English (B2)",
-      "studyPrograms": ["Licence", "Master", "Médecine", "Ingénierie"],
-      "dossierComposition": [
-        "2 copies CIN",
-        "5 Photos d'identité",
-        "3 Copies du passeport (1ère page en couleur)",
-        "3 copies conformes du BAC/LICENCE",
-        "3 copies conformes du relevé de notes du BAC / UNIVERSITAIRE",
-        "Attestation de travail des parents",
-        "Attestation de salaire des parents",
-        "Relevés bancaires des parents (6 derniers mois)"
-      ],
-      "dossierFees": "5000 DT",
-      "scholarships": "7000 € - 8000 € / Année",
-      "studyFees": {
-        "Licence": "1500 €",
-        "Master": "1350 €",
-        "Medecine": "1500 €"
-      },
-      "freeStudies": "Oui (dans les établissements publics)",
-      "blockedAccount": "20000 DT"
+      "name": "belgique",
+      "src_image": "BELGIQUE.jpg"
     },
     {
-      "name": "ALLEMAGNE",
-      "description": "VOU SOUHAITEZ ÉTUDIER EN ALLEMAGNE ?",
-      "bg-image": "germany-bg.jpg",
-      "header-image": "germany.png",
-      "dossierComposition": [
-        "2 Copies CIN",
-        "2 Copies du passeport (1ère page en couleur)",
-        "2 Photos d'identité",
-        "2 Copies conformes des relevés de notes Bac/Licence"
-      ],
-      "dossierFees": "3000 DT",
-      "languageCourseFees": "B1 C1 à partir de 3900 € (6 mois)",
-      "freeStudies": "Oui (universités publiques)",
-      "blockedAccount": "12000 DT",
-      "specialties": {
-        "inEnglish": [
-          "Management",
-          "Business",
-          "Data Science",
-          "Cyber Security"
-        ],
-        "inGerman": [
-          "Biologie",
-          "Mécanique",
-          "Mécatronique",
-          "Biotechnologie",
-          "Informatique",
-          "Droit"
-        ]
-      }
+      "name": "bosnie",
+      "src_image": "BOSNIE.jpg"
+    },
+    {
+      "name": "canada",
+      "src_image": "CANADA.jpg"
+    },
+    {
+      "name": "coree du sud",
+      "src_image": "COREE DU SUD.jpg"
+    },
+    {
+      "name": "dubai",
+      "src_image": "DUBAI.jpg"
+    },
+    {
+      "name": "espagne",
+      "src_image": "ESPAGNE.jpg"
+    },
+    {
+      "name": "france",
+      "src_image": "FRANCE.jpg"
+    },
+    {
+      "name": "allemagne",
+      "src_image": "germany.jpg"
+    },
+    {
+      "name": "allemagne-bg",
+      "src_image": "GERMANY.jpg"
+    },
+    {
+      "name": "italie",
+      "src_image": "italia.jpg"
+    },
+    {
+      "name": "italie-bg",
+      "src_image": "ITALIA.jpg"
+    },
+    {
+      "name": "lithuanie",
+      "src_image": "LITHUANIE.jpg"
+    },
+    {
+      "name": "logo sises blanc",
+      "src_image": "logo sises blanc.png"
+    },
+    {
+      "name": "malaisie",
+      "src_image": "MALAISIE.jpg"
+    },
+    {
+      "name": "malte",
+      "src_image": "MALTE.jpg"
+    },
+    {
+      "name": "moldavie",
+      "src_image": "MOLDAVIE.jpg"
+    },
+    {
+      "name": "pays bas",
+      "src_image": "PAYS BAS.jpg"
+    },
+    {
+      "name": "portugal",
+      "src_image": "PORTUGAL.jpg"
+    },
+    {
+      "name": "republique tcheque",
+      "src_image": "REPUBLIQUE TCHEQUE.jpg"
+    },
+    {
+      "name": "roumanie",
+      "src_image": "ROUMANIE.jpg"
+    },
+    {
+      "name": "royaume",
+      "src_image": "ROYAUME.jpg"
+    },
+    {
+      "name": "serbie",
+      "src_image": "SERBIE.jpg"
+    },
+    {
+      "name": "suisse",
+      "src_image": "SUISSE.jpg"
+    },
+    {
+      "name": "turquie",
+      "src_image": "TURQUIE.jpg"
+    },
+    {
+      "name": "usa",
+      "src_image": "USA.jpg"
     }
   ]
 }
