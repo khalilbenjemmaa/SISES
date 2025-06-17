@@ -14,7 +14,7 @@
     },
     {
       "name": "coreedusud",
-      "src_image": "COREE DU SUD.jpg"
+      "src_image": "COREEDUSUD.jpg"
     },
     {
       "name": "dubai",
@@ -30,7 +30,8 @@
     },
     {
       "name": "allemagne",
-      "src_image": "germany.jpg"
+      "src_image": "germany.jpg",
+      "bg-image": "germany-bg.jpg"
     },
     {
       "name": "allemagne-bg",
@@ -38,7 +39,8 @@
     },
     {
       "name": "italie",
-      "src_image": "italia.jpg"
+      "src_image": "italia.jpg",
+      "bg-image": "italy-bg.jpg"
     },
     {
       "name": "italie-bg",
@@ -47,10 +49,6 @@
     {
       "name": "lithuanie",
       "src_image": "LITHUANIE.jpg"
-    },
-    {
-      "name": "logo sises blanc",
-      "src_image": "logo sises blanc.png"
     },
     {
       "name": "malaisie",
