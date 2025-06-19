@@ -260,14 +260,6 @@ export class WorldMapComponent implements OnInit {
         continent: 'Europe',
         description: 'Études à l’étranger au Portugal : Découvrez des programmes en portugais ou anglais à l’Université de Lisbonne, dans un pays connu pour son climat et sa culture.'
       },
-      'czech republic': {
-        name: 'REPUBLIQUE TCHEQUE',
-        capital: 'Prague',
-        population: '10.7 million',
-        area: '78,865 km²',
-        continent: 'Europe',
-        description: 'Études à l’étranger en République Tchèque : Intégrez des programmes en histoire, arts, et sciences à l’Université Charles, dans la magnifique ville de Prague.'
-      },
       'romania': {
         name: 'ROUMANIE',
         capital: 'Bucharest',
@@ -276,13 +268,21 @@ export class WorldMapComponent implements OnInit {
         continent: 'Europe',
         description: 'Études à l’étranger en Roumanie : Explorez des programmes abordables en médecine et ingénierie à l’Université de Bucarest, dans un pays riche en patrimoine.'
       },
-      'kingdom': {
-        name: 'ROYAUME',
+      'united-kingdom': { // Changed from 'uk'
+        name: 'ROYAUME-UNI',
         capital: 'London',
         population: '67 million',
         area: '243,610 km²',
         continent: 'Europe',
         description: 'Études à l’étranger au Royaume-Uni : Rejoignez des universités prestigieuses comme Oxford pour des programmes en anglais, dans un cadre historique et diversifié.'
+      },
+      'czech-republic': { // Changed from 'czech republic'
+        name: 'REPUBLIQUE TCHEQUE',
+        capital: 'Prague',
+        population: '10.7 million',
+        area: '78,865 km²',
+        continent: 'Europe',
+        description: 'Études à l’étranger en République Tchèque : Intégrez des programmes en histoire, arts, et sciences à l’Université Charles, dans la magnifique ville de Prague.'
       },
       'serbia': {
         name: 'SERBIE',

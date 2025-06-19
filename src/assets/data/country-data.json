@@ -2,101 +2,113 @@
   "countries": [
     {
       "name": "belgique",
-      "src_image": "BELGIQUE.jpg"
+      "src_image": "BELGIQUE.jpg",
+      "bg-image": "country-backgrounds/Belgique-bg.jpg"
     },
     {
       "name": "bosnie",
-      "src_image": "BOSNIE.jpg"
+      "src_image": "BOSNIE.jpg",
+      "bg-image": "country-backgrounds/bousnia-bg.jpg"
     },
     {
       "name": "canada",
-      "src_image": "CANADA.jpg"
+      "src_image": "CANADA.jpg",
+      "bg-image": "country-backgrounds/canada-bg.jpg"
     },
     {
       "name": "coreedusud",
-      "src_image": "COREEDUSUD.jpg"
+      "src_image": "COREEDUSUD.jpg",
+      "bg-image": "country-backgrounds/coreedusud-bg.jpg"
     },
     {
       "name": "dubai",
-      "src_image": "DUBAI.jpg"
+      "src_image": "DUBAI.jpg",
+      "bg-image": "country-backgrounds/dubai-bg.jpg"
     },
     {
       "name": "espagne",
-      "src_image": "ESPAGNE.jpg"
+      "src_image": "ESPAGNE.jpg",
+      "bg-image": "country-backgrounds/espagne-bg.jpg"
     },
     {
       "name": "france",
-      "src_image": "FRANCE.jpg"
+      "src_image": "FRANCE.jpg",
+      "bg-image": "country-backgrounds/france-bg.jpg"
     },
     {
       "name": "allemagne",
-      "src_image": "germany.jpg",
-      "bg-image": "germany-bg.jpg"
-    },
-    {
-      "name": "allemagne-bg",
-      "src_image": "GERMANY.jpg"
+      "src_image": "GERMANY.jpg",
+      "bg-image": "country-backgrounds/germany-bg.jpg"
     },
     {
       "name": "italie",
       "src_image": "italia.jpg",
-      "bg-image": "italy-bg.jpg"
-    },
-    {
-      "name": "italie-bg",
-      "src_image": "ITALIA.jpg"
+      "bg-image": "country-backgrounds/italy-bg.jpg"
     },
     {
       "name": "lithuanie",
-      "src_image": "LITHUANIE.jpg"
+      "src_image": "LITHUANIE.jpg",
+      "bg-image": "country-backgrounds/lithuanie-bg.jpg"
     },
     {
       "name": "malaisie",
-      "src_image": "MALAISIE.jpg"
+      "src_image": "malysia.jpg",
+      "bg-image": "country-backgrounds/malysia-bg.jpg"
     },
     {
       "name": "malte",
-      "src_image": "MALTE.jpg"
+      "src_image": "MALTE.jpg",
+      "bg-image": "country-backgrounds/Malte-bg.jpg"
     },
     {
       "name": "moldavie",
-      "src_image": "MOLDAVIE.jpg"
+      "src_image": "MOLDAVIE.jpg",
+      "bg-image": "country-backgrounds/moldova-bg.jpg"
     },
     {
       "name": "paysbas",
-      "src_image": "PAYSBAS.jpg"
+      "src_image": "PAYSBAS.jpg",
+      "bg-image": "country-backgrounds/paysbas-bg.jpg"
     },
     {
       "name": "portugal",
-      "src_image": "PORTUGAL.jpg"
+      "src_image": "PORTUGAL.jpg",
+      "bg-image": "country-backgrounds/portugal-bg.jpg"
     },
     {
       "name": "republiquetcheque",
-      "src_image": "REPUBLIQUE TCHEQUE.jpg"
+      "src_image": "REPUBLIQUE TCHEQUE.jpg",
+      "bg-image": "country-backgrounds/republiquetcheque-bg.jpg"
     },
     {
       "name": "roumanie",
-      "src_image": "ROUMANIE.jpg"
+      "src_image": "ROUMANIE.jpg",
+      "bg-image": "country-backgrounds/romania-bg.jpg"
     },
     {
       "name": "royaume",
-      "src_image": "ROYAUME.jpg"
+      "src_image": "ROYAME.jpg",
+      "bg-image": "country-backgrounds/uk-bg.jpg"
     },
     {
       "name": "serbie",
-      "src_image": "SERBIE.jpg"
+      "src_image": "SERBIE.jpg",
+      "bg-image": "country-backgrounds/serbia-bg.jpg"
     },
     {
       "name": "suisse",
-      "src_image": "SUISSE.jpg"
+      "src_image": "SUISSE.jpg",
+      "bg-image": "country-backgrounds/suisse-bg.jpg"
     },
     {
       "name": "turquie",
-      "src_image": "TURQUIE.jpg"
+      "src_image": "TURQUIE.jpg",
+      "bg-image": "country-backgrounds/tukie-bg.jpg"
     },
     {
       "name": "usa",
-      "src_image": "USA.jpg"
+      "src_image": "USA.jpg",
+      "bg-image": "country-backgrounds/usa-bg.jpg"
     }
   ]
 }
