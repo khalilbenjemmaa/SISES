@@ -318,11 +318,33 @@ export class WorldMapComponent implements OnInit {
       }
     };
   }
+  private scrollToMapCenter(): void {
+    const mapContainer = document.querySelector('.world-map-container') as HTMLElement;
+    if (!mapContainer) return;
+
+    // Calculate the position to center the map in the viewport
+    const containerRect = mapContainer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // Calculate the scroll position to center the map
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const elementTop = containerRect.top + scrollTop;
+    const elementHeight = containerRect.height;
+
+    // Center the map container in the viewport
+    const targetScrollPosition = elementTop - (viewportHeight / 2) + (elementHeight / 2);
+
+    // Smooth scroll to the calculated position
+    window.scrollTo({
+      top: Math.max(0, targetScrollPosition), // Ensure we don't scroll above the page
+      behavior: 'smooth'
+    });
+  }
 
   onCountryMouseEnter(event: MouseEvent, countryId: string): void {
     const path = this.getCountryPath(countryId);
     if (!path) return;
-
+    this.scrollToMapCenter();
     this.isCountryLocked = true;
     this.lockedCountryPath = path;
 
