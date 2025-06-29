@@ -109,6 +109,11 @@
       "name": "usa",
       "src_image": "USA.jpg",
       "bg-image": "country-backgrounds/usa-bg.jpg"
+    },
+    {
+      "name": "russie",
+      "src_image": "RUSSIE.jpg",
+      "bg-image": "country-backgrounds/russia-bg.jpg"
     }
   ]
 }
