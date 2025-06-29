@@ -315,6 +315,14 @@ export class WorldMapComponent implements OnInit {
         area: '9,833,520 km²',
         continent: 'North America',
         description: 'Études à l’étranger aux États-Unis : Rejoignez des universités comme Harvard pour des programmes variés en anglais, dans un environnement diversifié et innovant.'
+      },
+      'russia': {
+        name: 'RUSSIE',
+        capital: 'Moscow',
+        population: '146 million',
+        area: '17,098,242 km²',
+        continent: 'Europe/Asia',
+        description: 'Études à l’étranger en Russie : Découvrez des programmes en sciences, arts, et ingénierie à l’Université d’État de Moscou, dans un pays riche en histoire et culture.'
       }
     };
   }
