@@ -43,7 +43,12 @@
        [@fadeInOut]="true">
     <div class="tooltip-header">
       <button class="close-button"
-              (click)="closeTooltip()"
+              (click)="closeTooltip($event)"
+              (mousedown)="$event.stopPropagation()"
+              (mouseup)="$event.stopPropagation()"
+              (mouseover)="$event.stopPropagation()"
+              (mouseenter)="$event.stopPropagation()"
+              (mouseleave)="$event.stopPropagation()"
               *ngIf="isCountryLocked"
               title="Close country details">
         ×

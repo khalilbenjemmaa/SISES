@@ -30,7 +30,7 @@
             "scripts": [
               "src/assets/js/main.js"
             ],
-            "baseHref": "/SISES/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
@@ -43,7 +43,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximumError": "8kb"    
+                  "maximumError": "8kb"
                 }
               ],
               "outputHashing": "all"

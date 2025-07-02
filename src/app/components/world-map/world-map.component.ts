@@ -458,13 +458,21 @@ export class WorldMapComponent implements OnInit {
     return path;
   }
 
-  closeTooltip(): void {
+  closeTooltip(event?: Event): void {
+    // Prevent event bubbling to avoid re-triggering country selection
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+    }
+
     if (!this.isCountryLocked) return;
 
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
     const container = document.querySelector('.world-map-container') as HTMLElement;
     const body = document.querySelector('body') as HTMLElement;
-    const scrollTop=document.querySelector('#scroll-top') as HTMLElement;
+    const scrollTop = document.querySelector('#scroll-top') as HTMLElement;
+
     body.style.overflowY = 'auto';
     scrollTop.style.opacity = '1';
 
@@ -498,7 +506,7 @@ export class WorldMapComponent implements OnInit {
     this.selectedCountry = null;
     this.hoveredCountryId = null;
     this.showTooltip = false;
-    this.clearSearch(); // Clear search when closing tooltip
+    this.clearSearch();
   }
 
   exploreMore(): void {
