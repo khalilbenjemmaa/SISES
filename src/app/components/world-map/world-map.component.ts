@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
@@ -45,7 +45,7 @@ export class WorldMapComponent implements OnInit {
   filteredCountries: { key: string, value: Country }[] = [];
   isDropdownOpen: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router , private eRef: ElementRef ) { }
 
   ngOnInit(): void {
     this.http.get('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg',
@@ -100,36 +100,91 @@ export class WorldMapComponent implements OnInit {
       });
     }
   }
-
-  addPinToCountry(path: SVGPathElement, countryId: string): void {
-    const svgElement = document.querySelector('#world-map svg') as SVGElement;
-    if (!svgElement) return;
-
-    const bbox = path.getBBox();
-    const centerX = bbox.x + bbox.width / 2;
-    const centerY = bbox.y + bbox.height / 2;
-
-    const pinGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    pinGroup.classList.add('country-pin');
-    pinGroup.setAttribute('data-country', countryId);
-
-    const pinText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    pinText.setAttribute('x', centerX.toString());
-    pinText.setAttribute('y', centerY.toString());
-    pinText.setAttribute('font-size', '16');
-    pinText.setAttribute('fill', '#e14e5e');
-    pinText.setAttribute('text-anchor', 'middle');
-    pinText.setAttribute('dominant-baseline', 'middle');
-    pinText.textContent = '📍';
-    pinText.classList.add('pin');
-
-    pinGroup.appendChild(pinText);
-    svgElement.appendChild(pinGroup);
-
-    pinGroup.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
-    pinGroup.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
-    pinGroup.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
+@HostListener('document:keydown.escape', ['$event'])
+onEscapeKey(event: KeyboardEvent): void {
+  if (this.showTooltip) {
+    this.closeTooltip(event);
   }
+}
+
+@HostListener('document:click', ['$event'])
+onClickOutside(event: MouseEvent): void {
+  const target = event.target as HTMLElement;
+  const clickedInsideMap = this.eRef.nativeElement.contains(target);
+  const clickedOnTooltip = target.closest('.country-tooltip');
+  const clickedOnPin = target.closest('.country-pin');
+  const isSvgPath = target.tagName.toLowerCase() === 'path';
+  const isKnownCountry = isSvgPath && this.isCountryInList(target.getAttribute('id') || '');
+
+  if (isKnownCountry || clickedOnTooltip || clickedOnPin) return;
+
+  if (clickedInsideMap) {
+    this.closeTooltip(event);
+  }
+}
+
+ addPinToCountry(path: SVGPathElement, countryId: string): void {
+  const svgElement = document.querySelector('#world-map svg') as SVGElement;
+  if (!svgElement) return;
+
+  let filter = svgElement.querySelector('#glow-filter');
+  if (!filter) {
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const glowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+    glowFilter.setAttribute('id', 'glow-filter');
+    glowFilter.setAttribute('x', '-50%');
+    glowFilter.setAttribute('y', '-50%');
+    glowFilter.setAttribute('width', '200%');
+    glowFilter.setAttribute('height', '200%');
+
+    const feGaussianBlur = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+    feGaussianBlur.setAttribute('in', 'SourceGraphic');
+    feGaussianBlur.setAttribute('stdDeviation', '2'); // controls glow softness
+    feGaussianBlur.setAttribute('result', 'blur');
+
+    const feMerge = document.createElementNS('http://www.w3.org/2000/svg', 'feMerge');
+    const feMergeNode1 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+    feMergeNode1.setAttribute('in', 'blur');
+    const feMergeNode2 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+    feMergeNode2.setAttribute('in', 'SourceGraphic');
+
+    feMerge.appendChild(feMergeNode1);
+    feMerge.appendChild(feMergeNode2);
+    glowFilter.appendChild(feGaussianBlur);
+    glowFilter.appendChild(feMerge);
+    defs.appendChild(glowFilter);
+    svgElement.insertBefore(defs, svgElement.firstChild);
+  }
+
+  // Compute center of the country path
+  const bbox = path.getBBox();
+  const centerX = bbox.x + bbox.width / 2;
+  const centerY = bbox.y + bbox.height / 2;
+
+  // Create pin group
+  const pinGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  pinGroup.classList.add('country-pin');
+  pinGroup.setAttribute('data-country', countryId);
+
+  // Create glowing white circle
+  const pinDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  pinDot.setAttribute('cx', centerX.toString());
+  pinDot.setAttribute('cy', centerY.toString());
+  pinDot.setAttribute('r', '3.5');
+  pinDot.setAttribute('fill', '#ffffff');
+  pinDot.setAttribute('filter', 'url(#glow-filter)');
+  pinDot.classList.add('pin');
+
+  pinGroup.appendChild(pinDot);
+  svgElement.appendChild(pinGroup);
+
+  // Event bindings
+  pinGroup.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
+  pinGroup.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
+  pinGroup.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
+}
+
+
 
   isCountryInList(countryId: string): boolean {
     countryId = countryId.toLowerCase();
@@ -566,12 +621,19 @@ export class WorldMapComponent implements OnInit {
     this.isDropdownOpen = this.searchQuery.length > 0 && this.filteredCountries.length > 0;
   }
 
-  filterCountries(): void {
-    const query = this.searchQuery.toLowerCase().trim();
-    this.filteredCountries = Object.entries(this.countries)
-      .filter(([_, country]) => country.name.toLowerCase().includes(query))
-      .map(([key, value]) => ({ key, value }));
-  }
+filterCountries(): void {
+  const query = this.searchQuery.toLowerCase().trim();
+
+  this.filteredCountries = Object.entries(this.countries)
+    .filter(([_, country]) =>
+      !query || country.name.toLowerCase().includes(query)
+    )
+    .map(([key, value]) => ({ key, value }));
+}
+onSearchFocus(): void {
+  this.isDropdownOpen = true;
+  this.filterCountries();
+}
 
   selectCountry(key: string): void {
     this.searchCountry(key);
@@ -579,11 +641,11 @@ export class WorldMapComponent implements OnInit {
     this.isDropdownOpen = false;
   }
 
-  clearSearch(): void {
-    this.searchQuery = '';
-    this.isDropdownOpen = false;
-    this.filterCountries();
-  }
+clearSearch(): void {
+  this.searchQuery = '';
+  this.isDropdownOpen = false;
+  this.filterCountries();
+}
 
   searchCountry(countryId: string): void {
     if (!countryId) return;

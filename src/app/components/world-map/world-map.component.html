@@ -2,23 +2,34 @@
 <div class="world-map-container" [class.country-selected]="isCountryLocked">
   <!-- Search input -->
 <div class="search-container" style="width: 100%; display: flex; justify-content: center; margin-bottom: 1rem;">
-    <div class="search-wrapper">
-      <input type="text"
-             class="country-search"
-             [(ngModel)]="searchQuery"
-             (input)="onCountrySelect($event)"
-             placeholder="Search for a country..."
-             (focus)="isDropdownOpen = searchQuery.length > 0 && filteredCountries.length > 0">
-      <button *ngIf="searchQuery" class="clear-button" (click)="clearSearch()" title="Clear search">×</button>
-      <div class="search-dropdown" *ngIf="isDropdownOpen">
-        <div *ngFor="let country of filteredCountries"
-             class="dropdown-item"
-             (click)="selectCountry(country.key)">
-          {{ country.value.name }}
-        </div>
+  <div class="search-wrapper">
+    <input
+      type="text"
+      class="country-search"
+      [(ngModel)]="searchQuery"
+      (input)="filterCountries()"
+      (focus)="onSearchFocus()"
+      placeholder="Search for a country..." />
+
+    <button
+      *ngIf="searchQuery"
+      class="clear-button"
+      (click)="clearSearch()"
+      title="Clear search">
+      ×
+    </button>
+
+    <div class="search-dropdown" *ngIf="isDropdownOpen && filteredCountries.length">
+      <div
+        *ngFor="let country of filteredCountries"
+        class="dropdown-item"
+        (click)="selectCountry(country.key)">
+        {{ country.value.name }}
       </div>
     </div>
   </div>
+</div>
+
 
   <!-- Logo displayed at center top when a country is selected -->
   <img *ngIf="isCountryLocked"
