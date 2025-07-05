@@ -30,7 +30,7 @@
             "scripts": [
               "src/assets/js/main.js"
             ],
-            "baseHref": "/"
+            "baseHref": "/SISES/"
           },
           "configurations": {
             "production": {
