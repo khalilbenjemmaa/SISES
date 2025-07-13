@@ -26,14 +26,14 @@ export class MainPageComponent implements OnInit {
 
   private loadScript(): void {
     // Remove existing script if it exists
-    const existingScript = document.querySelector('script[src="assets/js/main.js"]');
+    const existingScript = document.querySelector('script[src="/assets/js/main.js"]');
     if (existingScript) {
       this.renderer.removeChild(document.body, existingScript);
     }
 
     // Append new script
     const script = this.renderer.createElement('script');
-    script.src = 'assets/js/main.js';
+    script.src = '/assets/js/main.js';
     script.type = 'text/javascript';
     // Optional: Add a cache-busting query parameter to force reload
     script.src += `?v=${new Date().getTime()}`;
