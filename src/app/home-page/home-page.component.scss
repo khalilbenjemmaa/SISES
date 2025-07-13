@@ -368,4 +368,10 @@ button.btn:hover {
   background-color: #C01A2A; /* Darker shade for hover effect */
 }
 
+@media (max-width: 768px) {
+  #destination {
+    display: none;
+  }
+}
+
 

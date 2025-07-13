@@ -45,7 +45,7 @@ export class WorldMapComponent implements OnInit {
   filteredCountries: { key: string, value: Country }[] = [];
   isDropdownOpen: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router , private eRef: ElementRef ) { }
+  constructor(private http: HttpClient, private router: Router, private eRef: ElementRef) { }
 
   ngOnInit(): void {
     this.http.get('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg',
@@ -56,7 +56,7 @@ export class WorldMapComponent implements OnInit {
       });
 
     this.initializeCountryData();
-    this.filterCountries(); // Initialize filtered countries
+    this.filterCountries();
   }
 
   initializeMap(): void {
@@ -93,98 +93,89 @@ export class WorldMapComponent implements OnInit {
           path.classList.add('interactive-country');
           this.addPinToCountry(path, countryId);
 
-          path.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
-          path.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
-          path.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
+          path.addEventListener('click', (event) => this.onCountryClick(event, countryId));
         }
       });
     }
   }
-@HostListener('document:keydown.escape', ['$event'])
-onEscapeKey(event: KeyboardEvent): void {
-  if (this.showTooltip) {
-    this.closeTooltip(event);
-  }
-}
 
-@HostListener('document:click', ['$event'])
-onClickOutside(event: MouseEvent): void {
-  const target = event.target as HTMLElement;
-  const clickedInsideMap = this.eRef.nativeElement.contains(target);
-  const clickedOnTooltip = target.closest('.country-tooltip');
-  const clickedOnPin = target.closest('.country-pin');
-  const isSvgPath = target.tagName.toLowerCase() === 'path';
-  const isKnownCountry = isSvgPath && this.isCountryInList(target.getAttribute('id') || '');
-
-  if (isKnownCountry || clickedOnTooltip || clickedOnPin) return;
-
-  if (clickedInsideMap) {
-    this.closeTooltip(event);
-  }
-}
-
- addPinToCountry(path: SVGPathElement, countryId: string): void {
-  const svgElement = document.querySelector('#world-map svg') as SVGElement;
-  if (!svgElement) return;
-
-  let filter = svgElement.querySelector('#glow-filter');
-  if (!filter) {
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    const glowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
-    glowFilter.setAttribute('id', 'glow-filter');
-    glowFilter.setAttribute('x', '-50%');
-    glowFilter.setAttribute('y', '-50%');
-    glowFilter.setAttribute('width', '200%');
-    glowFilter.setAttribute('height', '200%');
-
-    const feGaussianBlur = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
-    feGaussianBlur.setAttribute('in', 'SourceGraphic');
-    feGaussianBlur.setAttribute('stdDeviation', '2'); // controls glow softness
-    feGaussianBlur.setAttribute('result', 'blur');
-
-    const feMerge = document.createElementNS('http://www.w3.org/2000/svg', 'feMerge');
-    const feMergeNode1 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
-    feMergeNode1.setAttribute('in', 'blur');
-    const feMergeNode2 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
-    feMergeNode2.setAttribute('in', 'SourceGraphic');
-
-    feMerge.appendChild(feMergeNode1);
-    feMerge.appendChild(feMergeNode2);
-    glowFilter.appendChild(feGaussianBlur);
-    glowFilter.appendChild(feMerge);
-    defs.appendChild(glowFilter);
-    svgElement.insertBefore(defs, svgElement.firstChild);
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscapeKey(event: KeyboardEvent): void {
+    if (this.showTooltip) {
+      this.closeTooltip(event);
+    }
   }
 
-  // Compute center of the country path
-  const bbox = path.getBBox();
-  const centerX = bbox.x + bbox.width / 2;
-  const centerY = bbox.y + bbox.height / 2;
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const clickedInsideMap = this.eRef.nativeElement.contains(target);
+    const clickedOnTooltip = target.closest('.country-tooltip');
+    const clickedOnPin = target.closest('.country-pin');
+    const isSvgPath = target.tagName.toLowerCase() === 'path';
+    const isKnownCountry = isSvgPath && this.isCountryInList(target.getAttribute('id') || '');
 
-  // Create pin group
-  const pinGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-  pinGroup.classList.add('country-pin');
-  pinGroup.setAttribute('data-country', countryId);
+    if (isKnownCountry || clickedOnTooltip || clickedOnPin) return;
 
-  // Create glowing white circle
-  const pinDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-  pinDot.setAttribute('cx', centerX.toString());
-  pinDot.setAttribute('cy', centerY.toString());
-  pinDot.setAttribute('r', '3.5');
-  pinDot.setAttribute('fill', '#ffffff');
-  pinDot.setAttribute('filter', 'url(#glow-filter)');
-  pinDot.classList.add('pin');
+    if (clickedInsideMap) {
+      this.closeTooltip(event);
+    }
+  }
 
-  pinGroup.appendChild(pinDot);
-  svgElement.appendChild(pinGroup);
+  addPinToCountry(path: SVGPathElement, countryId: string): void {
+    const svgElement = document.querySelector('#world-map svg') as SVGElement;
+    if (!svgElement) return;
 
-  // Event bindings
-  pinGroup.addEventListener('mouseenter', (event) => this.onCountryMouseEnter(event, countryId));
-  pinGroup.addEventListener('mouseleave', (event) => this.onCountryMouseLeave(event, countryId));
-  pinGroup.addEventListener('mousemove', (event) => this.onCountryMouseMove(event));
-}
+    let filter = svgElement.querySelector('#glow-filter');
+    if (!filter) {
+      const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      const glowFilter = document.createElementNS('http://www.w3.org/2000/svg', 'filter');
+      glowFilter.setAttribute('id', 'glow-filter');
+      glowFilter.setAttribute('x', '-50%');
+      glowFilter.setAttribute('y', '-50%');
+      glowFilter.setAttribute('width', '200%');
+      glowFilter.setAttribute('height', '200%');
 
+      const feGaussianBlur = document.createElementNS('http://www.w3.org/2000/svg', 'feGaussianBlur');
+      feGaussianBlur.setAttribute('in', 'SourceGraphic');
+      feGaussianBlur.setAttribute('stdDeviation', '2');
+      feGaussianBlur.setAttribute('result', 'blur');
 
+      const feMerge = document.createElementNS('http://www.w3.org/2000/svg', 'feMerge');
+      const feMergeNode1 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+      feMergeNode1.setAttribute('in', 'blur');
+      const feMergeNode2 = document.createElementNS('http://www.w3.org/2000/svg', 'feMergeNode');
+      feMergeNode2.setAttribute('in', 'SourceGraphic');
+
+      feMerge.appendChild(feMergeNode1);
+      feMerge.appendChild(feMergeNode2);
+      glowFilter.appendChild(feGaussianBlur);
+      glowFilter.appendChild(feMerge);
+      defs.appendChild(glowFilter);
+      svgElement.insertBefore(defs, svgElement.firstChild);
+    }
+
+    const bbox = path.getBBox();
+    const centerX = bbox.x + bbox.width / 2;
+    const centerY = bbox.y + bbox.height / 2;
+
+    const pinGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    pinGroup.classList.add('country-pin');
+    pinGroup.setAttribute('data-country', countryId);
+
+    const pinDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    pinDot.setAttribute('cx', centerX.toString());
+    pinDot.setAttribute('cy', centerY.toString());
+    pinDot.setAttribute('r', '3.5');
+    pinDot.setAttribute('fill', '#ffffff');
+    pinDot.setAttribute('filter', 'url(#glow-filter)');
+    pinDot.classList.add('pin');
+
+    pinGroup.appendChild(pinDot);
+    svgElement.appendChild(pinGroup);
+
+    pinGroup.addEventListener('click', (event) => this.onCountryClick(event, countryId));
+  }
 
   isCountryInList(countryId: string): boolean {
     countryId = countryId.toLowerCase();
@@ -323,7 +314,7 @@ onClickOutside(event: MouseEvent): void {
         continent: 'Europe',
         description: 'Études à l’étranger en Roumanie : Explorez des programmes abordables en médecine et ingénierie à l’Université de Bucarest, dans un pays riche en patrimoine.'
       },
-      'united-kingdom': { // Changed from 'uk'
+      'united-kingdom': {
         name: 'ROYAUME-UNI',
         capital: 'London',
         population: '67 million',
@@ -331,7 +322,7 @@ onClickOutside(event: MouseEvent): void {
         continent: 'Europe',
         description: 'Études à l’étranger au Royaume-Uni : Rejoignez des universités prestigieuses comme Oxford pour des programmes en anglais, dans un cadre historique et diversifié.'
       },
-      'czech-republic': { // Changed from 'czech republic'
+      'czech-republic': {
         name: 'REPUBLIQUE TCHEQUE',
         capital: 'Prague',
         population: '10.7 million',
@@ -381,32 +372,30 @@ onClickOutside(event: MouseEvent): void {
       }
     };
   }
+
   private scrollToMapCenter(): void {
     const mapContainer = document.querySelector('.world-map-container') as HTMLElement;
     if (!mapContainer) return;
 
-    // Calculate the position to center the map in the viewport
     const containerRect = mapContainer.getBoundingClientRect();
     const viewportHeight = window.innerHeight;
 
-    // Calculate the scroll position to center the map
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const elementTop = containerRect.top + scrollTop;
     const elementHeight = containerRect.height;
 
-    // Center the map container in the viewport
     const targetScrollPosition = elementTop - (viewportHeight / 2) + (elementHeight / 2);
 
-    // Smooth scroll to the calculated position
     window.scrollTo({
-      top: Math.max(0, targetScrollPosition), // Ensure we don't scroll above the page
+      top: Math.max(0, targetScrollPosition),
       behavior: 'smooth'
     });
   }
 
-  onCountryMouseEnter(event: MouseEvent, countryId: string): void {
+  onCountryClick(event: MouseEvent, countryId: string): void {
     const path = this.getCountryPath(countryId);
     if (!path) return;
+
     this.scrollToMapCenter();
     this.isCountryLocked = true;
     this.lockedCountryPath = path;
@@ -414,7 +403,7 @@ onClickOutside(event: MouseEvent): void {
     const svgElement = document.querySelector('#world-map svg') as SVGElement;
     const container = document.querySelector('.world-map-container') as HTMLElement;
     const body = document.querySelector('body') as HTMLElement;
-    const scrollTop=document.querySelector('#scroll-top') as HTMLElement;
+    const scrollTop = document.querySelector('#scroll-top') as HTMLElement;
     body.style.overflowY = 'hidden';
     scrollTop.style.opacity = '0';
     if (container) {
@@ -459,38 +448,45 @@ onClickOutside(event: MouseEvent): void {
     this.onCountryMouseMove(event);
   }
 
-  onCountryMouseLeave(event: MouseEvent, countryId: string): void {
-    if (this.isCountryLocked) return;
+  onCountryMouseMove(event: MouseEvent): void {
+    if (!this.hoveredCountryId || !this.showTooltip) return;
 
-    const path = this.getCountryPath(countryId);
+    const path = this.getCountryPath(this.hoveredCountryId);
     if (!path) return;
 
-    const svgElement = document.querySelector('#world-map svg') as SVGElement;
-    const body = document.querySelector('body') as HTMLElement;
-    const scrollTop=document.querySelector('#scroll-top') as HTMLElement;
-    body.style.overflowY = 'auto';
-    scrollTop.style.opacity = '1';
-    const allPaths = svgElement.querySelectorAll('path');
-    allPaths.forEach(p => {
-      p.setAttribute('fill', '#e14e5e');
-      p.style.opacity = '0.8';
-      p.style.filter = 'drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.15))';
-      p.style.transform = 'none';
-      p.style.zIndex = '0';
-    });
+    const svgElement = document.querySelector('#world-map svg') as SVGSVGElement;
+    if (!svgElement) return;
 
-    const pinGroup = svgElement.querySelector(`.country-pin[data-country="${countryId}"]`) as SVGGElement;
-    if (pinGroup) {
-      pinGroup.style.zIndex = '1000';
-      pinGroup.style.transform = 'none';
+    const bbox = path.getBBox();
+    const centerX = bbox.x + bbox.width / 2;
+    const centerY = bbox.y + bbox.height / 2;
+
+    const matrix = path.getScreenCTM();
+    if (!matrix) return;
+
+    const point = svgElement.createSVGPoint();
+    point.x = centerX;
+    point.y = centerY;
+    const screenPoint = point.matrixTransform(matrix);
+
+    const tooltipWidth = 700;
+    const tooltipHeight = 200;
+    const offset = 15;
+
+    this.tooltipX = screenPoint.x - tooltipWidth - offset;
+    this.tooltipY = screenPoint.y - tooltipHeight / 2;
+
+    if (this.tooltipX < 0) {
+      this.tooltipX = screenPoint.x + offset;
     }
 
-    path.removeAttribute('transform');
-    path.style.zIndex = '0';
+    if (this.tooltipY + tooltipHeight > window.innerHeight) {
+      this.tooltipY = window.innerHeight - tooltipHeight - offset;
+    }
 
-    this.selectedCountry = null;
-    this.hoveredCountryId = null;
-    this.showTooltip = false;
+    if (this.tooltipY < 0) {
+      this.tooltipY = offset;
+    }
   }
 
   getCountryPath(countryId: string): SVGPathElement | null {
@@ -514,7 +510,6 @@ onClickOutside(event: MouseEvent): void {
   }
 
   closeTooltip(event?: Event): void {
-    // Prevent event bubbling to avoid re-triggering country selection
     if (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -572,68 +567,26 @@ onClickOutside(event: MouseEvent): void {
     }
   }
 
-  onCountryMouseMove(event: MouseEvent): void {
-    if (!this.hoveredCountryId) return;
-
-    const path = this.getCountryPath(this.hoveredCountryId);
-    if (!path) return;
-
-    const svgElement = document.querySelector('#world-map svg') as SVGSVGElement;
-    if (!svgElement) return;
-
-    const bbox = path.getBBox();
-    const centerX = bbox.x + bbox.width / 2;
-    const centerY = bbox.y + bbox.height / 2;
-
-    const matrix = path.getScreenCTM();
-    if (!matrix) return;
-
-    const point = svgElement.createSVGPoint();
-    point.x = centerX;
-    point.y = centerY;
-    const screenPoint = point.matrixTransform(matrix);
-
-    const tooltipWidth = 700;
-    const tooltipHeight = 200;
-    const offset = 15;
-
-    // Position tooltip to the left of the country
-    this.tooltipX = screenPoint.x - tooltipWidth - offset;
-    this.tooltipY = screenPoint.y - tooltipHeight / 2;
-
-    // Adjust if tooltip goes off-screen
-    if (this.tooltipX < 0) {
-      this.tooltipX = screenPoint.x + offset; // Fallback to right if left is not possible
-    }
-
-    if (this.tooltipY + tooltipHeight > window.innerHeight) {
-      this.tooltipY = window.innerHeight - tooltipHeight - offset;
-    }
-
-    if (this.tooltipY < 0) {
-      this.tooltipY = offset;
-    }
-  }
-
   onCountrySelect(event: Event): void {
     this.searchQuery = (event.target as HTMLInputElement).value;
     this.filterCountries();
     this.isDropdownOpen = this.searchQuery.length > 0 && this.filteredCountries.length > 0;
   }
 
-filterCountries(): void {
-  const query = this.searchQuery.toLowerCase().trim();
+  filterCountries(): void {
+    const query = this.searchQuery.toLowerCase().trim();
 
-  this.filteredCountries = Object.entries(this.countries)
-    .filter(([_, country]) =>
-      !query || country.name.toLowerCase().includes(query)
-    )
-    .map(([key, value]) => ({ key, value }));
-}
-onSearchFocus(): void {
-  this.isDropdownOpen = true;
-  this.filterCountries();
-}
+    this.filteredCountries = Object.entries(this.countries)
+      .filter(([_, country]) =>
+        !query || country.name.toLowerCase().includes(query)
+      )
+      .map(([key, value]) => ({ key, value }));
+  }
+
+  onSearchFocus(): void {
+    this.isDropdownOpen = true;
+    this.filterCountries();
+  }
 
   selectCountry(key: string): void {
     this.searchCountry(key);
@@ -641,11 +594,11 @@ onSearchFocus(): void {
     this.isDropdownOpen = false;
   }
 
-clearSearch(): void {
-  this.searchQuery = '';
-  this.isDropdownOpen = false;
-  this.filterCountries();
-}
+  clearSearch(): void {
+    this.searchQuery = '';
+    this.isDropdownOpen = false;
+    this.filterCountries();
+  }
 
   searchCountry(countryId: string): void {
     if (!countryId) return;
@@ -669,12 +622,12 @@ clearSearch(): void {
     point.y = centerY;
     const screenPoint = point.matrixTransform(matrix);
 
-    const mouseEvent = new MouseEvent('mousemove', {
+    const mouseEvent = new MouseEvent('click', {
       clientX: screenPoint.x,
       clientY: screenPoint.y,
       bubbles: true
     });
 
-    this.onCountryMouseEnter(mouseEvent, normalizedCountryId);
+    this.onCountryClick(mouseEvent, normalizedCountryId);
   }
 }
