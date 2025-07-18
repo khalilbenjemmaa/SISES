@@ -160,13 +160,34 @@
     </div>
   </section><!-- /Services Section -->
 
-  <section id="destination" class="" style="top: 40px;">
+  <section id="destination" style="top: 40px;">
     <div class="row">
       <h2 class="sises-logo-title section-title" data-aos="fade-up">DESTINATIONS</h2>
     </div>
     <div class="row">
-      <app-world-map/>
+      <div class="search-bar-container">
+        <input
+          type="text"
+          class="search-input"
+          placeholder="chercher un pays ..."
+          [(ngModel)]="searchTerm"
+          (input)="filterCountries()"
+        />
+      </div>
+      <div class="world-map-container">
+        <div class="country-list-mobile">
+          <div class="country-list-container">
+            <div class="country-card" *ngFor="let country of filteredCountries" (click)="navigateToCountry(country.name)">
+              <img [src]="'/assets/img/country-page/' + country['bg-image']" [alt]="country.name" class="country-image" loading="lazy">
+              <div class="country-overlay">
+                <h3 class="country-name">{{ country.display_name }}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <app-world-map class="world-map"></app-world-map>
   </section>
 
   <section id="certification" class="certification section colored-section">

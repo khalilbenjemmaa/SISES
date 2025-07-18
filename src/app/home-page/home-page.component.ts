@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, Renderer2 } from '@angular/core';
+import {CountryDataService} from "../country-data-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-page',
@@ -6,15 +8,35 @@ import { AfterViewInit, Component, Renderer2 } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent  {
+  countries: any[] = [];
+  filteredCountries: any[] = [];
+  searchTerm: string = '';
 
-  modalImage: string = ''; // This will store the image URL to display in the modal
+  constructor(
+    private countryDataService: CountryDataService,
+    private router: Router
+  ) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    this.countryDataService.getCountryData().subscribe(data => {
+      this.countries = data.countries;
+      this.filteredCountries = [...this.countries]; // Initialize filtered list
+    });
+  }
 
-  // Method to open the modal and set the image source
-  openModal(imageSrc: string) {
-    this.modalImage = imageSrc;
-    // Bootstrap modal show method
-    const modalElement = document.getElementById('certificationModal');
+  filterCountries(): void {
+    const search = this.searchTerm.trim().toLowerCase();
+    if (search) {
+      this.filteredCountries = this.countries.filter(country =>
+        country.name.toLowerCase().includes(search)
+      );
+    } else {
+      this.filteredCountries = [...this.countries]; // Reset to full list
+    }
+  }
+
+  navigateToCountry(countryName: string): void {
+    const formattedName = countryName.trim().replace(/\s+/g, '').toLowerCase();
+    this.router.navigate(['/country', formattedName]);
   }
 }

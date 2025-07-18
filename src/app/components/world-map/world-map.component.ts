@@ -374,7 +374,7 @@ export class WorldMapComponent implements OnInit {
   }
 
   private scrollToMapCenter(): void {
-    const mapContainer = document.querySelector('.world-map-container') as HTMLElement;
+    const mapContainer = document.querySelector('.countries-selected-scroll') as HTMLElement;
     if (!mapContainer) return;
 
     const containerRect = mapContainer.getBoundingClientRect();
