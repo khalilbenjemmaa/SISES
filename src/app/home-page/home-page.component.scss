@@ -1,16 +1,19 @@
-.world-map-section{
+.world-map-section {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .sises-logo-title {
   font-family: 'Satoshi', sans-serif;
   font-size: 128px;
-  color: #d72027; /* matches the red tone */
+  color: #d72027;
+  /* matches the red tone */
   letter-spacing: 2px;
   font-weight: 800;
 }
+
 .sises-logo {
   position: absolute !important;
   inset: 0;
@@ -22,18 +25,23 @@
   margin: auto !important;
   top: -25% !important;
 }
+
 .container-x {
   display: flex;
-  justify-content: space-between; /* Creates space between left and right content */
+  justify-content: space-between;
+  /* Creates space between left and right content */
   align-items: center;
-  gap: 25px; /* 25px gap between the left and right content */
+  gap: 25px;
+  /* 25px gap between the left and right content */
 }
 
 .left-content {
   display: flex;
-  justify-content: flex-end; /* Align content to the right */
+  justify-content: flex-end;
+  /* Align content to the right */
   align-items: center;
-  width: 70%; /* Ensures it takes the full width */
+  width: 70%;
+  /* Ensures it takes the full width */
 }
 
 .right-content {
@@ -50,7 +58,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 25px; /* Ensures there's a 25px gap between left and right content */
+  margin-left: 25px;
+  /* Ensures there's a 25px gap between left and right content */
 }
 
 .xz,
@@ -59,13 +68,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px; /* Adds space between the right items */
+  margin-bottom: 10px;
+  /* Adds space between the right items */
 }
 
 
- .colored-section {
+.colored-section {
   background-color: #f8f9fa !important;
- }
+}
+
 .carousel-text {
   position: absolute;
   bottom: 20% !important;
@@ -74,28 +85,32 @@
   width: 80%;
   height: auto;
   z-index: 3;
-  inset: initial ;
+  inset: initial;
 
 }
 
 
 .stretch-last-letter span:last-child {
   display: inline-block;
-  transform: scaleX(1.8); /* Adjust stretch */
+  transform: scaleX(1.8);
+  /* Adjust stretch */
   transform-origin: left;
 }
+
 .mr-bedfort-regular {
   font-family: "Mr Bedfort", cursive;
   font-weight: 400;
   font-style: normal;
   font-size: 64px;
-  color:rgb(217, 31, 51); /* matches the red tone */
+  color: rgb(217, 31, 51);
+  /* matches the red tone */
 
 }
 
 .sises-span {
   font-family: 'Russo One', sans-serif;
-  color: rgb(217, 31, 51); /* matches the red tone */
+  color: rgb(217, 31, 51);
+  /* matches the red tone */
   letter-spacing: 2px;
   font-weight: 800;
 }
@@ -158,6 +173,7 @@
   background: white;
   color: #c82333;
 }
+
 /* General Styles */
 .contact.section {
   padding: 40px 0;
@@ -175,7 +191,8 @@
 }
 
 /* Contact Layout */
-.contact-hours, .contact-location {
+.contact-hours,
+.contact-location {
   padding: 20px;
   background-color: #fff;
   text-align: center;
@@ -189,19 +206,22 @@
   margin-bottom: 20px;
 }
 
-.contact-hours h4, .contact-location h4 {
+.contact-hours h4,
+.contact-location h4 {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 15px;
 }
 
-.contact-hours p, .contact-location p {
+.contact-hours p,
+.contact-location p {
   font-size: 1rem;
   color: #666;
   line-height: 1.5;
 }
 
-.contact-hours .social-links, .contact-location .social-links {
+.contact-hours .social-links,
+.contact-location .social-links {
   margin-top: 15px;
 }
 
@@ -251,7 +271,8 @@
     max-width: 100%;
   }
 
-  .contact-hours, .contact-location {
+  .contact-hours,
+  .contact-location {
     margin-bottom: 20px;
   }
 
@@ -271,6 +292,7 @@
     order: 4;
   }
 }
+
 /* Services Section Styles */
 .services.section {
   padding: 40px 0;
@@ -355,9 +377,12 @@
   margin-top: 0px;
   left: 30%;
 }
+
 button.btn {
-  padding: 10px 20px; /* Adjust the padding as needed */
-  background-color: #D91F33; /* Use the color you specified earlier */
+  padding: 10px 20px;
+  /* Adjust the padding as needed */
+  background-color: #D91F33;
+  /* Use the color you specified earlier */
   border: none;
   color: white;
   font-size: 16px;
@@ -365,7 +390,8 @@ button.btn {
 }
 
 button.btn:hover {
-  background-color: #C01A2A; /* Darker shade for hover effect */
+  background-color: #C01A2A;
+  /* Darker shade for hover effect */
 }
 
 .country-list-mobile {
@@ -456,17 +482,21 @@ button.btn:hover {
   text-align: center;
   margin: 0;
 }
-.search-bar-container{
-  display:none;
+
+.search-bar-container {
+  display: none;
 }
+
 @media (max-width: 768px) {
   .world-map {
     display: none;
   }
-  .search-bar-container{
+
+  .search-bar-container {
     display: block;
     margin-top: -70px;
   }
+
   .country-list-mobile {
     display: block;
   }
@@ -486,3 +516,16 @@ button.btn:hover {
   }
 }
 
+@media (max-width: 767px) {
+  .carousel-container .sises-logo {
+    width: 260px !important;
+    /* Fixed min size for logo on mobile */
+    max-width: none;
+  }
+
+  .carousel-container .carousel-text {
+    width: 130%;
+    /* Fixed min size for slogan on mobile */
+    max-width: none;
+  }
+}

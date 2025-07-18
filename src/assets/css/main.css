@@ -390,6 +390,18 @@ h6 {
     padding: 0;
     z-index: 9997;
   }
+  .navmenu ul {
+  position: relative;
+  z-index: 10000;
+  text-align: center;
+}
+.mobile-nav-active .navmenu ul {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+}
+
 
   .navmenu ul {
     display: none;
@@ -499,6 +511,10 @@ h6 {
 
   .mobile-nav-active .navmenu>ul {
     display: block;
+  }
+    .navmenu ul li {
+    width: 100%;
+    text-align: center;
   }
 }
 
