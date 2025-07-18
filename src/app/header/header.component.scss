@@ -1,13 +1,9 @@
-
+/* === Desktop Base Styles (UNCHANGED) === */
 .sises-logo {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
   font-size: 30px;
   color: white; /* matches the red tone */
   letter-spacing: 2px;
-}
-
-a:hover {
-  color: red !important;
 }
 
 .sises-logo img {
@@ -16,9 +12,58 @@ a:hover {
   display: block; /* Removes any unwanted space below the image */
 }
 
+a:hover {
+  color: red !important;
+}
+
 a:hover,
 a.active {
   color: red !important;
   font-weight: bold;
+}
 
+/* Hide toggle icon on desktop */
+@media (min-width: 1200px) {
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+/* === Mobile Adjustments (Without touching Desktop) === */
+@media (max-width: 1199px) {
+  .sises-logo {
+    font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .sises-logo img {
+    width: auto;
+    height: 60px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .sises-logo {
+    font-size: 22px;
+    gap: 5px;
+  }
+
+  .sises-logo img {
+    height: 20px !important;
+  }
+}
+
+@media (max-width: 599px) {
+  .sises-logo {
+    font-size: 20px;
+  }
+
+  .sises-logo img {
+    height: 50px;
+  }
 }
