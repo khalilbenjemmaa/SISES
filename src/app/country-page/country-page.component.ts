@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import { Location } from '@angular/common'; // Importer Location pour la navigation
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { CountryDataService } from "../country-data-service.service";
 
 @Component({
@@ -15,11 +15,10 @@ export class CountryPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private countryDataService: CountryDataService,
-    private location: Location, // Injecter Location
+    private location: Location,
     private router: Router
   ) {}
 
-  // Initialisation du composant
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.nomPays = params.get('name');
@@ -27,16 +26,22 @@ export class CountryPageComponent implements OnInit {
     });
   }
 
-  // Charger les données du pays
   chargerDonneesPays(): void {
     this.countryDataService.getCountryData().subscribe(data => {
       const changedCountryName = this.nomPays?.trim().replace(/\s+/g, '').toLowerCase();
-      this.donneesPays = data.countries.find((pays: any) => pays.name.toLowerCase() === changedCountryName);
+      this.donneesPays = data.countries.find((pays: any) =>
+        pays.name.toLowerCase() === changedCountryName
+      );
     });
   }
 
-  // Naviguer en arrière
   retourArriere(): void {
     this.router.navigate(['/']);
+  }
+
+  // 🔁 Helper to convert image extension to .webp
+  remplaceExtension(nomFichier: string): string {
+    if (!nomFichier) return '';
+    return nomFichier.replace(/\.(jpg|jpeg|png)$/i, '.webp');
   }
 }

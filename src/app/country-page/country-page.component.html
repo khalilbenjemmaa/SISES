@@ -1,13 +1,19 @@
 <div>
-  <app-header/>
+  <app-header></app-header>
+
   <div class="conteneur-page-pays"
        *ngIf="donneesPays"
-       [style.backgroundImage]="donneesPays['bg-image'] ? 'url(/assets/img/country-page/' + donneesPays['bg-image'] + ')' : 'none'">
+       [style.backgroundImage]="donneesPays['bg-image'] ? 'url(/assets/img/country-page/' + remplaceExtension(donneesPays['bg-image']) + ')' : 'none'">
 
     <p class="bouton-retour" (click)="retourArriere()">Retour</p>
+
     <div class="all-content-container">
-      <img [src]="'/assets/img/country-page/' + donneesPays['src_image']"  loading="lazy" alt="Contenu de la page" class="allcontentPage" />
+      <img [src]="'/assets/img/country-page/' + remplaceExtension(donneesPays['src_image'])"
+           loading="lazy"
+           alt="Contenu de la page"
+           class="allcontentPage" />
     </div>
   </div>
-  <app-footer/>
+
+  <app-footer></app-footer>
 </div>

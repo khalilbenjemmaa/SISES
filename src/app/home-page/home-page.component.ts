@@ -17,6 +17,7 @@ export class HomePageComponent  {
     private router: Router
   ) {}
 
+
   ngOnInit(): void {
     this.countryDataService.getCountryData().subscribe(data => {
       this.countries = data.countries;
@@ -39,4 +40,10 @@ export class HomePageComponent  {
     const formattedName = countryName.trim().replace(/\s+/g, '').toLowerCase();
     this.router.navigate(['/country', formattedName]);
   }
+
+  remplaceExtension(nomFichier: string): string {
+  if (!nomFichier) return '';
+  return nomFichier.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+}
+
 }
