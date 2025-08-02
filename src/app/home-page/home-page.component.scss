@@ -394,9 +394,6 @@ button.btn:hover {
   /* Darker shade for hover effect */
 }
 
-.country-list-mobile {
-  display: none;
-}
 
 .search-bar-container {
   display: flex;
@@ -429,17 +426,89 @@ button.btn:hover {
 
 .country-list-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column; /* Stack cards vertically */
+  align-items: center;     /* Center cards horizontally */
   gap: 20px;
   padding: 20px;
 }
+.slider-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 40px;
+  width: 100%;
+}
+
+.slider-toggle {
+  position: relative;
+  display: inline-block;
+  width: 160px;
+  height: 40px;
+}
+
+.slider-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider-toggle-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Satoshi', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  padding: 0 10px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+  transition: background 0.1s ease;
+}
+
+.slider-label {
+  z-index: 2;
+  width: 50%;
+  text-align: center;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.slider-label.active {
+  color: #fff;
+}
+
+.slider-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 76px;
+  height: 36px;
+  background-color: #d91f33;
+  border-radius: 999px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(217, 31, 51, 0.4);
+  will-change: transform;
+}
+
+/* Move thumb right when checked */
+.slider-toggle input:checked + .slider-toggle-track .slider-thumb {
+  transform: translateX(80px);
+}
+
 
 .country-card {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  height: 200px;
+  max-width: 95%;
+  height: 225px;
   cursor: pointer;
   overflow: hidden;
   border-radius: 8px;
@@ -492,6 +561,12 @@ button.btn:hover {
   .world-map {
     display: none;
   }
+  .slider-toggle-wrapper {
+    display: none !important;
+  }
+  .sises-logo-title {
+    margin-bottom: 20px !important;
+  }
 
   .search-bar-container {
     display: block;
@@ -529,4 +604,89 @@ button.btn:hover {
     /* Fixed min size for slogan on mobile */
     max-width: none;
   }
+}
+@media (max-width: 768px) {
+  .container-x {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px;
+  }
+
+  .left-content,
+  .right-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Center content horizontally and vertically inside left-content */
+  .left-content {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .right-content > div {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 767.98px) {
+  .carousel-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important; /* very small space between logo and slogan */
+  }
+
+  .carousel-container .sises-logo {
+    position: static !important; /* reset absolute */
+    width: 260px !important;
+    margin: 0 auto !important;
+    top: auto !important;
+  }
+
+  .carousel-container .carousel-text {
+    position: static !important; /* reset absolute */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+}
+@media (max-width: 768px) {
+  #about .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #about .row.flex-column.flex-lg-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #about .col-lg-5 {
+    flex: 0 0 auto !important; /* disable Bootstrap's 41.666% width */
+    width: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  #about .col-lg-5 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+.pulsating-play-btn.disabled,
+.pulsating-play-btn[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
 }

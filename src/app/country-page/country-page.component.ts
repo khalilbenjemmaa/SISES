@@ -11,6 +11,7 @@ import { CountryDataService } from "../country-data-service.service";
 export class CountryPageComponent implements OnInit {
   nomPays: string | null = null;
   donneesPays: any;
+  imageLoaded: boolean = false; 
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,7 @@ export class CountryPageComponent implements OnInit {
       this.donneesPays = data.countries.find((pays: any) =>
         pays.name.toLowerCase() === changedCountryName
       );
+      this.imageLoaded = false;
     });
   }
 
@@ -39,9 +41,13 @@ export class CountryPageComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  // 🔁 Helper to convert image extension to .webp
   remplaceExtension(nomFichier: string): string {
     if (!nomFichier) return '';
     return nomFichier.replace(/\.(jpg|jpeg|png)$/i, '.webp');
   }
+
+  onImageLoad(): void {
+    this.imageLoaded = true;
+  }
 }
+

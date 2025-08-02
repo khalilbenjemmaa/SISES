@@ -11,6 +11,7 @@ export class HomePageComponent  {
   countries: any[] = [];
   filteredCountries: any[] = [];
   searchTerm: string = '';
+showMap: boolean = false;
 
   constructor(
     private countryDataService: CountryDataService,
