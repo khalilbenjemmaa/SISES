@@ -1,9 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   isMobileNavOpen = false;
@@ -13,7 +14,6 @@ export class HeaderComponent {
     document.body.classList.toggle('mobile-nav-active', this.isMobileNavOpen);
   }
 
-  // Optional: Close menu on scroll or resize
   @HostListener('window:resize')
   onResize() {
     if (window.innerWidth >= 1200 && this.isMobileNavOpen) {
@@ -21,8 +21,10 @@ export class HeaderComponent {
     }
   }
 
-  private closeMobileNav() {
-    this.isMobileNavOpen = false;
-    document.body.classList.remove('mobile-nav-active');
+  closeMobileNav() {
+    if (this.isMobileNavOpen) {
+      this.isMobileNavOpen = false;
+      document.body.classList.remove('mobile-nav-active');
+    }
   }
 }

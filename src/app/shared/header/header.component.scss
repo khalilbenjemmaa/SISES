@@ -67,3 +67,11 @@ a.active {
     height: 50px;
   }
 }
+
+.mobile-nav-toggle {
+  cursor: pointer;
+  transition: color 0.3s;
+  background: none; /* Remove default button background */
+  border: none;     /* Remove default button border */
+  padding: 0;
+}
