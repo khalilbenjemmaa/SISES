@@ -26,12 +26,21 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "node_modules/aos/dist/aos.css",
+              "node_modules/glightbox/dist/css/glightbox.min.css",
+              "node_modules/swiper/swiper-bundle.min.css",
+              "src/assets/css/main.css",
               "src/styles.scss"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/aos/dist/aos.js"
+              "node_modules/aos/dist/aos.js",
+              "node_modules/glightbox/dist/js/glightbox.min.js",
+              "node_modules/swiper/swiper-bundle.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "aos"
             ],
             "baseHref": "/"
           },
@@ -41,7 +50,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
