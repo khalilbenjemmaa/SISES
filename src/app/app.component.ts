@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, Renderer2 } from '@angular/core';
+  styleUrls: ['./app.component.scss']
+import { Component, AfterViewInit, Renderer2, HostListener } from '@angular/core';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,26 @@ import { AfterViewInit, Component, Renderer2 } from '@angular/core';
 })
 export class AppComponent implements AfterViewInit {
   title = 'SISES-APP';
-  constructor(private renderer : Renderer2) { }
+
+  constructor(private renderer: Renderer2) {}
+
+  // This listener watches for the user scrolling the page
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.scrollY > 100) {
+      this.renderer.addClass(document.body, 'scrolled');
+    } else {
+      this.renderer.removeClass(document.body, 'scrolled');
+    }
+  }
+
   ngAfterViewInit(): void {
-   const script = this.renderer.createElement('script');
-   script.src = 'assets/js/main.js';
-   script.type = 'text/javascript';
-   this.renderer.appendChild(document.body, script);
+    // Initialize AOS after the view is ready
+    AOS.init({
+      duration: 600,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
   }
 }

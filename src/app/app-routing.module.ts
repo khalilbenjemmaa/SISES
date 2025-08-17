@@ -1,13 +1,26 @@
+// src/app/app-routing.module.ts
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
-import { CountryPageComponent } from './country-page/country-page.component';
-import {MainPageComponent} from "./main-page/main-page.component";
+import { CountryPageComponent } from './pages/country-page/country-page.component';
+
+// Import the CountryPageComponent for the eager route
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent }, // Default route (home page)
-  { path: 'country/:name', component: CountryPageComponent }, // Route for country page with parameter
-  { path: '**', redirectTo: '' } // Wildcard route to redirect unknown paths to home
+  {
+    path: '',
+    // This lazy-loads your MainPageModule for a fast initial load
+    loadChildren: () => import('./pages/main.module').then(m => m.MainPageModule)
+  },
+  {
+    path: 'country/:name',
+    // This is a standard, eagerly-loaded route
+    component: CountryPageComponent
+  },
+  {
+    path: '**', // Wildcard route
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

@@ -5,3 +5,8 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Force-remove underlines from all links */
+a,
+a:hover {
+  text-decoration: none !important;
+}

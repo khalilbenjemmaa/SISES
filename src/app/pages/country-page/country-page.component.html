@@ -1,0 +1,25 @@
+<div>
+  <app-header></app-header>
+
+  <div class="conteneur-page-pays"
+       *ngIf="donneesPays"
+       [style.backgroundImage]="donneesPays['bg-image'] ? 'url(/assets/img/country-page/' + remplaceExtension(donneesPays['bg-image']) + ')': 'none'">
+
+    <p class="bouton-retour" (click)="retourArriere()">Retour</p>
+
+    <div class="all-content-container">
+      <div class="spinner-wrapper" *ngIf="!imageLoaded">
+        <div class="spinner"></div>
+      </div>
+
+      <!-- Use the country name in the alt tag for better accessibility -->
+      <img [src]="'/assets/img/country-page/' + remplaceExtension(donneesPays['src_image'])"
+           loading="lazy"
+           [alt]="donneesPays.display_name || 'Contenu de la page'"
+           class="allcontentPage"
+           (load)="onImageLoad()" />
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>
