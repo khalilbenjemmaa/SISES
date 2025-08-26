@@ -194,7 +194,6 @@
 .contact-hours,
 .contact-location {
   padding: 20px;
-  background-color: #fff;
   text-align: center;
 }
 
@@ -689,4 +688,151 @@ button.btn:hover {
   pointer-events: none;
   opacity: 0.5;
   cursor: default;
+}
+/* Fix for "QUI SOMMES NOUS" title on mobile */
+@media (max-width: 767.98px) {
+  #about .sises-logo-title {
+    font-size: 36px; /* Reduces font size on small screens */
+    margin-bottom: 1rem !important; /* Adjusts spacing */
+  }
+}
+/*
+=======================================================================
+  REVISED TITLE & DIVIDER STYLES
+=======================================================================
+*/
+
+/* == 1. Simplified Title Styles == */
+
+// .sises-logo-title {
+//   /* Remove animation and restore original solid color */
+//   background: none !important;
+//   -webkit-text-fill-color: #d72027 !important;
+//   color: #d72027 !important;
+
+//   /* Set a standard, non-animated font size for desktops */
+//   font-size: 2.5rem !important; /* This is 40px */
+// }
+
+/* Make titles a bit smaller on mobile */
+@media (max-width: 768px) {
+  .sises-logo-title {
+    font-size: 2rem !important; /* This is 32px */
+  }
+}
+
+
+/* == 2. Angled Section Dividers (Keeping these as requested) == */
+.has-divider {
+  position: relative;
+  padding-bottom: 120px;
+  overflow: hidden;
+}
+
+.has-divider::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.divider-to-gray::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon fill='%23f8f9fa' points='0,100 100,0 100,100'/%3E%3C/svg%3E");
+}
+
+.divider-to-white::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon fill='%23ffffff' points='0,100 100,0 100,100'/%3E%3C/svg%3E");
+}
+
+.section-title {
+  margin-bottom: 20px !important;
+}
+
+
+.sises-logo-title {
+  background: linear-gradient(
+    110deg,
+    #d72027 45%,
+    #ff8a8f 50%,
+    #d72027 55%
+  );
+  background-size: 200% 100%;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: textShine 4s linear infinite;
+  font-size: 2.5rem !important;
+}
+
+
+@keyframes textShine {
+  to {
+    background-position: -200% center;
+  }
+}
+
+.sises-logo-title {
+  background: none !important;
+  -webkit-text-fill-color: #d72027 !important;
+  color: #d72027 !important;
+
+  font-size: 2.5rem !important;
+}
+
+@media (max-width: 768px) {
+  .sises-logo-title {
+    font-size: 2rem !important;
+  }
+}
+
+
+.service-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.service-item .description {
+}
+
+.service-item .custom-icon,
+.service-item .title {
+    transition: all 0.3s ease-in-out;
+}
+
+.service-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #d72027;
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-item:hover .custom-icon {
+  transform: scale(1.1);
+}
+
+.service-item:hover .title {
+  color: #d72027;
+}
+
+.service-item:hover::after {
+  width: 100%;
 }
