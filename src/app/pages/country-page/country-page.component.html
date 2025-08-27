@@ -1,5 +1,4 @@
-<div>
-  <app-header></app-header>
+<div class="country-page-content-wrapper" [hidden]="!contentVisible" style="opacity: 0;">
 
   <div class="conteneur-page-pays"
        *ngIf="donneesPays"
@@ -20,6 +19,4 @@
            (load)="onImageLoad()" />
     </div>
   </div>
-
-  <app-footer></app-footer>
 </div>

@@ -18,12 +18,12 @@
       </ul>
     </nav>
 
-    <button 
-      type="button" 
-      class="mobile-nav-toggle" 
-      (click)="toggleMobileNav()" 
-      [attr.aria-expanded]="isMobileNavOpen" 
-      aria-controls="navmenu" 
+    <button
+      type="button"
+      class="mobile-nav-toggle"
+      (click)="toggleMobileNav()"
+      [attr.aria-expanded]="isMobileNavOpen"
+      aria-controls="navmenu"
       [attr.aria-label]="isMobileNavOpen ? 'Fermer le menu principal' : 'Ouvrir le menu principal'">
       <i class="bi" [class.bi-list]="!isMobileNavOpen" [class.bi-x]="isMobileNavOpen"></i>
     </button>

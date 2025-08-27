@@ -1,11 +1,14 @@
   styleUrls: ['./app.component.scss']
 import { Component, AfterViewInit, Renderer2, HostListener } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { fader } from './route-animations';
 import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [fader]
 })
 export class AppComponent implements AfterViewInit {
   title = 'SISES-APP';
@@ -30,5 +33,9 @@ export class AppComponent implements AfterViewInit {
       once: true,
       mirror: false
     });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }

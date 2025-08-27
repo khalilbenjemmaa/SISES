@@ -183,12 +183,12 @@
           </div>
           <div *ngIf="!showMap" class="world-map-container" data-aos="fade-up" data-aos-delay="400">
             <div class="country-list-container">
-              <div class="country-card modern-card" *ngFor="let country of filteredCountries; trackBy: trackByCountry; let i = index" 
-                   (click)="navigateToCountry(country.name)" 
+              <div class="country-card modern-card" *ngFor="let country of filteredCountries; trackBy: trackByCountry; let i = index"
+                   (click)="navigateToCountry(country.name, $event)"
                    [attr.data-aos-delay]="200 + (i * 100)">
-                <img [src]="'/assets/img/country-page/' + remplaceExtension(country['bg-image'])" 
-                     [alt]="country.display_name" 
-                     class="country-image" 
+                <img [src]="'/assets/img/country-page/' + remplaceExtension(country['bg-image'])"
+                     [alt]="country.display_name"
+                     class="country-image"
                      loading="lazy" />
                 <div class="country-overlay modern-overlay">
                   <h3 class="country-name">{{ country.display_name }}</h3>

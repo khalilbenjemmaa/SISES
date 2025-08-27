@@ -1,22 +1,24 @@
 import { AfterViewInit, Component, Renderer2 } from '@angular/core';
-import {CountryDataService} from "../../country-data-service.service";
-import {Router} from "@angular/router";
+import { CountryDataService } from "../../country-data-service.service";
+import { Router } from "@angular/router";
+import { AnimationService } from '../../animation.service';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent  {
+export class HomePageComponent {
   countries: any[] = [];
   filteredCountries: any[] = [];
   searchTerm: string = '';
-showMap: boolean = false;
+  showMap: boolean = false;
 
   constructor(
     private countryDataService: CountryDataService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private animationService: AnimationService
+  ) { }
 
 
   ngOnInit(): void {
@@ -37,15 +39,20 @@ showMap: boolean = false;
     }
   }
 
-  navigateToCountry(countryName: string): void {
+  navigateToCountry(countryName: string, event: MouseEvent): void {
+    const card = (event.currentTarget as HTMLElement);
+    this.animationService.cardRect = card.getBoundingClientRect();
+    const country = this.countries.find(c => c.name === countryName);
+    this.animationService.imageUrl = '/assets/img/country-page/' + this.remplaceExtension(country['bg-image']);
+
     const formattedName = countryName.trim().replace(/\s+/g, '').toLowerCase();
     this.router.navigate(['/country', formattedName]);
   }
 
   remplaceExtension(nomFichier: string): string {
-  if (!nomFichier) return '';
-  return nomFichier.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-}
+    if (!nomFichier) return '';
+    return nomFichier.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  }
   trackByCountry(index: number, country: any): string {
     return country.name; // Use a unique property like name or an id
   }
@@ -53,8 +60,8 @@ showMap: boolean = false;
   nextSlide(): void {
     const carousel = document.querySelector('#hero-carousel');
     if (carousel) {
-      const bsCarousel = (window as any).bootstrap?.Carousel?.getInstance(carousel) || 
-                        new (window as any).bootstrap.Carousel(carousel);
+      const bsCarousel = (window as any).bootstrap?.Carousel?.getInstance(carousel) ||
+        new (window as any).bootstrap.Carousel(carousel);
       bsCarousel.next();
     }
   }

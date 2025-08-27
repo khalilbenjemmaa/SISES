@@ -10,12 +10,14 @@ const routes: Routes = [
   {
     path: '',
     // This lazy-loads your MainPageModule for a fast initial load
-    loadChildren: () => import('./pages/main.module').then(m => m.MainPageModule)
+    loadChildren: () => import('./pages/main.module').then(m => m.MainPageModule),
+    data: { animation: 'homePage' }
   },
   {
     path: 'country/:name',
     // This is a standard, eagerly-loaded route
-    component: CountryPageComponent
+    component: CountryPageComponent,
+    data: { animation: 'countryPage' }
   },
   {
     path: '**', // Wildcard route

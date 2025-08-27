@@ -4,36 +4,36 @@
 .hero {
   position: relative;
   overflow: hidden;
-  
+
   .carousel-item {
     position: relative;
     cursor: pointer;
     user-select: none;
-    
+
     img {
       filter: brightness(0.7);
       transition: all 0.5s ease;
     }
-    
+
     &.active img {
       filter: brightness(0.8);
     }
-    
+
     &:hover .hero-overlay {
       background: linear-gradient(45deg, rgba(215, 32, 39, 0.1), rgba(0, 0, 0, 0.3));
     }
   }
   min-height: 100vh;
-  
+
   .carousel,
   .carousel-inner,
   .carousel-item {
     height: 100vh;
   }
-  
+
   .carousel-item {
     position: relative;
-    
+
     img {
       width: 100%;
       height: 100vh;
@@ -41,12 +41,12 @@
       filter: brightness(0.7);
       transition: all 0.5s ease;
     }
-    
+
     &.active img {
       filter: brightness(0.8);
     }
   }
-  
+
   .carousel-container {
     position: absolute;
     top: 50%;
@@ -62,15 +62,15 @@
     justify-content: center;
     gap: 30px;
   }
-  
+
   .carousel-container .sises-logo {
     order: 1;
   }
-  
+
   .carousel-container .carousel-text {
     order: 2;
   }
-  
+
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -80,7 +80,7 @@
     background: linear-gradient(45deg, rgba(215, 32, 39, 0.15), rgba(0, 0, 0, 0.4));
     z-index: 5;
   }
-  
+
   .carousel-control-prev,
   .carousel-control-next {
     background: rgba(255, 255, 255, 0.2);
@@ -94,16 +94,16 @@
     justify-content: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 1;
-    
+
     &:hover {
       background: rgba(215, 32, 39, 0.8);
       transform: scale(1.1);
     }
-    
+
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
       background-image: none;
-      
+
       &::before {
         content: '';
         display: inline-block;
@@ -113,20 +113,20 @@
         border-bottom: 3px solid white;
       }
     }
-    
+
     .carousel-control-prev-icon::before {
       transform: rotate(45deg);
     }
-    
+
     .carousel-control-next-icon::before {
       transform: rotate(-135deg);
     }
   }
-  
+
   .carousel-control-prev {
     left: 30px;
   }
-  
+
   .carousel-control-next {
     right: 30px;
   }
@@ -138,14 +138,14 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  
+
   .scroll-arrow {
     width: 30px;
     height: 50px;
     border: 2px solid rgba(255, 255, 255, 0.8);
     border-radius: 25px;
     position: relative;
-    
+
     &::before {
       content: '';
       position: absolute;
@@ -181,7 +181,7 @@
   text-transform: uppercase;
   position: relative;
   display: inline-block;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -263,12 +263,12 @@
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
   }
-  
+
   .image-overlay {
     position: absolute;
     top: 0;
@@ -278,7 +278,7 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover .image-overlay {
     opacity: 1;
   }
@@ -288,7 +288,7 @@
 .colored-section {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
   position: relative;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -309,7 +309,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  
+
   .cta-background {
     position: absolute;
     top: 0;
@@ -317,7 +317,7 @@
     right: 0;
     bottom: 0;
     z-index: 1;
-    
+
     img {
       width: 100%;
       height: 100%;
@@ -325,7 +325,7 @@
       filter: brightness(0.4);
     }
   }
-  
+
   .cta-overlay {
     position: absolute;
     top: 0;
@@ -335,12 +335,12 @@
     background: linear-gradient(135deg, rgba(215, 32, 39, 0.8), rgba(0, 0, 0, 0.6));
     z-index: 2;
   }
-  
+
   .container {
     position: relative;
     z-index: 10;
   }
-  
+
   .cta-content {
     padding: 40px;
     border-radius: 25px;
@@ -348,7 +348,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;
   }
-  
+
   .whatsapp-logo {
     max-width: 200px;
     margin-bottom: 20px;
@@ -369,14 +369,14 @@
   gap: 10px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-  
+
   &:hover {
     background: linear-gradient(135deg, #128c7e, #25d366);
     transform: translateY(-3px);
     box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
     color: white;
   }
-  
+
   .bi-whatsapp {
     font-size: 1.2rem;
   }
@@ -391,17 +391,17 @@
   text-align: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   height: 100%;
-  
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 25px 50px rgba(215, 32, 39, 0.15);
     backdrop-filter: blur(20px);
-    
+
     .custom-service-icon {
       transform: scale(1.1) rotate(5deg);
     }
   }
-  
+
   .icon {
     width: 80px;
     height: 80px;
@@ -409,14 +409,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     .custom-icon {
       width: 40px;
       height: 40px;
       filter: brightness(0) invert(1);
     }
   }
-  
+
   .title {
     font-size: 1.25rem;
     font-weight: 700;
@@ -436,13 +436,13 @@
   position: relative;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
+
   i {
     font-size: 2.2rem;
     color: white;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   }
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -452,7 +452,7 @@
     z-index: -1;
     animation: rotate 3s linear infinite;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -466,7 +466,7 @@
 /* Individual Icon Styles */
 .logement-icon {
   background: linear-gradient(135deg, #3498db, #2980b9);
-  
+
   &::after {
     background: linear-gradient(135deg, #3498db, #2980b9);
   }
@@ -474,7 +474,7 @@
 
 .exam-icon {
   background: linear-gradient(135deg, #e74c3c, #c0392b);
-  
+
   &::after {
     background: linear-gradient(135deg, #e74c3c, #c0392b);
   }
@@ -482,7 +482,7 @@
 
 .orientation-icon {
   background: linear-gradient(135deg, #f39c12, #e67e22);
-  
+
   &::after {
     background: linear-gradient(135deg, #f39c12, #e67e22);
   }
@@ -490,7 +490,7 @@
 
 .inscription-icon {
   background: linear-gradient(135deg, #27ae60, #2ecc71);
-  
+
   &::after {
     background: linear-gradient(135deg, #27ae60, #2ecc71);
   }
@@ -498,7 +498,7 @@
 
 .visa-icon {
   background: linear-gradient(135deg, #8e44ad, #9b59b6);
-  
+
   &::after {
     background: linear-gradient(135deg, #8e44ad, #9b59b6);
   }
@@ -506,7 +506,7 @@
 
 .traduction-icon {
   background: linear-gradient(135deg, #34495e, #2c3e50);
-  
+
   &::after {
     background: linear-gradient(135deg, #34495e, #2c3e50);
   }
@@ -533,7 +533,7 @@
   max-width: 400px;
   margin: 20px auto;
   transition: all 0.3s ease;
-  
+
   &:focus {
     outline: none;
     border-color: #d72027;
@@ -548,23 +548,23 @@
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  
+
   &:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
   }
-  
+
   .country-image {
     width: 100%;
     height: 250px;
     object-fit: cover;
     transition: transform 0.5s ease;
   }
-  
+
   &:hover .country-image {
     transform: scale(1.1);
   }
-  
+
   .modern-overlay {
     position: absolute;
     bottom: 0;
@@ -575,29 +575,29 @@
     padding: 25px 20px 15px;
     transform: translateY(0);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     .country-name {
       font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 8px;
       line-height: 1.2;
     }
-    
+
     .country-arrow {
       opacity: 0;
       transform: translateX(-20px);
       transition: all 0.3s ease;
-      
+
       .bi {
         font-size: 1.3rem;
       }
     }
   }
-  
+
   &:hover .modern-overlay {
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
     padding: 30px 20px 20px;
-    
+
     .country-arrow {
       opacity: 1;
       transform: translateX(0);
@@ -616,7 +616,7 @@
     display: flex;
     align-items: center;
     position: relative;
-    
+
     .slider-thumb {
       background: linear-gradient(135deg, #d72027, #ff4757);
       border-radius: 50px;
@@ -634,24 +634,24 @@
     border-radius: 20px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     &:hover {
       transform: translateY(-10px);
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
     }
-    
+
     img {
       width: 100%;
       height: 240px;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
-    
+
     &:hover img {
       transform: scale(1.05);
     }
   }
-  
+
   .modern-cert-overlay {
     position: absolute;
     top: 0;
@@ -669,27 +669,27 @@
     padding: 20px;
     text-align: center;
     backdrop-filter: blur(3px);
-    
+
     .cert-content {
       transform: translateY(20px);
       transition: transform 0.3s ease;
-      
+
       h4 {
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 10px;
       }
-      
+
       p {
         font-size: 1rem;
         opacity: 0.9;
       }
     }
   }
-  
+
   .cert-image:hover .modern-cert-overlay {
     opacity: 1;
-    
+
     .cert-content {
       transform: translateY(0);
     }
@@ -704,12 +704,12 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(215, 32, 39, 0.1);
   }
-  
+
   .contact-icon {
     width: 60px;
     height: 60px;
@@ -720,13 +720,13 @@
     justify-content: center;
     margin: 0 auto 20px;
     box-shadow: 0 10px 25px rgba(215, 32, 39, 0.3);
-    
+
     .bi {
       font-size: 1.5rem;
       color: white;
     }
   }
-  
+
   .contact-phone {
     background: linear-gradient(135deg, #28a745, #20c997);
     color: white;
@@ -738,7 +738,7 @@
     gap: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
-    
+
     &:hover {
       background: linear-gradient(135deg, #20c997, #28a745);
       transform: translateY(-2px);
@@ -760,25 +760,25 @@
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 5px 15px rgba(215, 32, 39, 0.3);
-  
+
   &:hover {
     transform: translateY(-3px) scale(1.1);
     box-shadow: 0 10px 25px rgba(215, 32, 39, 0.4);
     color: white;
   }
-  
+
   .bi {
     font-size: 1.2rem;
   }
-  
+
   &.facebook:hover {
     background: linear-gradient(135deg, #1877f2, #42a5f5);
   }
-  
+
   &.instagram:hover {
     background: linear-gradient(135deg, #e1306c, #fd1d1d, #fccc63);
   }
-  
+
   &.linkedin:hover {
     background: linear-gradient(135deg, #0077b5, #00a0dc);
   }
@@ -796,12 +796,12 @@
   box-shadow: 0 10px 25px rgba(215, 32, 39, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
-  
+
   &:hover {
     transform: translateY(-5px) scale(1.1);
     box-shadow: 0 15px 35px rgba(215, 32, 39, 0.4);
   }
-  
+
   .bi {
     color: white;
     font-size: 1.5rem;
@@ -879,37 +879,37 @@
   .sises-logo-title {
     font-size: clamp(1.5rem, 6vw, 4rem);
   }
-  
+
   .service-card {
     padding: 25px 20px;
   }
-  
+
   .modern-contact-card {
     padding: 20px;
   }
-  
+
   .hero-scroll-indicator {
     display: none;
   }
-  
+
   .cta-content {
     padding: 25px;
   }
-  
+
   .custom-whatsapp-button {
     padding: 12px 30px;
     font-size: 0.9rem;
   }
-  
+
   .carousel-container {
     width: 95%;
     gap: 20px;
   }
-  
+
   .sises-logo {
     width: 60% !important;
   }
-  
+
   .carousel-text {
     width: 90% !important;
   }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { CountryDataService } from "../../country-data-service.service";
+import { AnimationService } from '../../animation.service';
 
 @Component({
   selector: 'app-page-pays',
@@ -12,19 +13,78 @@ export class CountryPageComponent implements OnInit {
   nomPays: string | null = null;
   donneesPays: any;
   imageLoaded: boolean = false;
+  contentVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private countryDataService: CountryDataService,
     private location: Location,
-    private router: Router
-  ) {}
+    private router: Router,
+    private animationService: AnimationService,
+    private renderer: Renderer2,
+    private el: ElementRef
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.nomPays = params.get('name');
       this.chargerDonneesPays();
     });
+
+    this.runScrollFixedTransition();
+  }
+
+  runScrollFixedTransition() {
+    const rect = this.animationService.cardRect;
+    const imageUrl = this.animationService.imageUrl;
+
+    if (!rect || !imageUrl) {
+      this.contentVisible = true;
+      return;
+    }
+
+    const transitionElement = this.renderer.createElement('div');
+    this.renderer.setStyle(transitionElement, 'position', 'fixed');
+    this.renderer.setStyle(transitionElement, 'top', `${rect.top}px`);
+    this.renderer.setStyle(transitionElement, 'left', `${rect.left}px`);
+    this.renderer.setStyle(transitionElement, 'width', `${rect.width}px`);
+    this.renderer.setStyle(transitionElement, 'height', `${rect.height}px`);
+    this.renderer.setStyle(transitionElement, 'backgroundImage', `url(${imageUrl})`);
+    this.renderer.setStyle(transitionElement, 'backgroundSize', 'cover');
+    this.renderer.setStyle(transitionElement, 'backgroundPosition', 'center');
+    this.renderer.setStyle(transitionElement, 'zIndex', '10000');
+    this.renderer.setStyle(transitionElement, 'transition', 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)');
+
+    this.renderer.appendChild(document.body, transitionElement);
+    this.renderer.addClass(document.body, 'no-scroll');
+
+    requestAnimationFrame(() => {
+      this.renderer.setStyle(transitionElement, 'top', '0');
+      this.renderer.setStyle(transitionElement, 'left', '0');
+      this.renderer.setStyle(transitionElement, 'width', '100vw');
+      this.renderer.setStyle(transitionElement, 'height', '100vh');
+    });
+
+    setTimeout(() => {
+      this.contentVisible = true;
+      
+      setTimeout(() => {
+        const pageContent = this.el.nativeElement.querySelector('.country-page-content-wrapper');
+        if (pageContent) {
+          this.renderer.setStyle(pageContent, 'opacity', '1');
+          this.renderer.setStyle(pageContent, 'transition', 'opacity 0.3s ease-in-out');
+        }
+        window.scrollTo(0, 0);
+      }, 0);
+
+    }, 500);
+
+    setTimeout(() => {
+        this.renderer.removeChild(document.body, transitionElement);
+        this.renderer.removeClass(document.body, 'no-scroll');
+        this.animationService.cardRect = null;
+        this.animationService.imageUrl = null;
+    }, 600);
   }
 
   chargerDonneesPays(): void {

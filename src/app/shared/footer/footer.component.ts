@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   currentYear: number = new Date().getFullYear();
-  
+
   ngOnInit() {
     // Update the year in the DOM
     const yearElement = document.getElementById('currentYear');
@@ -15,12 +15,12 @@ export class FooterComponent implements OnInit {
       yearElement.textContent = this.currentYear.toString();
     }
   }
-  
+
   onNewsletterSubmit(event: Event) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const emailInput = form.querySelector('input[type="email"]') as HTMLInputElement;
-    
+
     if (emailInput && emailInput.value) {
       // Show success message
       this.showNewsletterMessage('Merci pour votre inscription!', 'success');
@@ -29,7 +29,7 @@ export class FooterComponent implements OnInit {
       this.showNewsletterMessage('Veuillez entrer une adresse email valide.', 'error');
     }
   }
-  
+
   private showNewsletterMessage(message: string, type: 'success' | 'error') {
     // Create a temporary message element
     const messageDiv = document.createElement('div');
@@ -49,13 +49,13 @@ export class FooterComponent implements OnInit {
       white-space: nowrap;
       animation: slideInDown 0.3s ease-out;
     `;
-    
+
     // Add to newsletter form
     const newsletterForm = document.querySelector('.newsletter-form') as HTMLElement;
     if (newsletterForm) {
       newsletterForm.style.position = 'relative';
       newsletterForm.appendChild(messageDiv);
-      
+
       // Remove after 3 seconds
       setTimeout(() => {
         if (messageDiv.parentNode) {
