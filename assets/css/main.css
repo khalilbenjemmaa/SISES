@@ -820,7 +820,6 @@ section,
 --------------------------------------------------------------*/
 .section-title {
   text-align: center;
-  padding-bottom: 60px;
   position: relative;
 }
 
@@ -1798,6 +1797,54 @@ section,
 .starter-section {
   /* Add your styles here */
 }
-p {
-  font-family: Calibri, sans-serif !important;
+
+.service-item {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-item .custom-icon,
+.service-item .title {
+    transition: all 0.3s ease-in-out;
+}
+
+.service-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #d72027;
+  transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth animation */
+}
+
+.service-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.service-item:hover .custom-icon {
+  transform: scale(1.1);
+}
+
+.service-item:hover .title {
+  color: #d72027;
+}
+
+.service-item:hover::after {
+  width: 100%;
+}
+
+.service-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.service-item .description {
+  margin-top: auto;
 }
