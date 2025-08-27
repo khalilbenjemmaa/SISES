@@ -3,40 +3,82 @@
 
     <section id="hero" class="hero section dark-background">
       <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-        <div class="carousel-item active"><img src="assets/img/hero-carousel/hero-carousel-1.webp" alt="Étudiants diplômés célébrant" width="1920" height="1080" /><div class="carousel-container"><img src="assets/img/sises-logo-XL.webp" alt="SISES Logo" class="sises-logo" width="500" height="180" /><img src="assets/img/sises-slogan.webp" alt="Explorez le monde , élevez votre avenir" class="carousel-text" width="700" height="114" /></div></div>
-        <div class="carousel-item"><img src="assets/img/hero-carousel/hero-carousel-2.webp" alt="Campus universitaire ensoleillé" width="1920" height="1080" /><div class="carousel-container"><img src="assets/img/sises-logo-XL.webp" alt="SISES Logo" class="sises-logo" width="500" height="180" /><img src="assets/img/sises-slogan.webp" alt="Explorez le monde , élevez votre avenir" class="carousel-text" width="700" height="114" /></div></div>
-        <div class="carousel-item"><img src="assets/img/hero-carousel/hero-carousel-3.webp" alt="Bibliothèque moderne avec des étudiants" width="1920" height="1080" /><div class="carousel-container"><img src="assets/img/sises-logo-XL.webp" alt="SISES Logo" class="sises-logo" width="500" height="180" /><img src="assets/img/sises-slogan.webp" alt="Explorez le monde , élevez votre avenir" class="carousel-text" width="700" height="114" /></div></div>
-        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev" aria-label="Previous Slide"><span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span></a>
-        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next" aria-label="Next Slide"><span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span></a>
+        <div class="carousel-item active" (click)="nextSlide()">
+          <img src="assets/img/hero-carousel/hero-carousel-1.webp" alt="Étudiants diplômés célébrant" width="1920" height="1080" />
+          <div class="carousel-container">
+            <img src="assets/img/sises-logo-XL.webp" alt="SISES Logo" class="sises-logo animate__animated animate__fadeInDown animate__faster" width="500" height="180" />
+            <img src="assets/img/sises-slogan.webp" alt="Explorez le monde , élevez votre avenir" class="carousel-text animate__animated animate__fadeInUp animate__delay-1s" width="700" height="114" />
+          </div>
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="carousel-item" (click)="nextSlide()">
+          <img src="assets/img/hero-carousel/hero-carousel-2.webp" alt="Campus universitaire ensoleillé" width="1920" height="1080" />
+          <div class="carousel-container">
+            <img src="assets/img/sises-logo-XL.webp" alt="SISES Logo" class="sises-logo animate__animated animate__fadeInDown animate__faster" width="500" height="180" />
+            <img src="assets/img/sises-slogan.webp" alt="Explorez le monde , élevez votre avenir" class="carousel-text animate__animated animate__fadeInUp animate__delay-1s" width="700" height="114" />
+          </div>
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="carousel-item" (click)="nextSlide()">
+          <img src="assets/img/hero-carousel/hero-carousel-3.webp" alt="Bibliothèque moderne avec des étudiants" width="1920" height="1080" />
+          <div class="carousel-container">
+            <img src="assets/img/sises-logo-XL.webp" alt="SISES Logo" class="sises-logo animate__animated animate__fadeInDown animate__faster" width="500" height="180" />
+            <img src="assets/img/sises-slogan.webp" alt="Explorez le monde , élevez votre avenir" class="carousel-text animate__animated animate__fadeInUp animate__delay-1s" width="700" height="114" />
+          </div>
+          <div class="hero-overlay"></div>
+        </div>
+      </div>
+      <div class="hero-scroll-indicator">
+        <div class="scroll-arrow bounce-in"></div>
       </div>
     </section>
 
     <section id="about" class="about section colored-section">
       <div class="container" data-aos="fade-up">
         <div class="row gy-4 align-items-center">
-          <div class="col-12 d-lg-none text-center"><h3 class="sises-logo-title mb-4">QUI SOMMES NOUS ?</h3></div>
-          <div class="col-lg-5 d-flex justify-content-center position-relative"><img src="assets/img/about-1.webp" class="img-fluid" alt="L'équipe de SISES lors d'une réunion" loading="lazy" /><a href="#" class="glightbox pulsating-play-btn disabled" aria-disabled="true" aria-label="Play Video"></a></div>
-          <div class="col-lg-7 content ps-lg-4 d-none d-lg-block">
-            <h3 class="sises-logo-title mb-5 text-lg-start text-center">QUI SOMMES NOUS ?</h3>
-            <p class="mt-2">SISES EST UNE SOCIÉTÉ INTERNATIONALE DE SERVICES ET ÉTUDES SUPÉRIEURES À L'ÉTRANGER AGRÉÉE PAR L'ÉTAT FONDÉE EN 1998. ELLE PERMET AUX NOUVEAUX BACHELIERS ET AUX ÉTUDIANTS DE POURSUIVRE LEURS ÉTUDES SUPÉRIEURES DANS DES INSTITUTIONS SUPÉRIEURES ÉTRANGÈRES ÉTATIQUES/PRIVÉES. ACTUELLEMENT, NOUS PROPOSONS NOS SERVICES DANS PLUSIEURS PAYS OU NOUS DISPOSONS DE BASES DE SUIVI DE NOS ÉTUDIANTS.</p>
-            <div class="text-end mt-3"><img style="width: 90px !important" src="assets/img/sises-small.png" alt="Petit logo SISES" /></div>
-          </div>
           <div class="col-12 d-lg-none text-center">
-            <p class="mt-2">SISES EST UNE SOCIÉTÉ INTERNATIONALE DE SERVICES ET ÉTUDES SUPÉRIEURES À L'ÉTRANGER AGRÉÉE PAR L'ÉTAT FONDÉE EN 1998. ELLE PERMET AUX NOUVEAUX BACHELIERS ET AUX ÉTUDIANTS DE POURSUIVRE LEURS ÉTUDES SUPÉRIEURES DANS DES INSTITUTIONS SUPÉRIEURES ÉTRANGÈRES ÉTATIQUES/PRIVÉES. ACTUELLEMENT, NOUS PROPOSONS NOS SERVICES DANS PLUSIEURS PAYS OU NOUS DISPOSONS DE BASES DE SUIVI DE NOS ÉTUDIANTS.</p>
-            <div class="text-end mt-3"><img style="width: 90px !important" src="assets/img/sises-small.png" alt="Petit logo SISES" /></div>
+            <h3 class="sises-logo-title mb-4 gradient-text">QUI SOMMES NOUS ?</h3>
+          </div>
+          <div class="col-lg-5 d-flex justify-content-center position-relative" data-aos="fade-right" data-aos-delay="200">
+            <div class="image-wrapper">
+              <img src="assets/img/about-1.webp" class="img-fluid floating-image" alt="L'équipe de SISES lors d'une réunion" loading="lazy" />
+              <div class="image-overlay glass-effect"></div>
+            </div>
+            <a href="#" class="glightbox pulsating-play-btn pulse-animation disabled" aria-disabled="true" aria-label="Play Video"></a>
+          </div>
+          <div class="col-lg-7 content ps-lg-4 d-none d-lg-block" data-aos="fade-left" data-aos-delay="400">
+            <h3 class="sises-logo-title mb-5 text-lg-start text-center gradient-text">QUI SOMMES NOUS ?</h3>
+            <p class="mt-2 enhanced-text">SISES EST UNE SOCIÉTÉ INTERNATIONALE DE SERVICES ET ÉTUDES SUPÉRIEURES À L'ÉTRANGER AGRÉÉE PAR L'ÉTAT FONDÉE EN 1998. ELLE PERMET AUX NOUVEAUX BACHELIERS ET AUX ÉTUDIANTS DE POURSUIVRE LEURS ÉTUDES SUPÉRIEURES DANS DES INSTITUTIONS SUPÉRIEURES ÉTRANGÈRES ÉTATIQUES/PRIVÉES. ACTUELLEMENT, NOUS PROPOSONS NOS SERVICES DANS PLUSIEURS PAYS OU NOUS DISPOSONS DE BASES DE SUIVI DE NOS ÉTUDIANTS.</p>
+            <div class="text-end mt-3">
+              <img style="width: 90px !important" src="assets/img/sises-small.png" alt="Petit logo SISES" class="floating-logo" />
+            </div>
+          </div>
+          <div class="col-12 d-lg-none text-center" data-aos="fade-up" data-aos-delay="300">
+            <p class="mt-2 enhanced-text">SISES EST UNE SOCIÉTÉ INTERNATIONALE DE SERVICES ET ÉTUDES SUPÉRIEURES À L'ÉTRANGER AGRÉÉE PAR L'ÉTAT FONDÉE EN 1998. ELLE PERMET AUX NOUVEAUX BACHELIERS ET AUX ÉTUDIANTS DE POURSUIVRE LEURS ÉTUDES SUPÉRIEURES DANS DES INSTITUTIONS SUPÉRIEURES ÉTRANGÈRES ÉTATIQUES/PRIVÉES. ACTUELLEMENT, NOUS PROPOSONS NOS SERVICES DANS PLUSIEURS PAYS OU NOUS DISPOSONS DE BASES DE SUIVI DE NOS ÉTUDIANTS.</p>
+            <div class="text-end mt-3">
+              <img style="width: 90px !important" src="assets/img/sises-small.png" alt="Petit logo SISES" class="floating-logo" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section id="call-to-action" class="call-to-action section">
-      <img src="assets/img/SISES-LOADING.webp" alt="" loading="lazy" />
+      <div class="cta-background">
+        <img src="assets/img/SISES-LOADING.webp" alt="" loading="lazy" />
+        <div class="cta-overlay"></div>
+      </div>
       <div class="container">
         <div class="row justify-content-center" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-xl-10 text-center">
-            <img src="assets/img/whatssap-text.webp" alt="Logo WhatsApp" class="whatsapp-logo" loading="lazy" />
-            <p class="text-white fw-bold">Cliquez sur le bouton ci-dessous pour nous envoyer un message sur WhatsApp. Nous sommes là pour répondre à toutes vos questions !</p>
-            <a class="custom-whatsapp-button" href="https://wa.me/21654292290" target="_blank" rel="noopener noreferrer">Envoyer un message WhatsApp</a>
+            <div class="cta-content glass-effect">
+              <img src="assets/img/whatssap-text.webp" alt="Logo WhatsApp" class="whatsapp-logo floating-image" loading="lazy" />
+              <p class="text-white fw-bold enhanced-text">Cliquez sur le bouton ci-dessous pour nous envoyer un message sur WhatsApp. Nous sommes là pour répondre à toutes vos questions !</p>
+              <a class="custom-whatsapp-button modern-btn pulse-animation" href="https://wa.me/21654292290" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp"></i>
+                Envoyer un message WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -44,54 +86,271 @@
 
     <section id="services" class="services section bg-white has-divider divider-to-gray">
       <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2 class="sises-logo-title">NOS SERVICES</h2></div>
+        <div class="section-title">
+          <h2 class="sises-logo-title gradient-text">NOS SERVICES</h2>
+          <div class="title-underline"></div>
+        </div>
         <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 service-item text-center" data-aos-delay="100"><div class="icon mb-3"><img src="assets/img/services/loge.png" alt="Icône de service de logement" class="custom-icon" loading="lazy" /></div><h4 class="title">LOGEMENT</h4><p class="description">Grâce à nos partenariats, nous vous proposons les solutions d'hébergement les plus adaptées à votre situation: résidences universitaires, colocations, etc.</p></div>
-          <div class="col-lg-4 col-md-6 service-item text-center" data-aos-delay="200"><div class="icon mb-3"><img src="assets/img/services/mastra.png" alt="Icône de préparation aux examens" class="custom-icon" loading="lazy" /></div><h4 class="title">PRÉPARATION AUX EXAMENS</h4><p class="description">Nous organisons des stages de préparation tout au long de l'année afin d'aborder sereinement les épreuves du Tage Mage, du TOEIC ou du TOEFL.</p></div>
-          <div class="col-lg-4 col-md-6 service-item text-center" data-aos-delay="300"><div class="icon mb-3"><img src="assets/img/services/conseil-en-ortientation.svg" alt="Icône de conseil en orientation" class="custom-icon" loading="lazy" /></div><h4 class="title">CONSEIL EN ORIENTATION</h4><p class="description">Chaque étudiant est unique et chaque parcours particulier. Quels que soient vos ambitions et votre niveau, nous trouvons ensemble un projet qui vous correspond.</p></div>
-          <div class="col-lg-4 col-md-6 service-item text-center" data-aos-delay="400"><div class="icon mb-3"><img src="assets/img/services/fiche.png" alt="Icône d'inscription et de suivi" class="custom-icon" loading="lazy" /></div><h4 class="title">INSCRIPTION ET SUIVI</h4><p class="description">Nous prenons en charge vos démarches auprès de votre futur établissement, de l'inscription à votre arrivée sur place.</p></div>
-          <div class="col-lg-4 col-md-6 service-item text-center" data-aos-delay="500"><div class="icon mb-3"><img src="assets/img/services/passport-.svg" alt="Icône de service de visa" class="custom-icon" loading="lazy" /></div><h4 class="title">VISA</h4><p class="description">Nous prenons en charge vos formalités de demande de visa.</p></div>
-          <div class="col-lg-4 col-md-6 service-item text-center" data-aos-delay="600"><div class="icon mb-3"><img src="assets/img/services/traduc.png" alt="Icône de service de traduction" class="custom-icon" loading="lazy" /></div><h4 class="title">TRADUCTION</h4><p class="description">Nous traduisons vos relevés de notes et diplômes.</p></div>
+          <div class="col-lg-4 col-md-6 service-item text-center" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-card glass-effect">
+              <div class="icon mb-3">
+                <div class="custom-service-icon logement-icon">
+                  <i class="bi bi-house-door"></i>
+                </div>
+              </div>
+              <h4 class="title gradient-text">LOGEMENT</h4>
+              <p class="description enhanced-text">Grâce à nos partenariats, nous vous proposons les solutions d'hébergement les plus adaptées à votre situation: résidences universitaires, colocations, etc.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 service-item text-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-card glass-effect">
+              <div class="icon mb-3">
+                <div class="custom-service-icon exam-icon">
+                  <i class="bi bi-journal-check"></i>
+                </div>
+              </div>
+              <h4 class="title gradient-text">PRÉPARATION AUX EXAMENS</h4>
+              <p class="description enhanced-text">Nous organisons des stages de préparation tout au long de l'année afin d'aborder sereinement les épreuves du Tage Mage, du TOEIC ou du TOEFL.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 service-item text-center" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-card glass-effect">
+              <div class="icon mb-3">
+                <div class="custom-service-icon orientation-icon">
+                  <i class="bi bi-compass"></i>
+                </div>
+              </div>
+              <h4 class="title gradient-text">CONSEIL EN ORIENTATION</h4>
+              <p class="description enhanced-text">Chaque étudiant est unique et chaque parcours particulier. Quels que soient vos ambitions et votre niveau, nous trouvons ensemble un projet qui vous correspond.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 service-item text-center" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-card glass-effect">
+              <div class="icon mb-3">
+                <div class="custom-service-icon inscription-icon">
+                  <i class="bi bi-clipboard-check"></i>
+                </div>
+              </div>
+              <h4 class="title gradient-text">INSCRIPTION ET SUIVI</h4>
+              <p class="description enhanced-text">Nous prenons en charge vos démarches auprès de votre futur établissement, de l'inscription à votre arrivée sur place.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 service-item text-center" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-card glass-effect">
+              <div class="icon mb-3">
+                <div class="custom-service-icon visa-icon">
+                  <i class="bi bi-passport"></i>
+                </div>
+              </div>
+              <h4 class="title gradient-text">VISA</h4>
+              <p class="description enhanced-text">Nous prenons en charge vos formalités de demande de visa.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 service-item text-center" data-aos="fade-up" data-aos-delay="600">
+            <div class="service-card glass-effect">
+              <div class="icon mb-3">
+                <div class="custom-service-icon traduction-icon">
+                  <i class="bi bi-translate"></i>
+                </div>
+              </div>
+              <h4 class="title gradient-text">TRADUCTION</h4>
+              <p class="description enhanced-text">Nous traduisons vos relevés de notes et diplômes.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="destination" class="destination section colored-section">
       <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2 class="sises-logo-title">DESTINATIONS</h2></div>
-        <div class="slider-toggle-wrapper"><label class="slider-toggle"><input type="checkbox" [(ngModel)]="showMap" /><div class="slider-toggle-track"><span class="slider-label cards" [class.active]="!showMap">Cards</span><span class="slider-label map" [class.active]="showMap">Map</span><div class="slider-thumb"></div></div></label></div>
-        <div class="text-center">
-          <div *ngIf="!showMap"><input type="text" class="search-input" placeholder="chercher un pays ..." [(ngModel)]="searchTerm" (input)="filterCountries()" /></div>
-          <div *ngIf="!showMap" class="world-map-container"><div class="country-list-container"><div class="country-card" *ngFor="let country of filteredCountries; trackBy: trackByCountry" (click)="navigateToCountry(country.name)" data-aos-delay="200"><img [src]="'/assets/img/country-page/' + remplaceExtension(country['bg-image'])" [alt]="country.display_name" class="country-image" loading="lazy" /><div class="country-overlay"><h3 class="country-name">{{ country.display_name }}</h3></div></div></div></div>
+        <div class="section-title">
+          <h2 class="sises-logo-title gradient-text">DESTINATIONS</h2>
+          <div class="title-underline"></div>
         </div>
-        <div><app-world-map *ngIf="showMap" class="world-map"></app-world-map></div>
+        <div class="slider-toggle-wrapper" data-aos="fade-up" data-aos-delay="200">
+          <label class="slider-toggle modern-toggle">
+            <input type="checkbox" [(ngModel)]="showMap" />
+            <div class="slider-toggle-track">
+              <span class="slider-label cards" [class.active]="!showMap">Cards</span>
+              <span class="slider-label map" [class.active]="showMap">Map</span>
+              <div class="slider-thumb"></div>
+            </div>
+          </label>
+        </div>
+        <div class="text-center">
+          <div *ngIf="!showMap" data-aos="fade-up" data-aos-delay="300">
+            <input type="text" class="search-input modern-search" placeholder="Chercher un pays..." [(ngModel)]="searchTerm" (input)="filterCountries()" />
+          </div>
+          <div *ngIf="!showMap" class="world-map-container" data-aos="fade-up" data-aos-delay="400">
+            <div class="country-list-container">
+              <div class="country-card modern-card" *ngFor="let country of filteredCountries; trackBy: trackByCountry; let i = index" 
+                   (click)="navigateToCountry(country.name)" 
+                   [attr.data-aos-delay]="200 + (i * 100)">
+                <img [src]="'/assets/img/country-page/' + remplaceExtension(country['bg-image'])" 
+                     [alt]="country.display_name" 
+                     class="country-image" 
+                     loading="lazy" />
+                <div class="country-overlay modern-overlay">
+                  <h3 class="country-name">{{ country.display_name }}</h3>
+                  <div class="country-arrow">
+                    <i class="bi bi-arrow-right"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <app-world-map *ngIf="showMap" class="world-map modern-map"></app-world-map>
+        </div>
       </div>
     </section>
 
     <section id="certification" class="certification section has-divider divider-to-gray">
       <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2 class="sises-logo-title">CERTIFICATIONS</h2></div>
+        <div class="section-title">
+          <h2 class="sises-logo-title gradient-text">CERTIFICATIONS</h2>
+          <div class="title-underline"></div>
+        </div>
         <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4 col-md-6" data-aos-delay="100"><div class="cert-item"><div class="cert-image"><img src="assets/img/certifications/cert-icef.webp" class="img-fluid" alt="Certification ICEF" loading="lazy" /><div class="cert-overlay"></div></div></div></div>
-          <div class="col-lg-4 col-md-6" data-aos-delay="200"><div class="cert-item"><div class="cert-image"><img src="assets/img/certifications/cert-2.webp" class="img-fluid" alt="Certification British Council" loading="lazy" /><div class="cert-overlay"></div></div></div></div>
-          <div class="col-lg-4 col-md-6" data-aos-delay="300"><div class="cert-item"><div class="cert-image"><img src="assets/img/certifications/cert-3.webp" class="img-fluid" alt="Certification Education USA" loading="lazy" /><div class="cert-overlay"></div></div></div></div>
-          <div class="col-lg-4 col-md-6" data-aos-delay="400"><div class="cert-item"><div class="cert-image"><img src="assets/img/certifications/cert-4.webp" class="img-fluid" alt="Certification SISES" loading="lazy" /><div class="cert-overlay"></div></div></div></div>
-          <div class="col-lg-4 col-md-6" data-aos-delay="500"><div class="cert-item"><div class="cert-image"><img src="assets/img/certifications/cert-5.webp" class="img-fluid" alt="Autre certification SISES" loading="lazy" /><div class="cert-overlay"></div></div></div></div>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="cert-item modern-cert">
+              <div class="cert-image">
+                <img src="assets/img/certifications/cert-icef.webp" class="img-fluid" alt="Certification ICEF" loading="lazy" />
+                <div class="cert-overlay modern-cert-overlay">
+                  <div class="cert-content">
+                    <h4>ICEF Certification</h4>
+                    <p>International Consultants for Education and Fairs</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="cert-item modern-cert">
+              <div class="cert-image">
+                <img src="assets/img/certifications/cert-2.webp" class="img-fluid" alt="Certification British Council" loading="lazy" />
+                <div class="cert-overlay modern-cert-overlay">
+                  <div class="cert-content">
+                    <h4>British Council</h4>
+                    <p>Official Education Partner</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="cert-item modern-cert">
+              <div class="cert-image">
+                <img src="assets/img/certifications/cert-3.webp" class="img-fluid" alt="Certification Education USA" loading="lazy" />
+                <div class="cert-overlay modern-cert-overlay">
+                  <div class="cert-content">
+                    <h4>Education USA</h4>
+                    <p>Official USA Education Advisor</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="cert-item modern-cert">
+              <div class="cert-image">
+                <img src="assets/img/certifications/cert-4.webp" class="img-fluid" alt="Certification SISES" loading="lazy" />
+                <div class="cert-overlay modern-cert-overlay">
+                  <div class="cert-content">
+                    <h4>SISES Excellence</h4>
+                    <p>Quality Assurance Certification</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="cert-item modern-cert">
+              <div class="cert-image">
+                <img src="assets/img/certifications/cert-5.webp" class="img-fluid" alt="Autre certification SISES" loading="lazy" />
+                <div class="cert-overlay modern-cert-overlay">
+                  <div class="cert-content">
+                    <h4>International Standards</h4>
+                    <p>Global Education Excellence</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="contact" class="contact section colored-section">
       <div class="container" data-aos="fade-up">
-        <div class="section-title"><h2 class="sises-logo-title">CONTACT</h2></div>
+        <div class="section-title">
+          <h2 class="sises-logo-title gradient-text">CONTACT</h2>
+          <div class="title-underline"></div>
+        </div>
         <div class="row gy-4">
-          <div class="col-lg-4" data-aos-delay="300"><div class="contact-hours h-100"><h4 class="fw-bold">HORAIRES D'OUVERTURE</h4><p>LUNDI - VENDREDI<br />8:00 - 17:00</p><p><strong>Email&nbsp;:</strong> elenadimassi@gmail.com</p><div class="social-links mt-3"><a href="#" class="facebook" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a href="#" class="instagram" aria-label="Instagram"><i class="bi bi-instagram"></i></a></div></div></div>
+          <div class="col-lg-4" data-aos="fade-right" data-aos-delay="300">
+            <div class="contact-hours modern-contact-card glass-effect h-100">
+              <div class="contact-icon">
+                <i class="bi bi-clock"></i>
+              </div>
+              <h4 class="fw-bold gradient-text">HORAIRES D'OUVERTURE</h4>
+              <p class="enhanced-text">LUNDI - VENDREDI<br />8:00 - 17:00</p>
+              <p class="enhanced-text"><strong>Email&nbsp;:</strong> contact@sises.tn</p>
+              <div class="social-links mt-3">
+                <a href="#" class="facebook modern-social-btn" aria-label="Facebook">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a href="#" class="instagram modern-social-btn" aria-label="Instagram">
+                  <i class="bi bi-instagram"></i>
+                </a>
+                <a href="#" class="linkedin modern-social-btn" aria-label="LinkedIn">
+                  <i class="bi bi-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
           <div class="col-lg-8">
             <div class="row gy-4">
-              <div class="col-md-6" data-aos-delay="400"><div class="contact-location h-100"><h4 class="fw-bold">SISES TUNIS</h4><p>42, Av, Hedi Chaker im.Afric-Mode ben saleh,<br />App.B12 4éme étage - Tunis<br />71 781 386</p></div></div>
-              <div class="col-md-6" data-aos-delay="500"><div class="contact-location h-100"><h4 class="fw-bold">SISES LAC 2</h4><p>Av. De la bourse , Immeuble Diar Sidi Mansour 4,<br />Bureau MA2 bloc A , Lac 2<br />54 292 290</p></div></div>
-              <div class="col-md-6" data-aos-delay="600"><div class="contact-location h-100"><h4 class="fw-bold">SISES SAHEL</h4><p>Av, Habib Bourguiba (À coté de la poste)<br />Bouhjar - Monastir<br />55 288 139</p></div></div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="contact-location modern-contact-card glass-effect h-100">
+                  <div class="contact-icon">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <h4 class="fw-bold gradient-text">SISES TUNIS</h4>
+                  <p class="enhanced-text">42, Av, Hedi Chaker im.Afric-Mode ben saleh,<br />App.B12 4éme étage - Tunis<br />71 781 386</p>
+                  <a href="tel:+21671781386" class="contact-phone modern-btn">
+                    <i class="bi bi-telephone"></i>
+                    Appeler
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="contact-location modern-contact-card glass-effect h-100">
+                  <div class="contact-icon">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <h4 class="fw-bold gradient-text">SISES LAC 2</h4>
+                  <p class="enhanced-text">Av. De la bourse , Immeuble Diar Sidi Mansour 4,<br />Bureau MA2 bloc A , Lac 2<br />54 292 290</p>
+                  <a href="tel:+21654292290" class="contact-phone modern-btn">
+                    <i class="bi bi-telephone"></i>
+                    Appeler
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="contact-location modern-contact-card glass-effect h-100">
+                  <div class="contact-icon">
+                    <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <h4 class="fw-bold gradient-text">SISES SAHEL</h4>
+                  <p class="enhanced-text">Av, Habib Bourguiba (À coté de la poste)<br />Bouhjar - Monastir<br />55 288 139</p>
+                  <a href="tel:+21655288139" class="contact-phone modern-btn">
+                    <i class="bi bi-telephone"></i>
+                    Appeler
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -99,5 +358,7 @@
     </section>
 
   </main>
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Back to top"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top modern-scroll-top d-flex align-items-center justify-content-center" aria-label="Back to top">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
 </body>

@@ -1,25 +1,178 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>SISES TUNISIA</title>
+  <title>SISES TUNISIA - Société Internationale de Services et Études Supérieures</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="assets/img/sises-logo-XL.webp" rel="icon">
-  <link href="assets/img/sises-logo-XL.webp" rel="apple-touch-icon">
+  <meta name="description" content="SISES - Société Internationale de Services et Études Supérieures à l'étranger. Accompagnement personnalisé pour vos études dans les meilleures institutions mondiales.">
+  <meta name="keywords" content="études à l'étranger, université, SISES, Tunisie, éducation internationale, bourses d'études">
+  <meta name="author" content="SISES">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="SISES TUNISIA - Études Supérieures à l'Étranger">
+  <meta property="og:description" content="Explorez le monde, élevez votre avenir avec SISES. Accompagnement personnalisé pour vos études internationales.">
+  <meta property="og:image" content="assets/img/sises-logo-XL.webp">
+  <meta property="og:url" content="https://sises.tn">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SISES TUNISIA - Études Supérieures à l'Étranger">
+  <meta name="twitter:description" content="Explorez le monde, élevez votre avenir avec SISES">
+  <meta name="twitter:image" content="assets/img/sises-logo-XL.webp">
+  
+  <link href="assets/img/sises-logo-S.png" rel="icon" type="image/png">
+  <link href="assets/img/sises-logo-S.png" rel="apple-touch-icon">
 
+  <!-- Preload Critical Resources -->
   <link rel="preload" fetchpriority="high" as="image" href="assets/img/hero-carousel/hero-carousel-1.webp" type="image/webp">
+  <link rel="preload" href="assets/fonts/BNMachine.ttf" as="font" type="font/ttf" crossorigin>
 
+  <!-- Font Preconnections -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap" rel="stylesheet">
+  
+  <!-- Enhanced Font Loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800&display=swap" rel="stylesheet">
+  
+  <!-- Animation Libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#d72027">
+  
+  <!-- Performance Optimization -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//unpkg.com">
+</head>
 
-  </head>
+<body class="loading">
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <img src="assets/img/sises-logo-S.webp" alt="SISES" class="loading-logo">
+      <div class="loading-spinner">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+      </div>
+      <p class="loading-text">Chargement<span class="loading-dots"></span></p>
+    </div>
+  </div>
 
-<body>
   <app-root></app-root>
 
-  </body>
-
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        duration: 400,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false,
+        offset: 30
+      });
+      
+      // Hide loading screen
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 500);
+        }
+      }, 1500);
+      
+      // Update copyright year
+      const currentYear = document.getElementById('currentYear');
+      if (currentYear) {
+        currentYear.textContent = new Date().getFullYear();
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A' && e.target.getAttribute('href').startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    });
+  </script>
+  
+  <style>
+    /* Loading Screen Styles */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #d72027, #1a1a1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    .loading-content {
+      text-align: center;
+      color: white;
+    }
+    
+    .loading-logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+      animation: pulse 2s infinite;
+    }
+    
+    .loading-spinner {
+      margin: 20px 0;
+    }
+    
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      border-color: rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+    }
+    
+    .loading-text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-top: 15px;
+    }
+    
+    body.loading {
+      overflow: hidden;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</body>
 </html>

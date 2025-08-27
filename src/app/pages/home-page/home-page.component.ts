@@ -49,4 +49,13 @@ showMap: boolean = false;
   trackByCountry(index: number, country: any): string {
     return country.name; // Use a unique property like name or an id
   }
+
+  nextSlide(): void {
+    const carousel = document.querySelector('#hero-carousel');
+    if (carousel) {
+      const bsCarousel = (window as any).bootstrap?.Carousel?.getInstance(carousel) || 
+                        new (window as any).bootstrap.Carousel(carousel);
+      bsCarousel.next();
+    }
+  }
 }

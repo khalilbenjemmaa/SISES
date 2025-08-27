@@ -1,7 +1,7 @@
 <div id="header" class="header d-flex align-items-center fixed-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-    <a routerLink="/" class="logo d-flex align-items-center">
+    <a routerLink="/" class="logo d-flex align-items-center" (click)="scrollToSection('#hero', $event)">
       <div class="sises-logo">
         <img src="/assets/img/sises-logo-S.png" alt="SISES Logo" width="74" height="20">
       </div>
@@ -9,15 +9,22 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#hero" class="active" (click)="closeMobileNav()">Home</a></li>
-        <li><a href="#about" (click)="closeMobileNav()">About</a></li>
-        <li><a href="#services" (click)="closeMobileNav()">Services</a></li>
-        <li><a href="#destination" (click)="closeMobileNav()">Destination</a></li>
-        <li><a href="#contact" (click)="closeMobileNav()">Contact</a></li>
+        <li><a href="#hero" class="active" (click)="scrollToSection('#hero', $event); closeMobileNav()">Accueil</a></li>
+        <li><a href="#about" (click)="scrollToSection('#about', $event); closeMobileNav()">À propos</a></li>
+        <li><a href="#services" (click)="scrollToSection('#services', $event); closeMobileNav()">Services</a></li>
+        <li><a href="#destination" (click)="scrollToSection('#destination', $event); closeMobileNav()">Destinations</a></li>
+        <li><a href="#certification" (click)="scrollToSection('#certification', $event); closeMobileNav()">Certifications</a></li>
+        <li><a href="#contact" (click)="scrollToSection('#contact', $event); closeMobileNav()">Contact</a></li>
       </ul>
     </nav>
 
-    <button type="button" class="mobile-nav-toggle" (click)="toggleMobileNav()" [attr.aria-expanded]="isMobileNavOpen" aria-controls="navmenu" [attr.aria-label]="isMobileNavOpen ? 'Close main menu' : 'Open main menu'">
+    <button 
+      type="button" 
+      class="mobile-nav-toggle" 
+      (click)="toggleMobileNav()" 
+      [attr.aria-expanded]="isMobileNavOpen" 
+      aria-controls="navmenu" 
+      [attr.aria-label]="isMobileNavOpen ? 'Fermer le menu principal' : 'Ouvrir le menu principal'">
       <i class="bi" [class.bi-list]="!isMobileNavOpen" [class.bi-x]="isMobileNavOpen"></i>
     </button>
 
