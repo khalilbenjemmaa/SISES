@@ -42,7 +42,7 @@
             "allowedCommonJsDependencies": [
               "aos"
             ],
-            "baseHref": "/SISES/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {

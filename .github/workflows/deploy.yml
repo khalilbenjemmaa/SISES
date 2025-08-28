@@ -36,7 +36,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
 
           # Deploy to GitHub Pages using the PAT
-          npx angular-cli-ghpages --dir=dist/SISES --no-silent --repo=https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/khalilbenjemmaa/SISES.git
+          npx angular-cli-ghpages --dir=dist/SISES --base-href=/ --no-silent --repo=https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/khalilbenjemmaa/SISES.git
 
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Use the new secret for authentication
