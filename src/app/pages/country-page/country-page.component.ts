@@ -26,12 +26,23 @@ export class CountryPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+    
     this.route.paramMap.subscribe(params => {
       this.nomPays = params.get('name');
       this.chargerDonneesPays();
     });
 
-    this.runScrollFixedTransition();
+    // Only run transition if we have animation data
+    if (this.animationService.cardRect && this.animationService.imageUrl) {
+      this.runScrollFixedTransition();
+    } else {
+      this.contentVisible = true;
+      const pageContent = this.el.nativeElement.querySelector('.country-page-content-wrapper');
+      if (pageContent) {
+        this.renderer.setStyle(pageContent, 'opacity', '1');
+      }
+    }
   }
 
   runScrollFixedTransition() {
