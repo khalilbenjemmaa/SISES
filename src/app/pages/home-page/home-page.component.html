@@ -186,7 +186,7 @@
               <div class="country-card modern-card" *ngFor="let country of filteredCountries; trackBy: trackByCountry; let i = index"
                    (click)="navigateToCountry(country.name, $event)"
                    [attr.data-aos-delay]="200 + (i * 100)">
-                <img [src]="'/assets/img/country-page/' + remplaceExtension(country['bg-image'])"
+                <img [src]="'assets/img/country-page/' + remplaceExtension(country['bg-image'])"
                      [alt]="country.display_name"
                      class="country-image"
                      loading="lazy" />

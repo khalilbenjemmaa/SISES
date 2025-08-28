@@ -2,7 +2,7 @@
 
   <div class="conteneur-page-pays"
        *ngIf="donneesPays"
-       [style.backgroundImage]="donneesPays['bg-image'] ? 'url(/assets/img/country-page/' + remplaceExtension(donneesPays['bg-image']) + ')': 'none'">
+       [style.backgroundImage]="donneesPays['bg-image'] ? 'url(assets/img/country-page/' + remplaceExtension(donneesPays['bg-image']) + ')': 'none'">
 
     <p class="bouton-retour" (click)="retourArriere()">Retour</p>
 
@@ -12,7 +12,7 @@
       </div>
 
       <!-- Use the country name in the alt tag for better accessibility -->
-      <img [src]="'/assets/img/country-page/' + remplaceExtension(donneesPays['src_image'])"
+      <img [src]="'assets/img/country-page/' + remplaceExtension(donneesPays['src_image'])"
            loading="lazy"
            [alt]="donneesPays.display_name || 'Contenu de la page'"
            class="allcontentPage"
