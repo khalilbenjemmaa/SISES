@@ -43,7 +43,7 @@ export class HomePageComponent {
     const card = (event.currentTarget as HTMLElement);
     this.animationService.cardRect = card.getBoundingClientRect();
     const country = this.countries.find(c => c.name === countryName);
-    this.animationService.imageUrl = '/assets/img/country-page/' + this.remplaceExtension(country['bg-image']);
+    this.animationService.imageUrl = 'assets/img/country-page/' + this.remplaceExtension(country['bg-image']);
 
     const formattedName = countryName.trim().replace(/\s+/g, '').toLowerCase();
     this.router.navigate(['/country', formattedName]);
