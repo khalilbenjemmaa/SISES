@@ -31,29 +31,40 @@
 </div>
 
 
-  <!-- Logo displayed at center top when a country is selected -->
-  <img *ngIf="isCountryLocked"
-       src="assets/img/logo-sises.svg"
-       alt="Sises Logo"
-       class="sises-logo" />
+  <!-- Modern Logo displayed at center top when a country is selected -->
+  <div *ngIf="isCountryLocked" class="logo-container">
+    <img src="assets/img/logo-sises.svg"
+         alt="Sises Logo"
+         class="sises-logo-modern" />
+    <div class="logo-glow"></div>
+  </div>
 
   <!-- Loader -->
-  <div class="loader" *ngIf="!svgContent">
-    <div class="spinner"></div>
-    <p>Loading interactive world map...</p>
+  <div class="modern-loader" *ngIf="!svgContent">
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+    <div class="loader-ring"></div>
+    <p class="loader-text">Loading interactive world map...</p>
   </div>
 
   <!-- The map will be inserted here -->
   <div id="world-map" [innerHTML]="svgContent | safeHtml"></div>
 
-  <!-- Simplified Tooltip -->
-  <div class="country-tooltip"
+  <!-- Modern Tooltip -->
+  <div class="modern-tooltip"
        *ngIf="showTooltip && selectedCountry"
        [style.left.px]="tooltipX"
        [style.top.px]="tooltipY"
        [@fadeInOut]="true">
+    
+    <div class="tooltip-background"></div>
+    <div class="tooltip-border"></div>
+    
     <div class="tooltip-header">
-      <button class="close-button"
+      <div class="tooltip-icon">
+        <i class="bi bi-geo-alt-fill"></i>
+      </div>
+      <button class="modern-close-button"
               (click)="closeTooltip($event)"
               (mousedown)="$event.stopPropagation()"
               (mouseup)="$event.stopPropagation()"
@@ -62,17 +73,19 @@
               (mouseleave)="$event.stopPropagation()"
               *ngIf="isCountryLocked"
               title="Close country details">
-        ×
+        <i class="bi bi-x-lg"></i>
       </button>
     </div>
 
     <div class="tooltip-content">
-      <h1 class="country-name">{{ selectedCountry.name }} <br><p class="country-information">INFORMATION</p></h1>
-      <p class="country-description">{{ selectedCountry.description }}</p>
+      <h1 class="country-name-modern">{{ selectedCountry.name }}</h1>
+      <p class="country-subtitle">INFORMATION DU PAYS</p>
+      <p class="country-description-modern">{{ selectedCountry.description }}</p>
 
       <div class="tooltip-actions" *ngIf="isCountryLocked">
-        <button class="action-button primary" (click)="exploreMore()">
-          VOIR PLUS
+        <button class="modern-action-button" (click)="exploreMore()">
+          <span>VOIR PLUS</span>
+          <i class="bi bi-arrow-right"></i>
         </button>
       </div>
     </div>

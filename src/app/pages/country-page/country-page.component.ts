@@ -1,6 +1,6 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { Location, ViewportScroller } from '@angular/common';
 import { CountryDataService } from "../../country-data-service.service";
 import { AnimationService } from '../../animation.service';
 
@@ -9,7 +9,7 @@ import { AnimationService } from '../../animation.service';
   templateUrl: './country-page.component.html',
   styleUrls: ['./country-page.component.scss']
 })
-export class CountryPageComponent implements OnInit {
+export class CountryPageComponent implements OnInit, AfterViewInit {
   nomPays: string | null = null;
   donneesPays: any;
   imageLoaded: boolean = false;
@@ -22,11 +22,13 @@ export class CountryPageComponent implements OnInit {
     private router: Router,
     private animationService: AnimationService,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    private viewportScroller: ViewportScroller
   ) { }
 
   ngOnInit(): void {
-    window.scrollTo(0, 0);
+    // Multiple approaches to ensure scroll to top
+    this.scrollToTop();
     
     this.route.paramMap.subscribe(params => {
       this.nomPays = params.get('name');
@@ -43,6 +45,25 @@ export class CountryPageComponent implements OnInit {
         this.renderer.setStyle(pageContent, 'opacity', '1');
       }
     }
+  }
+
+  ngAfterViewInit(): void {
+    // Additional scroll to top after view is initialized
+    setTimeout(() => {
+      this.scrollToTop();
+    }, 0);
+  }
+
+  private scrollToTop(): void {
+    // Use ViewportScroller (Angular's recommended approach)
+    this.viewportScroller.scrollToPosition([0, 0]);
+    
+    // Fallback methods
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 0);
   }
 
   runScrollFixedTransition() {
@@ -85,7 +106,8 @@ export class CountryPageComponent implements OnInit {
           this.renderer.setStyle(pageContent, 'opacity', '1');
           this.renderer.setStyle(pageContent, 'transition', 'opacity 0.3s ease-in-out');
         }
-        window.scrollTo(0, 0);
+        // Ensure we're still at the top after animation
+        this.scrollToTop();
       }, 0);
 
     }, 500);
@@ -95,6 +117,8 @@ export class CountryPageComponent implements OnInit {
         this.renderer.removeClass(document.body, 'no-scroll');
         this.animationService.cardRect = null;
         this.animationService.imageUrl = null;
+        // Final scroll to top after cleanup
+        this.scrollToTop();
     }, 600);
   }
 

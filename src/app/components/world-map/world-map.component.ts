@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
@@ -28,7 +28,7 @@ interface Country {
     ])
   ]
 })
-export class WorldMapComponent implements OnInit {
+export class WorldMapComponent implements OnInit, OnDestroy {
   @Output() countrySelected = new EventEmitter<Country>();
 
   svgContent: string = '';
@@ -44,6 +44,11 @@ export class WorldMapComponent implements OnInit {
   searchQuery: string = '';
   filteredCountries: { key: string, value: Country }[] = [];
   isDropdownOpen: boolean = false;
+  
+  // Performance optimization
+  private positionUpdateTimeout: any;
+  private lastPositionUpdate: number = 0;
+  private readonly UPDATE_THROTTLE = 16; // ~60fps
 
   constructor(private http: HttpClient, private router: Router, private eRef: ElementRef) { }
 
@@ -57,6 +62,12 @@ export class WorldMapComponent implements OnInit {
 
     this.initializeCountryData();
     this.filterCountries();
+  }
+
+  ngOnDestroy(): void {
+    if (this.positionUpdateTimeout) {
+      cancelAnimationFrame(this.positionUpdateTimeout);
+    }
   }
 
   initializeMap(): void {
@@ -451,11 +462,32 @@ export class WorldMapComponent implements OnInit {
   onCountryMouseMove(event: MouseEvent): void {
     if (!this.hoveredCountryId || !this.showTooltip) return;
 
+    // Throttle position updates for better performance
+    const now = Date.now();
+    if (now - this.lastPositionUpdate < this.UPDATE_THROTTLE) {
+      return;
+    }
+    this.lastPositionUpdate = now;
+
+    // Use requestAnimationFrame for smooth updates
+    if (this.positionUpdateTimeout) {
+      cancelAnimationFrame(this.positionUpdateTimeout);
+    }
+
+    this.positionUpdateTimeout = requestAnimationFrame(() => {
+      this.updateTooltipPosition();
+    });
+  }
+
+  private updateTooltipPosition(): void {
+    if (!this.hoveredCountryId) return;
+
     const path = this.getCountryPath(this.hoveredCountryId);
     if (!path) return;
 
     const svgElement = document.querySelector('#world-map svg') as SVGSVGElement;
-    if (!svgElement) return;
+    const mapContainer = document.querySelector('.world-map-container') as HTMLElement;
+    if (!svgElement || !mapContainer) return;
 
     const bbox = path.getBBox();
     const centerX = bbox.x + bbox.width / 2;
@@ -469,24 +501,35 @@ export class WorldMapComponent implements OnInit {
     point.y = centerY;
     const screenPoint = point.matrixTransform(matrix);
 
-    const tooltipWidth = 700;
+    // Get map container bounds
+    const containerRect = mapContainer.getBoundingClientRect();
+    
+    // Optimized tooltip dimensions
+    const tooltipWidth = 350;
     const tooltipHeight = 200;
     const offset = 15;
+    const padding = 10;
 
-    this.tooltipX = screenPoint.x - tooltipWidth - offset;
-    this.tooltipY = screenPoint.y - tooltipHeight / 2;
+    // Simplified positioning logic
+    let tooltipX = screenPoint.x - tooltipWidth - offset;
+    let tooltipY = screenPoint.y - tooltipHeight / 2;
 
-    if (this.tooltipX < 0) {
-      this.tooltipX = screenPoint.x + offset;
+    // Quick boundary checks
+    if (tooltipX < containerRect.left + padding) {
+      tooltipX = screenPoint.x + offset;
+    }
+    if (tooltipX + tooltipWidth > containerRect.right - padding) {
+      tooltipX = containerRect.right - tooltipWidth - padding;
+    }
+    if (tooltipY < containerRect.top + padding) {
+      tooltipY = containerRect.top + padding;
+    }
+    if (tooltipY + tooltipHeight > containerRect.bottom - padding) {
+      tooltipY = containerRect.bottom - tooltipHeight - padding;
     }
 
-    if (this.tooltipY + tooltipHeight > window.innerHeight) {
-      this.tooltipY = window.innerHeight - tooltipHeight - offset;
-    }
-
-    if (this.tooltipY < 0) {
-      this.tooltipY = offset;
-    }
+    this.tooltipX = Math.round(tooltipX);
+    this.tooltipY = Math.round(tooltipY);
   }
 
   getCountryPath(countryId: string): SVGPathElement | null {
