@@ -7,6 +7,12 @@
       "bg-image": "country-backgrounds/germany-bg.jpg"
     },
     {
+      "name": "autriche",
+      "display_name": "Autriche",
+      "src_image": "AUTRICHE.webp",
+      "bg-image": "country-backgrounds/AUT.webp"
+    },
+    {
       "name": "belgique",
       "display_name": "Belgique",
       "src_image": "BELGIQUE.jpg",
@@ -57,14 +63,14 @@
     {
       "name": "italie",
       "display_name": "Italie",
-      "src_image": "italie.jpg",
+      "src_image": "ITALIE.webp",
       "bg-image": "country-backgrounds/italy-bg.png"
     },
     {
       "name": "lithuanie",
       "display_name": "Lituanie",
-      "src_image": "LITHUANIE.jpg",
-      "bg-image": "country-backgrounds/lithuanie-bg.jpg"
+      "src_image": "lithanie.webp",
+      "bg-image": "country-backgrounds/LITH.webp"
     },
     {
       "name": "malaisie",
