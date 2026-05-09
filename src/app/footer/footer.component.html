@@ -1,4 +1,4 @@
-<footer id="footer" class="footer dark-background">
+<footer id="footer" class="footer dark-background" style="position: relative;">
 
   <div class="container footer-top">
     <div class="row gy-4">
@@ -34,6 +34,14 @@
       </div>
     </div>
   </div>
+
+  <img
+    #icefBadge
+    src="https://icef-api-production.s3.eu-central-1.amazonaws.com/ias_material/0016M00002OxJjNQAV_badge.png"
+    alt="ICEF Accredited Agency"
+    class="icef-badge"
+    [class.visible]="badgeVisible"
+  />
 
   <div class="container copyright text-center mt-4">
     <p>© <span>Copyright</span> <strong class="px-1 sitename">SISES</strong> <span>All Rights Reserved</span></p>
