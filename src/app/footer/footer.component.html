@@ -35,13 +35,9 @@
     </div>
   </div>
 
-  <img
-    #icefBadge
-    src="https://icef-api-production.s3.eu-central-1.amazonaws.com/ias_material/0016M00002OxJjNQAV_badge.png"
-    alt="ICEF Accredited Agency"
-    class="icef-badge"
-    [class.visible]="badgeVisible"
-  />
+  <div class="icef-badge-link" [class.visible]="badgeVisible">
+    <span id="iasBadge" data-account-id="5279"></span>
+  </div>
 
   <div class="container copyright text-center mt-4">
     <p>© <span>Copyright</span> <strong class="px-1 sitename">SISES</strong> <span>All Rights Reserved</span></p>
